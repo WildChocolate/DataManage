@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DATA_MANAGEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_DataType">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_FlowStep">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_VerifyId" Type="Int32" Nullable="false" />
+    <Property Name="C_Step" Type="Int32" Nullable="false" />
+    <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Information">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_DataType" Type="Int32" Nullable="false" />
+    <Property Name="C_UserId" Type="Int32" Nullable="false" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_IsFile" Type="Boolean" Nullable="false" />
+    <Property Name="C_FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Menu">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="C_ParentMenu" Type="Int32" Nullable="false" />
+    <Property Name="C_Controller" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="C_Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_NameValueInfo">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C_UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Role">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_ParentRole" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Role_Menu">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_MenuId" Type="Int32" Nullable="false" />
+    <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+    <Property Name="C_CanUpdated" Type="Boolean" Nullable="false" />
+    <Property Name="C_CanDelted" Type="Boolean" Nullable="false" />
+    <Property Name="C_CanCreated" Type="Boolean" Nullable="false" />
+    <Property Name="C_CanRead" Type="Boolean" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Sex" Type="Boolean" Nullable="false" />
+    <Property Name="C_Enabled" Type="Boolean" Nullable="false" />
+    <Property Name="C_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_User_Role">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_UserId" Type="Int32" Nullable="false" />
+    <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_VerifyFlow">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="DATA_MANAGEEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" />
+    <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" />
+    <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" />
+    <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" />
+    <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" />
+    <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" />
+    <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+    <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" />
+    <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @RenderPage("~/views/Shared/_EasyuiPartialPage.cshtml")
+    <script src="~/LocalScript/Role/IndexQuery.js"></script>
+    <title>Index</title>
+    <link href="~/LocalCSS/Role/IndexQuery.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <table id="List" toolbar="#tb" pagination="true" singleselect="true"></table>
+        <div id="tb" style="padding:5px;height:auto">
+            <div style="margin-bottom:5px">
+                <a href="IndexExecute?Key=0" class="easyui-linkbutton" iconcls="icon-add" plain="true"></a>
+                <a id="UpdateBtn" href="###" class="easyui-linkbutton" iconcls="icon-edit" plain="true"></a>
+                @*<a href="#" class="easyui-linkbutton" iconcls="icon-save" plain="true"></a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-cut" plain="true"></a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true"></a>*@
+            </div>
+            <div>
+                Date From: <input id="DateFrom" class="easyui-datebox" style="width:100px">
+                To: <input id="DateTo" class="easyui-datebox" style="width:100px">
+                名称:
+                <input id="Name" class="easyui-textbox" data-options="prompt:'请输入名称'" style="width:200px;">
+                <a id="search" href="###" class="easyui-linkbutton" iconcls="icon-search">Search</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

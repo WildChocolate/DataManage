@@ -1,0 +1,123 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @RenderPage("~/views/Shared/_EasyuiPartialPage.cshtml")
+    <link href="~/LocalCSS/User/ManageQuery.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <table id="List"></table>
+        <div id="tb" style="padding:5px;height:auto">
+            <div style="margin-bottom:5px">
+                <a href="ManageExecute?Key=0" class="easyui-linkbutton" iconcls="icon-add" plain="true"></a>
+                <a id="UpdateBtn" href="###" class="easyui-linkbutton" iconcls="icon-edit" plain="true"></a>
+                @*<a href="#" class="easyui-linkbutton" iconcls="icon-save" plain="true"></a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-cut" plain="true"></a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true"></a>*@
+            </div>
+            <div>
+                Date From: <input id="DateFrom" class="easyui-datebox" style="width:100px">
+                To: <input id="DateTo" class="easyui-datebox" style="width:100px">
+                名称:
+                <input id="Name" class="easyui-textbox" data-options="prompt:'请输入名称'" style="width:200px;">
+                <a id="Search" href="###" class="easyui-linkbutton" iconcls="icon-search">Search</a>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#List').datagrid({
+                title:"用户管理列表 ",
+                url: 'SearchUser',
+                //width: $(window).width() - 10,
+                methord: 'post',
+                //height: $(window).height() - 35,
+                fitColumns: true,
+                pageSize: 10,
+                queryParams:{pageSize:10, pageIndex:1},
+                sortName: 'Id',
+                sortOrder: 'desc',
+                idField: 'Id',
+                striped: true, //奇偶行是否区分
+                singleSelect: true,//单选模式
+                rownumbers: true,//行号
+                columns: [[
+                    { field: 'Key', title: 'Key', width: 20 },
+                    { field: 'Name', title: '名称', width: 40 },
+                    { field: 'LoginName', title: '帐号', width: 50 },
+                    { field: 'SexString', title: '性别', width: 30},
+                    { field: 'CreatedDate', title: '创建时间', width: 50, align: 'center' },
+                    { field: 'UpdateddDate', title: '修改时间', width: 50, align: 'center' }
+                ]],
+                toolbar: "#tb",
+                pagination: true,
+                singleSelect: true
+                
+            });
+            var pager = $("#List").datagrid().datagrid("getPager");
+            pager.pagination({
+                onSelectPage: function (pageNumber, pageSize) {
+                    var condition = {
+                        PageSize: pageSize,
+                        PageIndex: pageNumber,
+                        DateFrom: $("#DateFrom").val() + "",
+                        DateTo: $("#DateTo").val() + "",
+                        Name: $("#Name").val() + ""
+                    };
+                    $.ajax({
+                        url: "SearchUser",
+                        type: "post",
+                        dataType: "json",
+                        data: condition,
+                        success: function (data) {
+                            console.log(data);
+                            $("#List").datagrid("loadData", data);
+                        }
+                    });
+                }
+            });
+
+            $("#UpdateBtn").bind("click", function () {
+                var row = $('#List').datagrid('getSelected');
+                if (row) {
+                    window.location.href = "ManageExecute?Key="+row.Key;
+                }
+                else {
+                    $.messager.alert('提示', '请先选择需要修改的用户');
+                }
+            });
+
+            $("#Search").bind("click", function () {
+                var options = $('#List').datagrid("getPager").data("pagination").options;
+                var condition = {
+                    PageSize: options.pageSize,
+                    PageIndex: options.pageNumber,
+                    DateFrom: $("#DateFrom").val()+"",
+                    DateTo: $("#DateTo").val()+"",
+                    Name: $("#Name").val()+""
+                };
+                $.ajax({
+                    url: "SearchUser",
+                    type: "post",
+                    dataType: "json",
+                    data:  condition ,
+                    success: function (data) {
+                        $("#List").datagrid("loadData",data);
+                    }
+                });
+            });
+        });
+        
+    </script>
+
+</body>
+</html>

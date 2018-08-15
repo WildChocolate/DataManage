@@ -1,0 +1,38 @@
+﻿@model Manage.IBLL.Dto.UserInfo
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section childstyle{
+<link href="~/LocalCSS/User/Index.css" rel="stylesheet" />
+}
+@if (Model != null) { 
+    <form id="form1" class="profile">
+        <div class="header">
+            <img id="Photo" name="Photo" class="img-circle" src="@Url.Action("GetUserHeadImage")" alt="头像" />
+        </div>
+        <div class="body">
+            <table>
+                <tr>
+                    <td>性别</td>
+                    <td><p id="Sex">@Model.SexString</p></td>
+                </tr>
+                <tr>
+                    <td>名称</td>
+                    <td><p id="Name">@Model.Name</p></td>
+                </tr>
+                <tr>
+                    <td>帐号</td>
+                    <td><p id="LoginName">Model.LoginName</p></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><p id="PassWord">@Model.PassWord</p></td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer">
+
+        </div>
+    </form>
+}

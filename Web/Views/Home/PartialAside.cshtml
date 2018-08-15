@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+@model  IEnumerable<Manage.Model.tbl_Menu>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        
+        <div title="@item.C_Description" data-options="iconCls:'icon-help'" style="padding:10px;">
+            
+            @Html.Action("GetMenu", new { item.keyid })
+        </div>
+            
+        
+    }
+}

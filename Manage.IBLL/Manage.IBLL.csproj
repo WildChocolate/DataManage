@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59182ABB-BBBA-4A4D-A681-BDF6FDE489AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manage.IBLL</RootNamespace>
+    <AssemblyName>Manage.IBLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dto\RoleDto.cs" />
+    <Compile Include="Dto\RoleInfo.cs" />
+    <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Dto\UserInfo.cs" />
+    <Compile Include="IBaseService.cs" />
+    <Compile Include="IDataTypeService.cs" />
+    <Compile Include="IFlowStepService.cs" />
+    <Compile Include="IMenuService.cs" />
+    <Compile Include="IRoleService.cs" />
+    <Compile Include="IUserRoleService.cs" />
+    <Compile Include="INameValueInfoService.cs" />
+    <Compile Include="IVerifyFlowService.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="IRoleMenuService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IDAL\Manage.IDAL.csproj">
+      <Project>{3948c5e2-0e3f-4f71-ac12-50d63e9a45ff}</Project>
+      <Name>Manage.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manage.Common\Manage.Common.csproj">
+      <Project>{1405a55b-0867-4704-b14f-38c8f49284ac}</Project>
+      <Name>Manage.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manage.Container\Manage.DALContainer.csproj">
+      <Project>{c841100e-3490-4b6f-b102-988ba274bd18}</Project>
+      <Name>Manage.DALContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manage.Model\Manage.Model.csproj">
+      <Project>{e95cc805-0d26-4279-9cf4-1c3f428aa696}</Project>
+      <Name>Manage.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

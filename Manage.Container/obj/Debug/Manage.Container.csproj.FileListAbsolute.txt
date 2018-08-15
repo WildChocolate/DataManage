@@ -1,0 +1,14 @@
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\obj\Debug\Manage.Container.csprojResolveAssemblyReference.cache
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\Manage.Container.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\Manage.Container.pdb
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\IDAL.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\Manage.DAL.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\Manage.Model.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\EntityFramework.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\IDAL.pdb
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\Manage.DAL.pdb
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\Manage.Model.pdb
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\EntityFramework.xml
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\obj\Debug\Manage.Container.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Container\obj\Debug\Manage.Container.pdb

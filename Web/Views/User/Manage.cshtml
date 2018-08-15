@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@section childstyle{
+<link href="~/LocalCSS/User/Manage.css" rel="stylesheet" />
+}
+@section childscript{
+<script src="~/LocalScript/User/Manage.js"></script>
+}
+<div class="formcontainer">
+    
+    <form name="userform" id="userform" method="post" action="Manage" >
+        <input type="hidden" name="Key" value="0" />
+        <table>
+            <caption>用户信息</caption>
+            <tr>
+                <td>名称</td>
+                <td><input type="text" id="Name" name="Name" value="" /></td>
+                <td></td>
+                <td rowspan="3">
+                    <div>
+                        <div>
+                            <p><span id="fn"></span>&nbsp;&nbsp;<span id="fs"></span></p>
+                        </div>
+                        <p style="width:120px;height:150px;margin:auto;">
+                            <img id="img1" width="120" height="150"  />
+                            <br />
+                            <input type="file" id="Photo" name="Photo" maxlength="102400" />
+                        </p>
+                        
+                    </div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>登陆名</td>
+                <td><input type="text" id="LoginName" name="LoginName" value="" /></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td>
+                    <select id="Sex" class="easyui-combobox" name="Sex" style="width:200px;">
+                        <option value="" selected data-img="../../Images/head_boy.png">--请选择--</option>
+                        <option value="man" >男</option>
+                        <option value="woman" >女</option>
+                    </select>
+                </td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text" id="PassWord" name="PassWord" value="" /></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" id="submit" style="min-width:50px;padding:10px; margin:0 20px;" name="submit" value="添加用户" />
+
+
+                </td>
+                <td><input type="button" id="cancle" style="min-width: 50px; padding: 10px; margin: 0 20px;" name="cancle" value="取消" /></td>
+                <td></td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>

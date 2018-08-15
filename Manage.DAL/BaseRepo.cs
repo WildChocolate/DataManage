@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Manage.Model;
+using System.Data.Entity;
+using System.Linq.Expressions;
+
+namespace Manage.DAL
+{
+    public class BaseRepo<T> where T : class, new()
+    {
+        DbContext dbContext = DBContextFactory.CreateDB();
+        public void Add(T t)
+        {
+            dbContext.Set<T>().Add(t);
+        }
+        public virtual void Update(T t)
+        {
+            dbContext.Set<T>().Attach(t);
+            dbContext.Entry<T>(t).State = EntityState.Modified;
+        }
+        public void Delete(T t)
+        {
+            dbContext.Set<T>().Remove(t);
+        }
+        public IQueryable<T> GetModels(Expression<Func<T, bool>> wherelambda)
+        {
+            return dbContext.Set<T>().Where(wherelambda);
+        }
+        public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
+    Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
+        {
+            //是否升序
+            if (isAsc)
+            {
+                return dbContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            }
+            else
+            {
+                return dbContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            }
+        }
+        public IEnumerable<Target> GetModelsByPage<Target>(int pageSize, int pageIndex, string sql)
+        {
+            //var users = DBContextFactory.CreateDB().Set<tbl_User_NoPhoto>().SqlQuery(sql).ToArray();
+            var entities = DBContextFactory.CreateDB().Database.SqlQuery<Target>(sql).ToList().Skip(pageSize*(pageIndex-1)).Take(pageSize);
+            return entities;
+
+        }
+        public int GetTableCount(string wherestring="")
+        {
+            var tbName = typeof(T).Name;
+            var sql = "select count(1) from "+tbName +wherestring;
+            var cnt = dbContext.Database.SqlQuery<int>(sql).SingleOrDefault();
+            return cnt;
+        }
+        public bool SaveChanges()
+        {
+            return dbContext.SaveChanges() > 0;
+        }
+    }
+}

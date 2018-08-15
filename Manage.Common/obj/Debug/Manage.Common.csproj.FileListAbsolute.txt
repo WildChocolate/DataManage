@@ -1,0 +1,12 @@
+C:\Users\xuzhicheng\Documents\Visual Studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\Manage.Common.dll
+C:\Users\xuzhicheng\Documents\Visual Studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\Manage.Common.pdb
+C:\Users\xuzhicheng\Documents\Visual Studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\xuzhicheng\Documents\Visual Studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\Newtonsoft.Json.xml
+C:\Users\xuzhicheng\Documents\Visual Studio 2013\Projects\DATA_MANAGE\Manage.Common\obj\Debug\Manage.Common.dll
+C:\Users\xuzhicheng\Documents\Visual Studio 2013\Projects\DATA_MANAGE\Manage.Common\obj\Debug\Manage.Common.pdb
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Common\obj\Debug\Manage.Common.csprojResolveAssemblyReference.cache
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\Manage.Model.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\Manage.Model.pdb
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\EntityFramework.dll
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\EntityFramework.xml
+C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Common\bin\Debug\zh-Hans\EntityFramework.resources.dll

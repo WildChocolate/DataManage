@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DATA_MANAGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_DataType">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_FlowStep">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_VerifyId" Type="int" Nullable="false" />
+          <Property Name="C_Step" Type="int" Nullable="false" />
+          <Property Name="C_RoleId" Type="int" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Information">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_DataType" Type="int" Nullable="false" />
+          <Property Name="C_UserId" Type="int" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Value" Type="nvarchar(max)" />
+          <Property Name="C_IsFile" Type="bit" Nullable="false" />
+          <Property Name="C_FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Menu">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="C_ParentMenu" Type="int" Nullable="false" />
+          <Property Name="C_Controller" Type="varchar" MaxLength="100" />
+          <Property Name="C_Action" Type="varchar" MaxLength="100" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_NameValueInfo">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="C_UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Role">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_ParentRole" Type="int" Nullable="false" />
+          <Property Name="C_Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Role_Menu">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_MenuId" Type="int" Nullable="false" />
+          <Property Name="C_RoleId" Type="int" Nullable="false" />
+          <Property Name="C_CanUpdated" Type="bit" Nullable="false" />
+          <Property Name="C_CanDelted" Type="bit" Nullable="false" />
+          <Property Name="C_CanCreated" Type="bit" Nullable="false" />
+          <Property Name="C_CanRead" Type="bit" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Sex" Type="bit" Nullable="false" />
+          <Property Name="C_Enabled" Type="bit" Nullable="false" />
+          <Property Name="C_Photo" Type="image" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_User_Role">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_UserId" Type="int" Nullable="false" />
+          <Property Name="C_RoleId" Type="int" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VerifyFlow">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="DATA_MANAGEModelStoreContainer">
+          <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DATA_MANAGEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_DataType">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_FlowStep">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_VerifyId" Type="Int32" Nullable="false" />
+          <Property Name="C_Step" Type="Int32" Nullable="false" />
+          <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Information">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_DataType" Type="Int32" Nullable="false" />
+          <Property Name="C_UserId" Type="Int32" Nullable="false" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="C_IsFile" Type="Boolean" Nullable="false" />
+          <Property Name="C_FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Menu">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ParentMenu" Type="Int32" Nullable="false" />
+          <Property Name="C_Controller" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_NameValueInfo">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Role">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_ParentRole" Type="Int32" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Role_Menu">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_MenuId" Type="Int32" Nullable="false" />
+          <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+          <Property Name="C_CanUpdated" Type="Boolean" Nullable="false" />
+          <Property Name="C_CanDelted" Type="Boolean" Nullable="false" />
+          <Property Name="C_CanCreated" Type="Boolean" Nullable="false" />
+          <Property Name="C_CanRead" Type="Boolean" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Sex" Type="Boolean" Nullable="false" />
+          <Property Name="C_Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="C_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_User_Role">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_UserId" Type="Int32" Nullable="false" />
+          <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_VerifyFlow">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DATA_MANAGEEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" />
+          <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" />
+          <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" />
+          <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" />
+          <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" />
+          <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" />
+          <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" />
+          <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DATA_MANAGEModelStoreContainer" CdmEntityContainer="DATA_MANAGEEntities1">
+          <EntitySetMapping Name="tbl_DataType">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_DataType">
+              <MappingFragment StoreEntitySet="tbl_DataType">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FlowStep">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_FlowStep">
+              <MappingFragment StoreEntitySet="tbl_FlowStep">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_VerifyId" ColumnName="C_VerifyId" />
+                <ScalarProperty Name="C_Step" ColumnName="C_Step" />
+                <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Information">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Information">
+              <MappingFragment StoreEntitySet="tbl_Information">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_DataType" ColumnName="C_DataType" />
+                <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_Value" ColumnName="C_Value" />
+                <ScalarProperty Name="C_IsFile" ColumnName="C_IsFile" />
+                <ScalarProperty Name="C_FilePath" ColumnName="C_FilePath" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Menu">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Menu">
+              <MappingFragment StoreEntitySet="tbl_Menu">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+                <ScalarProperty Name="C_ParentMenu" ColumnName="C_ParentMenu" />
+                <ScalarProperty Name="C_Controller" ColumnName="C_Controller" />
+                <ScalarProperty Name="C_Action" ColumnName="C_Action" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_NameValueInfo">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_NameValueInfo">
+              <MappingFragment StoreEntitySet="tbl_NameValueInfo">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Role">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Role">
+              <MappingFragment StoreEntitySet="tbl_Role">
+                <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_ParentRole" ColumnName="C_ParentRole" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Role_Menu">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Role_Menu">
+              <MappingFragment StoreEntitySet="tbl_Role_Menu">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_MenuId" ColumnName="C_MenuId" />
+                <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+                <ScalarProperty Name="C_CanUpdated" ColumnName="C_CanUpdated" />
+                <ScalarProperty Name="C_CanDelted" ColumnName="C_CanDelted" />
+                <ScalarProperty Name="C_CanCreated" ColumnName="C_CanCreated" />
+                <ScalarProperty Name="C_CanRead" ColumnName="C_CanRead" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_LoginName" ColumnName="C_LoginName" />
+                <ScalarProperty Name="C_PassWord" ColumnName="C_PassWord" />
+                <ScalarProperty Name="C_Sex" ColumnName="C_Sex" />
+                <ScalarProperty Name="C_Enabled" ColumnName="C_Enabled" />
+                <ScalarProperty Name="C_Photo" ColumnName="C_Photo" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User_Role">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_User_Role">
+              <MappingFragment StoreEntitySet="tbl_User_Role">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+                <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VerifyFlow">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_VerifyFlow">
+              <MappingFragment StoreEntitySet="tbl_VerifyFlow">
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

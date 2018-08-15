@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DATA_MANAGEModelStoreContainer" CdmEntityContainer="DATA_MANAGEEntities1">
+    <EntitySetMapping Name="tbl_DataType">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_DataType">
+        <MappingFragment StoreEntitySet="tbl_DataType">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_FlowStep">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_FlowStep">
+        <MappingFragment StoreEntitySet="tbl_FlowStep">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_VerifyId" ColumnName="C_VerifyId" />
+          <ScalarProperty Name="C_Step" ColumnName="C_Step" />
+          <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Information">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Information">
+        <MappingFragment StoreEntitySet="tbl_Information">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_DataType" ColumnName="C_DataType" />
+          <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_Value" ColumnName="C_Value" />
+          <ScalarProperty Name="C_IsFile" ColumnName="C_IsFile" />
+          <ScalarProperty Name="C_FilePath" ColumnName="C_FilePath" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Menu">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Menu">
+        <MappingFragment StoreEntitySet="tbl_Menu">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+          <ScalarProperty Name="C_ParentMenu" ColumnName="C_ParentMenu" />
+          <ScalarProperty Name="C_Controller" ColumnName="C_Controller" />
+          <ScalarProperty Name="C_Action" ColumnName="C_Action" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_NameValueInfo">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_NameValueInfo">
+        <MappingFragment StoreEntitySet="tbl_NameValueInfo">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Role">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Role">
+        <MappingFragment StoreEntitySet="tbl_Role">
+          <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_ParentRole" ColumnName="C_ParentRole" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Role_Menu">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Role_Menu">
+        <MappingFragment StoreEntitySet="tbl_Role_Menu">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_MenuId" ColumnName="C_MenuId" />
+          <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+          <ScalarProperty Name="C_CanUpdated" ColumnName="C_CanUpdated" />
+          <ScalarProperty Name="C_CanDelted" ColumnName="C_CanDelted" />
+          <ScalarProperty Name="C_CanCreated" ColumnName="C_CanCreated" />
+          <ScalarProperty Name="C_CanRead" ColumnName="C_CanRead" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_User">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_User">
+        <MappingFragment StoreEntitySet="tbl_User">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_LoginName" ColumnName="C_LoginName" />
+          <ScalarProperty Name="C_PassWord" ColumnName="C_PassWord" />
+          <ScalarProperty Name="C_Sex" ColumnName="C_Sex" />
+          <ScalarProperty Name="C_Enabled" ColumnName="C_Enabled" />
+          <ScalarProperty Name="C_Photo" ColumnName="C_Photo" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_User_Role">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_User_Role">
+        <MappingFragment StoreEntitySet="tbl_User_Role">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+          <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_VerifyFlow">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_VerifyFlow">
+        <MappingFragment StoreEntitySet="tbl_VerifyFlow">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

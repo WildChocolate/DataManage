@@ -1,0 +1,70 @@
+﻿@using Manage.IBLL.Dto;
+@{
+    if (Session["user"] != null) {
+        ViewBag.UserName = (Session["user"] as UserDto).User.C_Name+string.Empty ;
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*<link href="~/EasyUI1.4.5/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/EasyUI1.4.5/themes/icon.css" rel="stylesheet" />
+    <link href="~/EasyUI1.4.5/demo/demo.css" rel="stylesheet" />
+    <script src="~/EasyUI1.4.5/jquery.min.js"></script>
+    <script src="~/EasyUI1.4.5/jquery.easyui.min.js"></script>*@
+    @RenderPage("_EasyuiPartialPage.cshtml");
+    <link href="~/LocalStyle/CSS/MainLayout.css" rel="stylesheet" />
+    
+    @RenderSection("childscript", required: false)
+    @RenderSection("childstyle", required: false)
+</head>
+<body>
+    <div class="mainbody" >
+        <header>
+            <div class="hcontainer">
+                <div class="hleft">
+                    
+                </div>
+                <div class="hright">
+                    <div class="btnzone">
+                        <p>
+                            <a href="#" class="easyui-linkbutton" style="color:white" plain="true" iconcls="icon-help">帮助</a>
+                            <a href="#" class="easyui-linkbutton" style="color:white" plain="true" iconcls="icon-about">关于</a>
+                            <a href="/Login/Index?logout=true" class="easyui-linkbutton" style="color:white" plain="true" iconcls="icon-exit">退出</a>
+                        </p>
+                        <p>
+                            <a href="#" class="easyui-linkbutton" style="color:white" plain="true" iconcls="icon-people">@ViewBag.UserName</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <article class="bglightblue">
+            <aside class="">
+                <div class="easyui-accordion">
+                    @Html.Action("Aside", "Home")
+                    @*<div title="About" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+                        <p>width: 100%</p>
+                    </div>
+                    <div title="Help" data-options="iconCls:'icon-help',href:'_content.html'" style="padding:10px;">
+                    </div>*@
+                </div>
+
+            </aside>
+            <section>
+                <div class="whitelayer">
+                    @RenderBody()
+                    
+                </div>
+            </section>
+
+        </article>
+        <footer>
+
+        </footer>
+    </div>
+</body>
+</html>

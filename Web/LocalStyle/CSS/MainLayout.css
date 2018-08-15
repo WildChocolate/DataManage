@@ -1,0 +1,102 @@
+﻿*{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+}
+html,body ,.mainbody{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+header{
+    width:100%;
+    height:15%;
+    margin:0;
+    padding:0;
+    background-color:#3385ff;
+    overflow:hidden;
+    border:7px solid #E6E8FA;
+    box-sizing:border-box;
+    background-image:url('../../Images/onepieceLogo.png') ;
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+article{
+    width:100%;
+    height:85%;
+    box-sizing:border-box;
+    position:relative;
+    margin-right:7px;
+}
+aside, section{
+    position:absolute;
+}
+aside{
+    width:20%;
+    height:100%;
+    max-width:340px;
+    padding:7px;
+    box-sizing:border-box;
+}
+
+section{
+    width:80%;
+    height:100%;
+    left:20%;
+}
+.hcontainer{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.hleft,.hright{
+    position:absolute;
+    width:49.5%;
+    height:100%;
+    top:0px;
+}
+.hleft{
+    left:0px;
+}
+.hright{
+    left:50%;
+}
+.bglightblue{
+    background-color:#E0EEE0;
+}
+aside .accordion-body:hover{
+    background-color:lightskyblue;
+}
+.btnzone{
+    text-align:right;
+}
+article>section{
+    background:url('../../Images/dream.png') no-repeat;
+    background-size:100% 100%;
+    background-position:-7px 0px ;
+}
+.whitelayer{
+    width:100%;
+    height:100%;
+    background-color:rgba(255,255,255, .85);
+    background-position:-7px 0px;
+}
+.childmenu{
+    
+    text-align:center;
+
+}
+.childmenu a{
+    display:block;
+    padding:10px 0px;
+    font-size:1.2em;
+}
+.childmenu a:hover{
+    background-color:#E6E8FA;
+}
+.content{
+    width:100%;
+    height:100%;
+}

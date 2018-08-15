@@ -1,0 +1,44 @@
+﻿@model Manage.IBLL.Dto.RoleInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @RenderPage("~/views/Shared/_EasyuiPartialPage.cshtml")
+    <title>IndexExecute</title>
+</head>
+<body>
+    <div class="container"> 
+        <input type="hidden" id="Key" name="Key" value="@Model.Key" />
+        <div class="easyui-panel" title="New Topic" style="width:400px">
+            <div style="padding:10px 60px 20px 60px">
+                <form id="ff" method="post">
+                    <table cellpadding="5" cellspacing="5">
+                        <tr>
+                            <td>角色名称:</td>
+                            <td><input class="easyui-textbox" type="text" name="name" data-options="required:true" value="@Model.Name"></input></td>
+                        </tr>
+                        <tr>
+                            <td>描述:</td>
+                            <td><input class="easyui-textbox" type="text" name="email" value="@Model.Description"></input></td>
+                        </tr>
+                        <tr>
+                            <td>父级角色:</td>
+                            <td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input></td>
+                        </tr>
+                        
+                    </table>
+                </form>
+                <div style="text-align:center;padding:5px">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

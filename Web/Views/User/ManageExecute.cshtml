@@ -1,0 +1,92 @@
+﻿@model Manage.IBLL.Dto.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @RenderPage("~/views/Shared/_EasyuiPartialPage.cshtml")
+    <link href="~/LocalCSS/User/Manage.css" rel="stylesheet" />
+    <script src="~/LocalScript/User/Manage.js"></script>
+</head>
+<body>
+    <div class="formcontainer">
+        
+        <form name="userform" id="userform" method="post" action="Manage">
+            <input type="hidden" id="Key" name="Key" value="@Model.Key" />
+            <table>
+                <caption>用户信息</caption>
+                <tr>
+                    <td>名称</td>
+                    <td><input type="text" id="Name" name="Name" value="@Model.Name" /></td>
+                    <td></td>
+                    <td rowspan="3">
+                        <div>
+                            <div>
+                                <p><span id="fn"></span>&nbsp;&nbsp;<span id="fs"></span></p>
+                            </div>
+                            <p style="width:120px;height:150px;margin:auto;">
+                                <img id="img1" src="GetUserHeadImage?key=@Model.Key" width="120" height="150" />
+                                <br />
+                                <input type="file" id="Photo" name="Photo" maxlength="102400" />
+                            </p>
+
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>登陆名</td>
+                    <td><input type="text" id="LoginName" name="LoginName" value="@Model.LoginName" /></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    <td>
+                        <select id="Sex" class="easyui-combobox" name="Sex" style="width:200px;">
+                            <option value="">--请选择--</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="text" id="PassWord" name="PassWord" value="@Model.PassWord" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div style="padding:5px;background:#fafafa;width:100px;border:1px solid #ccc">
+                            <a  id="submit" href="###" class="easyui-linkbutton" plain="true" iconcls="icon-ok">@ViewBag.Operation</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="padding:5px;background:#fafafa;width:100px;border:1px solid #ccc">
+                            <a href="ManageQuery" class="easyui-linkbutton" plain="true" iconcls="icon-cancel">Cancel</a>
+                        </div>
+</td>
+                    <td></td>
+
+                </tr>
+            </table>
+        </form>
+
+    </div>
+    <script>
+        $("#Sex").combobox("setValue", "@Model.SexString");
+    </script>
+</body>
+</html>

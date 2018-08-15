@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DATA_MANAGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_DataType">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_FlowStep">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_VerifyId" Type="int" Nullable="false" />
+    <Property Name="C_Step" Type="int" Nullable="false" />
+    <Property Name="C_RoleId" Type="int" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Information">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_DataType" Type="int" Nullable="false" />
+    <Property Name="C_UserId" Type="int" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_Value" Type="nvarchar(max)" />
+    <Property Name="C_IsFile" Type="bit" Nullable="false" />
+    <Property Name="C_FilePath" Type="nvarchar" MaxLength="500" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Menu">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="C_ParentMenu" Type="int" Nullable="false" />
+    <Property Name="C_Controller" Type="varchar" MaxLength="100" />
+    <Property Name="C_Action" Type="varchar" MaxLength="100" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_NameValueInfo">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="C_UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Role">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_ParentRole" Type="int" Nullable="false" />
+    <Property Name="C_Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Role_Menu">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_MenuId" Type="int" Nullable="false" />
+    <Property Name="C_RoleId" Type="int" Nullable="false" />
+    <Property Name="C_CanUpdated" Type="bit" Nullable="false" />
+    <Property Name="C_CanDelted" Type="bit" Nullable="false" />
+    <Property Name="C_CanCreated" Type="bit" Nullable="false" />
+    <Property Name="C_CanRead" Type="bit" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_Sex" Type="bit" Nullable="false" />
+    <Property Name="C_Enabled" Type="bit" Nullable="false" />
+    <Property Name="C_Photo" Type="image" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_User_Role">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_UserId" Type="int" Nullable="false" />
+    <Property Name="C_RoleId" Type="int" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_VerifyFlow">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="DATA_MANAGEModelStoreContainer">
+    <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

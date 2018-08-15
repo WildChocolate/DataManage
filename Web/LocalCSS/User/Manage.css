@@ -1,0 +1,28 @@
+﻿* {
+    border:none;
+    margin:0px;
+    padding:0px;
+}
+.formcontainer{
+    width:75%;
+    min-width:500px;
+    margin:0 auto;
+}
+td{
+    min-width:100px;
+}
+form{
+    padding:20px;
+    background-color:lightblue;
+}
+form input[type=text]{
+    height:25px;
+    padding:5px;
+    font:bold 20px arial;
+    
+}
+#img1{
+    display:inline-block;
+    background:url('../../Images/head_boy.png') no-repeat;
+    background-size:contain;
+}

@@ -1,0 +1,7 @@
+﻿@using Manage.IBLL.Dto;
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+    ViewBag.Title = "Home Page";
+    ViewBag.Name = (Session["user"] as UserDto).User.C_Name;
+}
+
