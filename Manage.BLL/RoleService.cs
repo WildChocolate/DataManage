@@ -15,5 +15,11 @@ namespace Manage.BLL
         {
             Dal = DALContainer.Container.GetRepository<IRoleRepo>();
         }
+
+        public T GetRoleDtoByKey<T>(int Key)
+        {
+            var userdal = Dal as IRoleRepo;
+            return userdal.GetRoleByKey<T>(Key);
+        }
     }
 }

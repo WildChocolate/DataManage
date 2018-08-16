@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Manage.IBLL.Dto.UserInfo
+@{
     Layout = null;
 }
 
@@ -13,9 +14,11 @@
 <body>
 @if (Model != null)
 {
+    <h2>个人信息详情</h2>
+    <hr />
     <form id="form1" class="profile">
         <div class="header">
-            <img id="Photo" name="Photo" class="img-circle" src="@Url.Action("GetUserHeadImage")" alt="头像" />
+            <img id="Photo" name="Photo" class="img-circle" src="@Url.Action("GetUserHeadImage", new { key=@Model.Key})" alt="头像" />
         </div>
         <div class="body">
             <table>

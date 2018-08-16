@@ -1,4 +1,5 @@
-﻿@model Manage.IBLL.Dto.RoleInfo
+﻿@using Manage.IBLL.Dto
+@model RoleInfo
 @{
     Layout = null;
 }
@@ -10,35 +11,53 @@
     <meta name="viewport" content="width=device-width" />
     @RenderPage("~/views/Shared/_EasyuiPartialPage.cshtml")
     <title>IndexExecute</title>
+    <link href="~/LocalCSS/Role/IndexExecute.css" rel="stylesheet" />
+    <script src="~/LocalScript/Role/IndexExecute.js"></script>
 </head>
 <body>
-    <div class="container"> 
-        <input type="hidden" id="Key" name="Key" value="@Model.Key" />
-        <div class="easyui-panel" title="New Topic" style="width:400px">
-            <div style="padding:10px 60px 20px 60px">
-                <form id="ff" method="post">
+    <div class="container">
+        <h2>角色管理---@ViewBag.Operation</h2>
+        <hr />
+        <form name="roleform" id="roleform">
+            <input type="hidden" id="Key" name="Key" value="@Model.Key" />
+            <input type="hidden" id="ParentName" name="ParentName" value="@Model.ParentName" />
+            <div class="easyui-panel" title="@ViewBag.Operation" style="width:450px">
+                <div style="padding:10px 60px 20px 60px">
+
                     <table cellpadding="5" cellspacing="5">
                         <tr>
                             <td>角色名称:</td>
-                            <td><input class="easyui-textbox" type="text" name="name" data-options="required:true" value="@Model.Name"></input></td>
+                            <td><input id="Name" class="easyui-textbox" type="text" name="name" data-options="required:true" value="@Model.Name" /></td>
                         </tr>
                         <tr>
                             <td>描述:</td>
-                            <td><input class="easyui-textbox" type="text" name="email" value="@Model.Description"></input></td>
+                            <td><input id="Description" class="easyui-textbox" type="text" name="email" value="@Model.Description" /></td>
+                        </tr>
+                        <tr>
+                            <td>是否顶级角色:</td>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="isTop" id="isTop" />
+                            </td>
                         </tr>
                         <tr>
                             <td>父级角色:</td>
-                            <td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input></td>
+                            <td>
+                                <input id="ParentRole" class="easyui-combobox" value="@Model.ParentRole"
+                                       name="language"
+                                       data-options="valueField:'Key',textField:'Name',panelHeight:'auto'">
+                            </td>
                         </tr>
-                        
+
                     </table>
-                </form>
-                <div style="text-align:center;padding:5px">
-                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
-                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+
+                    <div style="text-align:center;padding:5px">
+                        <a id="submit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">@ViewBag.Operation</a>
+                        <a id="cancel" href="IndexQuery" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+        
+</div>
 </body>
 </html>

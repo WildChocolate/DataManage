@@ -9,6 +9,6 @@ namespace Manage.IDAL
 {
     public interface IRoleRepo : IBaseRepo<tbl_Role>
     {
-
+        T GetRoleByKey<T>(int Key);
     }
 }

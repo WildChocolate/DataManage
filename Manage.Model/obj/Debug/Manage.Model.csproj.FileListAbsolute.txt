@@ -9,3 +9,14 @@ C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Mod
 C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Model\obj\Debug\Manage.Model.dll
 C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\Manage.Model\obj\Debug\Manage.Model.pdb
+D:\DataManage\Manage.Model\bin\Debug\Manage.Model.dll.config
+D:\DataManage\Manage.Model\bin\Debug\Manage.Model.dll
+D:\DataManage\Manage.Model\bin\Debug\Manage.Model.pdb
+D:\DataManage\Manage.Model\bin\Debug\EntityFramework.dll
+D:\DataManage\Manage.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\DataManage\Manage.Model\bin\Debug\EntityFramework.xml
+D:\DataManage\Manage.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\DataManage\Manage.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\DataManage\Manage.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\DataManage\Manage.Model\obj\Debug\Manage.Model.dll
+D:\DataManage\Manage.Model\obj\Debug\Manage.Model.pdb

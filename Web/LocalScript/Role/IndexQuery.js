@@ -42,7 +42,7 @@ $(function () {
                 $("#List").datagrid({
                     columns: [data.title],
                     fitColumns: true,
-                    
+                    title:"角色查询"
                 }).datagrid("loadData", data);
             }
             var pager = $("#List").datagrid("getPager");
@@ -55,6 +55,16 @@ $(function () {
             });
         }
     });
-
-
+    $("#UpdateBtn").click(function () {
+        //获得datagrid 的选中行
+        var row = $('#List').datagrid('getSelected');
+        var Key = row.Key;
+        if (Key) {
+            window.location.href = "IndexExecute?Key="+Key;
+        }
+        else {
+            alert("请选择须要修改的行");
+        }
+        
+    });
 });

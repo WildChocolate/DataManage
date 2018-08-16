@@ -1,8 +1,10 @@
 ﻿using Manage.BLLContainer;
+using Manage.Common;
 using Manage.Common.Condition;
 using Manage.Common.DataGrid;
 using Manage.IBLL;
 using Manage.IBLL.Dto;
+using Manage.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,11 @@ namespace Web.Controllers
 {
     public class RoleController : PowerController
     {
+        string[] menusaction = { "IndexQuery" };
+        protected override string[] MenusAction
+        {
+            get { return menusaction; }
+        }
         //
         // GET: /Role/
         public ActionResult IndexQuery()
@@ -32,12 +39,52 @@ namespace Web.Controllers
         public ActionResult IndexExecute(int Key = 0)
         {
             if (CanRead)
-                return View();
+            {
+                var roleinfo = new RoleInfo() { Key=Key};
+                if (Key == 0)
+                {
+                    ViewBag.Operation = "添加角色";
+                    return View(roleinfo);
+                }
+                else
+                {
+                    ViewBag.Operation="修改角色";
+                    var service = Container.GetService<IRoleService>();
+                    var roledto = service.GetRoleDtoByKey<RoleDto>(Key);
+                    if (roledto != null)
+                    {
+                        roleinfo = RoleInfo.ConvertToRoleInfo(roledto);
+                        return View(roleinfo);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "不存在此角色";
+                        return View("Error");
+                    }
+                }
+            }
             else
             {
                 ViewBag.Message = CannotReadText;
                 return View("Error");
             }
+        }
+
+        public ActionResult GetRoles(int Key = 0)
+        {
+            var service = Container.GetService<IRoleService>();
+            
+            if (Key == 0)
+            {
+                var roles = service.GetModels(r=> true).ToList().Select(item => new { Key=item.keyid,Name=item.C_Name });
+                return Json(roles, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var roles = service.GetModels(r => r.keyid != Key).ToList().Select(item => new { Key = item.keyid, Name = item.C_Name });
+                return Json(roles, JsonRequestBehavior.AllowGet);
+            }
+            
         }
         [HttpPost]
         public ActionResult SearchRole(RoleCondition condition)
@@ -74,10 +121,58 @@ namespace Web.Controllers
             rolegrid.total = service.GetTableCount(where.ToString());
             return Json(rolegrid);
         }
-        string[] menusaction = {"IndexQuery" };
-        protected override string[] MenusAction
+        [HttpPost]
+        public ActionResult Manage(RoleInfo info)
         {
-            get { return menusaction; }
+            var service = Container.GetService<IRoleService>();
+            var data = new AjaxResult() ;
+            try
+            {
+                if (info.Key > 0)
+                {
+                    var role = service.GetModels(r => r.keyid == info.Key).FirstOrDefault();
+                    if (role != null)
+                    {
+                        role.C_Name = info.Name;
+                        role.C_Description = info.Description;
+                        role.C_ParentRole = info.ParentRole;
+                        role.C_UpdatedDate = DateTime.Now;
+                        var success = service.Update(role);
+                        if (success)
+                        {
+                            data.Message = "修改成功";
+                        }
+                        else
+                        {
+                            data.Message = "修改失败";
+                        }
+                    }
+                    else
+                        data.Message = "不存在的角色";
+                }
+                else
+                {
+                    var role = new tbl_Role();
+                    role.C_Name = info.Name;
+                    role.C_Description = info.Description;
+                    role.C_ParentRole = info.ParentRole;
+                    role.C_CreatedDate = DateTime.Now;
+                    var success = service.Add(role);
+
+                    if (success)
+                    {
+                        data.Message = "添加成功";
+                    }
+                    else
+                    {
+                        data.Message = "添加失败";
+                    }
+                }
+            }
+            catch(Exception ex){
+                data.Message = ex.Message;
+            }
+            return Json(data);
         }
     }
 }

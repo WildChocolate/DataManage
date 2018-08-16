@@ -12,7 +12,7 @@ namespace Manage.Common.DataGrid
         public RoleDataGrid()
         {
             title = new List<th>();
-            title.Add(new th { field = "Key", title = "key", width = 80 });
+            title.Add(new th { field = "Key", title = "Key", width = 80 });
             title.Add(new th { field = "Name", title = "角色名", width = 100 });
             title.Add(new th { field = "Description", title = "描述", width = 100 });
             title.Add(new th { field = "ParentName", title = "父角色", width = 100});

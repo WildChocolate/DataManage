@@ -9,5 +9,6 @@ namespace Manage.IBLL
 {
     public interface IRoleService : IBaseService<tbl_Role>
     {
+        T GetRoleDtoByKey<T>(int Key);
     }
 }

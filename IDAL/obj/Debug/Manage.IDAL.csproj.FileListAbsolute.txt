@@ -12,3 +12,17 @@ C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\IDAL\bin\D
 C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\IDAL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\IDAL\bin\Debug\Manage.Common.pdb
 C:\Users\xuzhicheng\documents\visual studio 2013\Projects\DATA_MANAGE\IDAL\bin\Debug\Newtonsoft.Json.xml
+D:\DataManage\IDAL\bin\Debug\IDAL.dll
+D:\DataManage\IDAL\bin\Debug\IDAL.pdb
+D:\DataManage\IDAL\bin\Debug\Manage.Common.dll
+D:\DataManage\IDAL\bin\Debug\Manage.Model.dll
+D:\DataManage\IDAL\bin\Debug\Newtonsoft.Json.dll
+D:\DataManage\IDAL\bin\Debug\EntityFramework.dll
+D:\DataManage\IDAL\bin\Debug\Manage.Common.pdb
+D:\DataManage\IDAL\bin\Debug\Manage.Model.pdb
+D:\DataManage\IDAL\bin\Debug\Newtonsoft.Json.xml
+D:\DataManage\IDAL\bin\Debug\EntityFramework.xml
+D:\DataManage\IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\DataManage\IDAL\obj\Debug\Manage.IDAL.csprojResolveAssemblyReference.cache
+D:\DataManage\IDAL\obj\Debug\IDAL.dll
+D:\DataManage\IDAL\obj\Debug\IDAL.pdb

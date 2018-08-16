@@ -3,5 +3,12 @@
     height:100%;
 }
 .container{
-
+    width:100%;
+    height:100%;
+    margin:auto;
+}
+#roleform {
+    min-width:450px;
+    width:50%;
+    margin:auto;
 }

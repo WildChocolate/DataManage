@@ -116,8 +116,8 @@ $(function () {
             }
         }
     });
-    
-
+    $("#Sex").combobox("setValue", $("#hidSex").val());
+    $("#Sex").combobox("setText", $("#hidSex").val());
     $("#submit").click(function () {
         execute.Key=$("#Key").val();
         execute.Name = $("#Name").val();

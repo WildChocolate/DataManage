@@ -33,7 +33,7 @@ namespace Web.Controllers
         {
             if (CanRead) 
             {
-                var userinfo = new UserInfo() {Sex=userDto.User.C_Sex, Name=userDto.User.C_Name, LoginName=userDto.User.C_LoginName, PassWord=userDto.User.C_PassWord};
+                var userinfo = new UserInfo() {Key=userDto.User.keyid,Sex=userDto.User.C_Sex, Name=userDto.User.C_Name, LoginName=userDto.User.C_LoginName, PassWord=userDto.User.C_PassWord};
                 return View("IndexNoLayout",userinfo);
                 return View(userinfo);
             }
