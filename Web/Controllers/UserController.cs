@@ -228,7 +228,7 @@ namespace Web.Controllers
             return Json(usergrid, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult SearchUser(UserCondition uiCondition)
+        public ActionResult SearchUser(UserPager uiCondition)
         {
             var size = Convert.ToInt32(uiCondition.pageSize);
             var idx = Convert.ToInt32(uiCondition.pageIndex);

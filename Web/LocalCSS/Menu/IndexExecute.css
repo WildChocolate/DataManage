@@ -1,0 +1,9 @@
+﻿.container>div:first-child{
+    width:50%;
+    text-align:center;
+}
+#menuform {
+    min-width:450px;
+    width:500px;
+    margin:auto;
+}

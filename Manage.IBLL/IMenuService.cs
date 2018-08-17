@@ -9,5 +9,6 @@ namespace Manage.IBLL
 {
     public interface IMenuService : IBaseService<tbl_Menu>
     {
+        Dto.MenuDto GetMenuDtoByKey(int Key);
     }
 }

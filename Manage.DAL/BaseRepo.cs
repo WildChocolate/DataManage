@@ -49,12 +49,24 @@ namespace Manage.DAL
             return entities;
 
         }
+        
         public int GetTableCount(string wherestring="")
         {
             var tbName = typeof(T).Name;
             var sql = "select count(1) from "+tbName +wherestring;
             var cnt = dbContext.Database.SqlQuery<int>(sql).SingleOrDefault();
             return cnt;
+        }
+        /// <summary>
+        ///  通过 keyid 得到特定的dto 定型
+        /// </summary>
+        /// <typeparam name="Target">返回类型</typeparam>
+        /// <param name="Key"> keyid </param>
+        /// <param name="sql">对应 Target 类型的sql， sql的列必须 大于或者等于 Targer 类中的属性</param>
+        /// <returns></returns>
+        public Target GetDtoByKey<Target>(int Key, string sql)
+        {
+            return dbContext.Database.SqlQuery<Target>(sql+" where keyid="+Key).FirstOrDefault();
         }
         public bool SaveChanges()
         {

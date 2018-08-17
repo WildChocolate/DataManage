@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace Manage.IBLL.Dto
 {
-    public  class UserInfo
+    public  class UserInfo:BaseInfo
     {
-        public int Key
-        {
-            get;
-            set;
-        }
-        public string Name { get; set; }
+
 
         public string LoginName { get; set; }
         public bool Sex { get; set; }
@@ -30,16 +25,6 @@ namespace Manage.IBLL.Dto
             }
         }
         public string Operation
-        {
-            get;
-            set;
-        }
-        public string CreatedDate
-        {
-            get;
-            set;
-        }
-        public string UpdatedDate
         {
             get;
             set;

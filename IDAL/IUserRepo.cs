@@ -17,8 +17,6 @@ namespace Manage.IDAL
         /// </summary>
         /// <returns></returns>
         Manage.Common.DataGrid.UserDataGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda);
-
-
         
     }
 

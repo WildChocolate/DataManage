@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace Manage.IBLL.Dto
 {
-    public class RoleInfo
+    public class RoleInfo:BaseInfo
     {
-        public int Key
+        public bool IsTop
         {
-            get;
-            set;
+            get { return ParentKey == 0; }
         }
-        public string Name
-        {
-            get;
-            set;
-        }
-        public int ParentRole
+        public int ParentKey
         {
             get;
             set;
@@ -29,21 +23,7 @@ namespace Manage.IBLL.Dto
             get;
             set;
         }
-        public string CreatedDate
-        {
-            get;
-            set;
-        }
-        public string UpdatedDate
-        {
-            get;
-            set;
-        }
-        public string Description
-        {
-            get;
-            set;
-        }
+
         public static RoleInfo ConvertToRoleInfo(RoleDto roledto)
         {
             return new RoleInfo() { 
@@ -51,7 +31,7 @@ namespace Manage.IBLL.Dto
                 Key= roledto.keyid,
                 Name=roledto.C_Name,
                 Description=roledto.C_Description??"----",
-                ParentRole = roledto.C_ParentRole,
+                ParentKey = roledto.C_ParentRole,
                 ParentName = roledto.ParentName??"****",
                 UpdatedDate = roledto.C_UpdatedDate == null ? "----" : roledto.C_UpdatedDate.ToString()
             };

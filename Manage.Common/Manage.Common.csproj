@@ -46,10 +46,12 @@
   <ItemGroup>
     <Compile Include="AjaxResult.cs" />
     <Compile Include="ChangedPasswordStatus.cs" />
-    <Compile Include="Condition\BaseCondition.cs" />
-    <Compile Include="Condition\RoleCondition.cs" />
-    <Compile Include="Condition\UserCondition.cs" />
+    <Compile Include="Condition\BasePager.cs" />
+    <Compile Include="Condition\MenuPager.cs" />
+    <Compile Include="Condition\RolePager.cs" />
+    <Compile Include="Condition\UserPager.cs" />
     <Compile Include="DataGrid\BaseDataGrid.cs" />
+    <Compile Include="DataGrid\MenuDataGrid.cs" />
     <Compile Include="DataGrid\RoleDataGrid.cs" />
     <Compile Include="DataGrid\th.cs" />
     <Compile Include="DataGrid\UserDataGrid.cs" />

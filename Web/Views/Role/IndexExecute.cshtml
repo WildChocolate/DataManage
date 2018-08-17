@@ -36,13 +36,13 @@
                         <tr>
                             <td>是否顶级角色:</td>
                             <td>
-                                <input type="checkbox" class="checkbox" name="isTop" id="isTop" />
+                                <input type="checkbox" class="checkbox" name="isTop" id="isTop" checked="@Model.IsTop"/>
                             </td>
                         </tr>
                         <tr>
                             <td>父级角色:</td>
                             <td>
-                                <input id="ParentRole" class="easyui-combobox" value="@Model.ParentRole"
+                                <input id="ParentRole" class="easyui-combobox" value="@Model.ParentKey"
                                        name="language"
                                        data-options="valueField:'Key',textField:'Name',panelHeight:'auto'">
                             </td>

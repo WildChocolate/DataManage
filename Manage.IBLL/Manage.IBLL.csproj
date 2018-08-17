@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\BaseInfo.cs" />
+    <Compile Include="Dto\MenuDto.cs" />
+    <Compile Include="Dto\MenuInfo.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Dto\RoleInfo.cs" />
     <Compile Include="Dto\UserDto.cs" />

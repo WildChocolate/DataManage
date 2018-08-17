@@ -16,10 +16,10 @@ namespace Manage.BLL
             Dal = DALContainer.Container.GetRepository<IRoleRepo>();
         }
 
-        public T GetRoleDtoByKey<T>(int Key)
+        public Manage.IBLL.Dto.RoleDto GetRoleDtoByKey(int Key)
         {
             var userdal = Dal as IRoleRepo;
-            return userdal.GetRoleByKey<T>(Key);
+            return userdal.GetRoleByKey<Manage.IBLL.Dto.RoleDto>(Key);
         }
     }
 }

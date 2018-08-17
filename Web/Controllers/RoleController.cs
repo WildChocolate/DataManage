@@ -50,7 +50,7 @@ namespace Web.Controllers
                 {
                     ViewBag.Operation="修改角色";
                     var service = Container.GetService<IRoleService>();
-                    var roledto = service.GetRoleDtoByKey<RoleDto>(Key);
+                    var roledto = service.GetRoleDtoByKey(Key);
                     if (roledto != null)
                     {
                         roleinfo = RoleInfo.ConvertToRoleInfo(roledto);
@@ -87,7 +87,7 @@ namespace Web.Controllers
             
         }
         [HttpPost]
-        public ActionResult SearchRole(RoleCondition condition)
+        public ActionResult SearchRole(RolePager condition)
         {
             var service = Container.GetService<IRoleService>();
             var size = Convert.ToInt32(condition.pageSize);
@@ -135,7 +135,7 @@ namespace Web.Controllers
                     {
                         role.C_Name = info.Name;
                         role.C_Description = info.Description;
-                        role.C_ParentRole = info.ParentRole;
+                        role.C_ParentRole = info.ParentKey;
                         role.C_UpdatedDate = DateTime.Now;
                         var success = service.Update(role);
                         if (success)
@@ -155,7 +155,7 @@ namespace Web.Controllers
                     var role = new tbl_Role();
                     role.C_Name = info.Name;
                     role.C_Description = info.Description;
-                    role.C_ParentRole = info.ParentRole;
+                    role.C_ParentRole = info.ParentKey;
                     role.C_CreatedDate = DateTime.Now;
                     var success = service.Add(role);
 

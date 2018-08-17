@@ -9,15 +9,15 @@ namespace Manage.Common.Condition
     /// <summary>
     /// 搜索条件类
     /// </summary>
-    public abstract class BaseCondition
+    public abstract class BasePager
     {
-        public BaseCondition()
+        public BasePager()
         {
             pageSize = 10;
             pageIndex = 1;
         }
 
-        public long pageSize
+        public int pageSize
         {
             get;
             set;

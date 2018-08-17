@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Manage.Common.Condition
 {
-    public class UserCondition:BaseCondition
+    public class UserPager:BasePager
     {
         public string LoginName
         {

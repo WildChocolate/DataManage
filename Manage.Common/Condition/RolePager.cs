@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Manage.Common.Condition
 {
-    public class RoleCondition:BaseCondition
+    public class RolePager:BasePager
     {
-        public string ParentName
+        public string ParentRole
         {
             get;
             set;

@@ -9,6 +9,6 @@ namespace Manage.IDAL
 {
     public interface IMenuRepo : IBaseRepo<tbl_Menu>
     {
-
+        T GetMenuBykey<T>(int Key);
     }
 }

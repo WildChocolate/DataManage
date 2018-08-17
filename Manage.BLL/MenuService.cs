@@ -15,5 +15,11 @@ namespace Manage.BLL
         {
             Dal = DALContainer.Container.GetRepository<IMenuRepo>();
         }
+
+        public IBLL.Dto.MenuDto GetMenuDtoByKey(int Key)
+        {
+            var menudal = Dal as IMenuRepo;
+            return menudal.GetMenuBykey<IBLL.Dto.MenuDto>(Key);
+        }
     }
 }

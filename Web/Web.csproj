@@ -188,6 +188,7 @@
     <Content Include="Images\onepieceLogo.png" />
     <Content Include="Images\head_girl.png" />
     <Content Include="Images\head_boy.png" />
+    <Content Include="LocalCSS\Menu\IndexExecute.css" />
     <Content Include="LocalCSS\Role\IndexQuery.css" />
     <Content Include="LocalCSS\User\ChangePassword.css" />
     <Content Include="EasyUI1.4.5\changelog.txt" />
@@ -990,6 +991,8 @@
     <Content Include="LocalCSS\User\Manage.css" />
     <Content Include="LocalCSS\User\ManageQuery.css" />
     <Content Include="LocalCSS\Role\IndexExecute.css" />
+    <Content Include="LocalScript\Menu\IndexExecute.js" />
+    <Content Include="LocalScript\Menu\IndexQuery.js" />
     <Content Include="LocalScript\Role\IndexExecute.js" />
     <Content Include="LocalScript\Role\IndexQuery.js" />
     <Content Include="LocalScript\User\ChangePassword.js" />
@@ -1074,13 +1077,15 @@
     <Content Include="Views\User\ManageQuery.cshtml" />
     <Content Include="Views\Role\IndexQuery.cshtml" />
     <Content Include="Views\Role\IndexExecute.cshtml" />
+    <Content Include="Views\Shared\_LayoutBasicChild.cshtml" />
+    <Content Include="Views\Menu\IndexQuery.cshtml" />
+    <Content Include="Views\Menu\IndexExecute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DataType\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\FlowStep\" />
-    <Folder Include="Views\Menu\" />
     <Folder Include="Views\NameValueInfo\" />
     <Folder Include="Views\RoleMenu\" />
     <Folder Include="Views\UserRole\" />
