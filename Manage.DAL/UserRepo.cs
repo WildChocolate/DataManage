@@ -41,9 +41,9 @@ namespace Manage.DAL
 
 
 
-        public UserDataGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda)
+        public UserGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda)
         {
-            var datagrid = new UserDataGrid();
+            var datagrid = new UserGrid();
             var userlist = new List<tbl_User>();
             var userset = DBContextFactory.CreateDB().Set<tbl_User>();
             datagrid.total = userset.Where(WhereLambda).Count();

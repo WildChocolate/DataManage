@@ -10,5 +10,11 @@ namespace Manage.DAL
 {
     public  class RoleMenuRepo:BaseRepo<tbl_Role_Menu>,IRoleMenuRepo
     {
+        public IQueryable<V_Role_Menu> GetVModels(System.Linq.Expressions.Expression<Func<V_Role_Menu, bool>> wherelambda)
+        {
+            var db = DBContextFactory.CreateDB();
+            var entities = db.Set<V_Role_Menu>();
+            return entities.Where(wherelambda);
+        }
     }
 }

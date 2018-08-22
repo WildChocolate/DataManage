@@ -16,7 +16,7 @@ namespace Manage.IDAL
         /// 用户信息不须返回照片列
         /// </summary>
         /// <returns></returns>
-        Manage.Common.DataGrid.UserDataGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda);
+        Manage.Common.DataGrid.UserGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda);
         
     }
 

@@ -87,23 +87,23 @@ namespace Web.Controllers
             
         }
         [HttpPost]
-        public ActionResult SearchRole(RolePager condition)
+        public ActionResult SearchRole(RolePager pager)
         {
             var service = Container.GetService<IRoleService>();
-            var size = Convert.ToInt32(condition.pageSize);
-            var idx = Convert.ToInt32(condition.pageIndex);
+            var size = Convert.ToInt32(pager.pageSize);
+            var idx = Convert.ToInt32(pager.pageIndex);
             var where = new StringBuilder(" where 1=1 ");
-            if (!string.IsNullOrWhiteSpace(condition.Name))
+            if (!string.IsNullOrWhiteSpace(pager.Name))
             {
-                where.AppendLine("and C_Name like '%" + condition.Name + "%'");
+                where.AppendLine("and C_Name like '%" + pager.Name + "%'");
             }
-            if (!string.IsNullOrWhiteSpace(condition.DateFrom))
+            if (!string.IsNullOrWhiteSpace(pager.DateFrom))
             {
-                where.AppendLine("and C_CreatedDate>'" + condition.DateFrom + "' ");
+                where.AppendLine("and C_CreatedDate>'" + pager.DateFrom + "' ");
             }
-            if (!string.IsNullOrWhiteSpace(condition.DateTo))
+            if (!string.IsNullOrWhiteSpace(pager.DateTo))
             {
-                where.AppendLine("and C_CreatedDate<'" + condition.DateTo + "' ");
+                where.AppendLine("and C_CreatedDate<'" + pager.DateTo + "' ");
             }
             var sql = @"SELECT TOP 1000 t1.[keyid]
                           ,[C_Name]
@@ -116,7 +116,7 @@ namespace Web.Controllers
                       on t1.C_ParentRole=t2.keyid";
             var roles = service.GetModelsByPage<RoleDto>(size, idx, sql + where);
 
-            var rolegrid = new RoleDataGrid();
+            var rolegrid = new RoleGrid();
             rolegrid.rows = RoleInfo.ConvertToRoleInfos(roles);
             rolegrid.total = service.GetTableCount(where.ToString());
             return Json(rolegrid);

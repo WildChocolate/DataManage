@@ -20,7 +20,8 @@
         }
         else {
             if ($('#ParentKey').combobox('getValue') == "") {
-                $.messager.alert("提示", "非厅级菜单请选择父菜单");
+                $.messager.alert("提示", "非顶级菜单请选择父菜单");
+                return;
             }
             else {
                 this.ParentKey = $('#ParentKey').combobox('getValue');
@@ -28,10 +29,11 @@
             this.Controller = $.trim($("#Controller").val());
             this.Action = $.trim($("#Action").val());
         }
+        this.Description = $("#Description").val();
         $.ajax({
             url: "Manage",
             type: "post",
-            data:{Name:this.Name, Description:this.Description, ParentKey:this.ParentKey, Controller:this.Controller, Action:this.Action},
+            data:{Key:this.Key ,Name:this.Name, Description:this.Description, ParentKey:this.ParentKey, Controller:this.Controller, Action:this.Action},
             datatype: "json",
             success: function (data) {
                 $.messager.alert("提示！",data.Message);
@@ -56,14 +58,24 @@ $(function () {
         if ($(this).prop("checked")) {
             $("#Controller").textbox("disable");
             $("#Action").textbox("disable");
-            $("#ParentMenu").textbox("disable");
+            $("#ParentKey").combobox("disable");
         }
         else {
             $("#Controller").textbox("enable");
             $("#Action").textbox("enable");
-            $("#ParentMenu").textbox("enable");
+            $("#ParentKey").combobox("enable");
         }
     });
-    $("#ParentKey").combobox("setText", $("ParentName").val());
+    if ($("#IsTop").prop("checked")) {
+        $("#Controller").textbox("disable");
+        $("#Action").textbox("disable");
+        $("#ParentKey").combobox("disable");
+    }
+
+    if ($("#Key").val() != "0") {
+        
+        $("#ParentKey").combobox("setText", $("#ParentName").val());
+    }
+
     $("#submit").click(execute.submit);
 });

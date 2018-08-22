@@ -68,6 +68,10 @@ namespace Manage.DAL
         {
             return dbContext.Database.SqlQuery<Target>(sql+" where keyid="+Key).FirstOrDefault();
         }
+        public void AddRange(IList<T> tList) 
+        {
+            dbContext.Set<T>().AddRange(tList);
+        }
         public bool SaveChanges()
         {
             return dbContext.SaveChanges() > 0;

@@ -41,7 +41,7 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="pager"></param>
         /// <returns></returns>
-        public ActionResult SearchRole(RolePager pager)
+        public ActionResult SearchMenu(MenuPager pager)
         {
             var sql = @"SELECT t1.[keyid]
                               ,[C_Name]
@@ -73,7 +73,7 @@ namespace Web.Controllers
                 var service = Container.GetService<IMenuService>();
                 var menudtos = service.GetModelsByPage<MenuDto>(pager.pageSize, pager.pageIndex, sql+where);
                 var menuinfos = MenuInfo.ConvertToMenuInfos(menudtos);
-                var grid = new MenuDataGrid();
+                var grid = new MenuGrid();
                 grid.rows = menuinfos;
                 grid.total = service.GetTableCount(where.ToString());
                 return Json(grid);
@@ -133,6 +133,7 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Manage(MenuInfo info)
         {
+            
             var service = Container.GetService<IMenuService>();
             var result = new Manage.Common.AjaxResult() {};
             try
@@ -146,6 +147,11 @@ namespace Web.Controllers
                     }
                     else
                     {
+                        if (!CanCreated)
+                        {
+                            ViewBag.Message = CannotAddText;
+                            return View("Error");
+                        }
                         var menu = new tbl_Menu();
                         menu.C_Name = info.Name;
                         menu.C_Description = info.Description;
@@ -164,6 +170,11 @@ namespace Web.Controllers
                 }
                 else
                 {
+                    if (!CanUpdated)
+                    {
+                        ViewBag.Message = CannotUpateText;
+                        return View("Error");
+                    }
                     var menu = service.GetModels(m => m.keyid == info.Key).FirstOrDefault();
                     menu.C_Name = info.Name;
                     menu.C_Description = info.Description;

@@ -81,7 +81,7 @@ namespace Web.ControllerExt
             var method = filterContext.HttpContext.Request.HttpMethod;
             if (userDto != null)
             {
-                //当前action 为包含在入口点中，并且为get方法，说明点击了菜单项
+                //当前action 为包含在入口点中，并且为get方法，说明点击了菜单项,记录下当前为哪个菜单
                 if (MenusAction.Contains(filterContext.ActionDescriptor.ActionName) && method.ToUpper()=="GET")
                 {
                     MenuAction = filterContext.ActionDescriptor.ActionName;

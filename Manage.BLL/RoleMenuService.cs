@@ -15,5 +15,11 @@ namespace Manage.BLL
         {
             Dal = DALContainer.Container.GetRepository<IRoleMenuRepo>();
         }
+
+        public IQueryable<V_Role_Menu> GetVModels(System.Linq.Expressions.Expression<Func<V_Role_Menu, bool>> wherelambda)
+        {
+            var rmdal = Dal as IRoleMenuRepo;
+            return rmdal.GetVModels(wherelambda);
+        }
     }
 }

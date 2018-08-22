@@ -13,7 +13,7 @@ namespace Manage.IBLL
     {
         UserDto CheckLogin(string username, string pwd);
         bool ChangePassword(string userid, string newpassword);
-        Manage.Common.DataGrid.UserDataGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda);
+        Manage.Common.DataGrid.UserGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda);
 
     }
 }

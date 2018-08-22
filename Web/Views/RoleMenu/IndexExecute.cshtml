@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "IndexExecute";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+
+<h2>角色菜单管理</h2>
+<hr />
+<h3>当前角色：<span style="color:red;">@ViewBag.RoleName</span></h3>
+<input type="hidden" id="RoleKey" name="RoleKey" value="@ViewBag.RoleKey" />
+<table id="List" singleselect="true" style="text-align:center"></table>
+<div class="easyui-panel" style="padding:5px;text-align:center;" >
+
+    <a href="###" id="submit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">提交</a>
+    <a href="###" id="cancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+</div>
+
+@section script{
+<script src="~/LocalScript/RoleMenu/IndexExecute.js"></script>
+}

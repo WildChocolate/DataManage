@@ -256,7 +256,7 @@ namespace Web.Controllers
 
                 var cnt = service.GetTableCount(where.ToString());
                 service.GetModelsByPage(10, 2, true, u => u.keyid, u => 1 == 1).Skip(10 * 1).Take(10);
-                var usergrid = new Manage.Common.DataGrid.UserDataGrid() { total = cnt, rows = userinfos };
+                var usergrid = new Manage.Common.DataGrid.UserGrid() { total = cnt, rows = userinfos };
                 return Json(usergrid);
             }
             catch (Exception ex)

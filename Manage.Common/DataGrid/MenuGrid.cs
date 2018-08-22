@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Manage.Common.DataGrid
 {
-    public class MenuDataGrid:BaseDataGrid<Manage.Model.tbl_Menu>
+    public class MenuGrid:BaseDataGrid<Manage.Model.tbl_Menu>
     {
-        public MenuDataGrid() 
+        public MenuGrid() 
         {
             title = new List<th>();
             title.Add(new th { field = "Key", title = "Key", width = 80 });

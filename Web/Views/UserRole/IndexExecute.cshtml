@@ -1,0 +1,43 @@
+﻿@model Manage.IBLL.Dto.UserInfo
+@{
+    ViewBag.Title = "IndexExecute";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+@section style{
+<link href="~/LocalCSS/UserRole/IndexExecute.css" rel="stylesheet" />
+}
+<h2>用户角色编辑</h2>
+<hr />
+<input type="hidden" name="Key" id="Key" value="@Model.Key" />
+<input type="hidden" id="selectedKey" name="selectedKey" />
+<input type="hidden" id="unselectedKey" name="unselectedKey" />
+<h4>
+    当前用户：@Model.Name
+</h4>
+<h4>
+    登录名：@Model.LoginName
+</h4>
+<h4>
+    性别：@Model.SexString
+</h4>
+<div class="roles">
+    <div class="selected">
+        <ul id="selectedRole"></ul>
+    </div>
+    <div class="btns">
+        <p style="text-align:center;margin-top:100px;">
+            <input type="button" id="toright" name="toright" value=">>>" />
+            <input type="button" id="toleft" name="toleft" value="<<<" />
+        </p>
+    </div>
+    <div class="unselected">
+        <ul id="unselectedRole"></ul>
+    </div>
+</div>
+<p style="text-align:center;margin-top:20px;">
+    <a id="submit" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+    <a id="cancel" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+</p>
+@section script{
+<script src="~/LocalScript/UserRole/IndexExecute.js"></script>
+}

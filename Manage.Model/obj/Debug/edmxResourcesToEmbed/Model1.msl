@@ -130,5 +130,33 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="V_User_Role">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.V_User_Role">
+        <MappingFragment StoreEntitySet="V_User_Role">
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Role_Menu">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.V_Role_Menu">
+        <MappingFragment StoreEntitySet="V_Role_Menu">
+          <ScalarProperty Name="C_CanRead" ColumnName="C_CanRead" />
+          <ScalarProperty Name="C_CanCreated" ColumnName="C_CanCreated" />
+          <ScalarProperty Name="C_CanDelted" ColumnName="C_CanDelted" />
+          <ScalarProperty Name="C_CanUpdated" ColumnName="C_CanUpdated" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

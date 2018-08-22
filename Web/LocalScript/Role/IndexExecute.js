@@ -45,7 +45,7 @@ $(function () {
         success: function (data) {
             console.log(data);
             $("#ParentRole").combobox({ editable: false }).combobox("loadData", data);
-            $('#cc').combobox('setValue', $("#ParentRole").val());
+            $('#ParentRole').combobox('setValue', $("#ParentRole").val());
             $("#ParentRole").combobox("setText", $("#ParentName").val());
         },
         error: function (err) {

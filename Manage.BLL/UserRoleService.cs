@@ -15,5 +15,18 @@ namespace Manage.BLL
         {
             Dal = DALContainer.Container.GetRepository<IUserRoleRepo>();
         }
+
+        public IQueryable<V_User_Role> GetModels(System.Linq.Expressions.Expression<Func<V_User_Role, bool>> wherelambda)
+        {
+            var urdal = Dal as IUserRoleRepo;
+            return urdal.GetModels(wherelambda);
+        }
+
+
+        public bool UpdateUserRoles(int userid, int[] Roles)
+        {
+            var urdal = Dal as IUserRoleRepo;
+            return urdal.UpdateUserRoles(userid,Roles);
+        }
     }
 }

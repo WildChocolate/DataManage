@@ -24,7 +24,7 @@ namespace Manage.BLL
             var uroleservice = new UserRoleService();
             var roleservice = new RoleService();
             /*查找角色*/
-            var roleIds = uroleservice.GetModels(r => r.C_UserId == userDto.User.keyid).Select(ur => ur.C_RoleId);
+            var roleIds = uroleservice.GetModels(r => r.UserId == userDto.User.keyid).Select(ur => ur.RoleId);
             var roles = roleservice.GetModels(r => roleIds.Contains(r.keyid));
             userDto.Roles = roles.ToList();
             /*搜索菜单*/

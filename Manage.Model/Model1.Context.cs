@@ -52,6 +52,10 @@ public partial class DATA_MANAGEEntities1 : DbContext
 
     public virtual DbSet<tbl_VerifyFlow> tbl_VerifyFlow { get; set; }
 
+    public virtual DbSet<V_User_Role> V_User_Role { get; set; }
+
+    public virtual DbSet<V_Role_Menu> V_Role_Menu { get; set; }
+
 }
 
 }

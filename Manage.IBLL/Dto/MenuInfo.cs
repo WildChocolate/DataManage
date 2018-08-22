@@ -8,6 +8,7 @@ namespace Manage.IBLL.Dto
 {
     public class MenuInfo:BaseInfo
     {
+
         public bool IsTop
         {
             get { return ParentKey == 0; }

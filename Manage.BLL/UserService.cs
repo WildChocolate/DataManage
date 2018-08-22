@@ -35,7 +35,7 @@ namespace Manage.BLL
         }
 
 
-        public Manage.Common.DataGrid.UserDataGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda)
+        public Manage.Common.DataGrid.UserGrid SearchUserInfos(int pageSize, int pageIndex, System.Linq.Expressions.Expression<Func<tbl_User, bool>> WhereLambda)
         {
             var userrepo = Dal as IUserRepo;
 

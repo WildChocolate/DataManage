@@ -119,6 +119,49 @@
     <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="C_UpdatedDate" Type="datetime" />
   </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“DATA_MANAGE.dbo.V_Role_Menu”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="V_Role_Menu">
+    <Key>
+      <PropertyRef Name="keyid" />
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="MenuId" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="MenuName" />
+      <PropertyRef Name="C_CanUpdated" />
+      <PropertyRef Name="C_CanDelted" />
+      <PropertyRef Name="C_CanCreated" />
+      <PropertyRef Name="C_CanRead" />
+    </Key>
+    <Property Name="keyid" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="MenuId" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_CanUpdated" Type="bit" Nullable="false" />
+    <Property Name="C_CanDelted" Type="bit" Nullable="false" />
+    <Property Name="C_CanCreated" Type="bit" Nullable="false" />
+    <Property Name="C_CanRead" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“DATA_MANAGE.dbo.V_User_Role”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="V_User_Role">
+    <Key>
+      <PropertyRef Name="keyid" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="C_CreatedDate" />
+    </Key>
+    <Property Name="keyid" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
   <EntityContainer Name="DATA_MANAGEModelStoreContainer">
     <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" Schema="dbo" store:Type="Tables" />
@@ -130,5 +173,29 @@
     <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="V_Role_Menu" EntityType="Self.V_Role_Menu" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_Role_Menu].[keyid] AS [keyid], 
+    [V_Role_Menu].[RoleId] AS [RoleId], 
+    [V_Role_Menu].[MenuId] AS [MenuId], 
+    [V_Role_Menu].[RoleName] AS [RoleName], 
+    [V_Role_Menu].[MenuName] AS [MenuName], 
+    [V_Role_Menu].[C_CanUpdated] AS [C_CanUpdated], 
+    [V_Role_Menu].[C_CanDelted] AS [C_CanDelted], 
+    [V_Role_Menu].[C_CanCreated] AS [C_CanCreated], 
+    [V_Role_Menu].[C_CanRead] AS [C_CanRead]
+    FROM [dbo].[V_Role_Menu] AS [V_Role_Menu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_User_Role" EntityType="Self.V_User_Role" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_User_Role].[keyid] AS [keyid], 
+    [V_User_Role].[UserName] AS [UserName], 
+    [V_User_Role].[RoleName] AS [RoleName], 
+    [V_User_Role].[UserId] AS [UserId], 
+    [V_User_Role].[RoleId] AS [RoleId], 
+    [V_User_Role].[C_CreatedDate] AS [C_CreatedDate], 
+    [V_User_Role].[C_UpdatedDate] AS [C_UpdatedDate]
+    FROM [dbo].[V_User_Role] AS [V_User_Role]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

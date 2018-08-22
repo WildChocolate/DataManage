@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -92,10 +96,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <Private>True</Private>
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -184,12 +184,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="EasyUI1.4.5\datagrid-detailview.js" />
     <Content Include="Images\dream.png" />
     <Content Include="Images\onepieceLogo.png" />
     <Content Include="Images\head_girl.png" />
     <Content Include="Images\head_boy.png" />
     <Content Include="LocalCSS\Menu\IndexExecute.css" />
     <Content Include="LocalCSS\Role\IndexQuery.css" />
+    <Content Include="LocalCSS\UserRole\IndexExecute.css" />
     <Content Include="LocalCSS\User\ChangePassword.css" />
     <Content Include="EasyUI1.4.5\changelog.txt" />
     <Content Include="EasyUI1.4.5\demo-mobile\accordion\basic.html" />
@@ -993,8 +995,12 @@
     <Content Include="LocalCSS\Role\IndexExecute.css" />
     <Content Include="LocalScript\Menu\IndexExecute.js" />
     <Content Include="LocalScript\Menu\IndexQuery.js" />
+    <Content Include="LocalScript\RoleMenu\IndexExecute.js" />
+    <Content Include="LocalScript\RoleMenu\IndexQuery.js" />
     <Content Include="LocalScript\Role\IndexExecute.js" />
     <Content Include="LocalScript\Role\IndexQuery.js" />
+    <Content Include="LocalScript\UserRole\IndexExecute.js" />
+    <Content Include="LocalScript\UserRole\IndexQuery.js" />
     <Content Include="LocalScript\User\ChangePassword.js" />
     <Content Include="LocalScript\User\Manage.js" />
     <Content Include="LocalStyle\CSS\Login.css" />
@@ -1080,6 +1086,10 @@
     <Content Include="Views\Shared\_LayoutBasicChild.cshtml" />
     <Content Include="Views\Menu\IndexQuery.cshtml" />
     <Content Include="Views\Menu\IndexExecute.cshtml" />
+    <Content Include="Views\UserRole\IndexQuery.cshtml" />
+    <Content Include="Views\UserRole\IndexExecute.cshtml" />
+    <Content Include="Views\RoleMenu\IndexQuery.cshtml" />
+    <Content Include="Views\RoleMenu\IndexExecute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1087,8 +1097,6 @@
     <Folder Include="Views\Error\" />
     <Folder Include="Views\FlowStep\" />
     <Folder Include="Views\NameValueInfo\" />
-    <Folder Include="Views\RoleMenu\" />
-    <Folder Include="Views\UserRole\" />
     <Folder Include="Views\VerifyFlow\" />
   </ItemGroup>
   <ItemGroup>

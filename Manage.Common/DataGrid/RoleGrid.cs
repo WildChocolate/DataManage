@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Manage.Common.DataGrid
 {
-    public class RoleDataGrid:BaseDataGrid<tbl_Role>
+    public class RoleGrid:BaseDataGrid<tbl_Role>
     {
-        public RoleDataGrid()
+        public RoleGrid()
         {
             title = new List<th>();
             title.Add(new th { field = "Key", title = "Key", width = 80 });

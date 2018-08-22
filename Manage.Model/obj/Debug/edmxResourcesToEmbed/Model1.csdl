@@ -130,5 +130,46 @@
     <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
     <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" />
     <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" />
+    <EntitySet Name="V_User_Role" EntityType="DATA_MANAGEModel.V_User_Role" />
+    <EntitySet Name="V_Role_Menu" EntityType="DATA_MANAGEModel.V_Role_Menu" />
   </EntityContainer>
+  <EntityType Name="V_User_Role">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="C_CreatedDate" />
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="keyid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_Role_Menu">
+    <Key>
+      <PropertyRef Name="keyid" />
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="MenuId" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="MenuName" />
+      <PropertyRef Name="C_CanUpdated" />
+      <PropertyRef Name="C_CanDelted" />
+      <PropertyRef Name="C_CanCreated" />
+      <PropertyRef Name="C_CanRead" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="C_CanUpdated" Type="Boolean" Nullable="false" />
+    <Property Name="C_CanDelted" Type="Boolean" Nullable="false" />
+    <Property Name="C_CanCreated" Type="Boolean" Nullable="false" />
+    <Property Name="C_CanRead" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

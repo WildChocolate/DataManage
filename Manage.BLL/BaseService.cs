@@ -47,6 +47,11 @@ namespace Manage.BLL
             //var userdal = Dal as IUserRepo;
             return Dal.GetModelsByPage<Target>(pageSize, pageIndex, sql);
         }
+        public bool AddRange(IList<T> tList) 
+        {
+            Dal.AddRange(tList);
+            return Dal.SaveChanges();
+        }
         public int GetTableCount(string wherestring="") {
             return Dal.GetTableCount(wherestring);
         }
