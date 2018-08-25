@@ -52,8 +52,17 @@ namespace Manage.BLL
             Dal.AddRange(tList);
             return Dal.SaveChanges();
         }
+        public bool RemoveRange(IList<T> tList)
+        {
+            Dal.RemoveRange(tList);
+            return Dal.SaveChanges();
+        }
         public int GetTableCount(string wherestring="") {
             return Dal.GetTableCount(wherestring);
+        }
+        public int GetTableCount(System.Linq.Expressions.Expression<Func<T, bool>> WhereLambda)
+        {
+            return Dal.GetTableCount(WhereLambda);
         }
     }
 }

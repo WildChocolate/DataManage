@@ -20,6 +20,8 @@
             <PropertyRef Name="keyid" />
           </Key>
           <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Description" Type="nvarchar" MaxLength="500" />
           <Property Name="C_VerifyId" Type="int" Nullable="false" />
           <Property Name="C_Step" Type="int" Nullable="false" />
           <Property Name="C_RoleId" Type="int" Nullable="false" />
@@ -90,6 +92,19 @@
           <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="C_UpdatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_RoleVerify">
+          <Key>
+            <PropertyRef Name="C_RoleId" />
+            <PropertyRef Name="C_VerifyId" />
+            <PropertyRef Name="C_DataTypeId" />
+          </Key>
+          <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_RoleId" Type="int" Nullable="false" />
+          <Property Name="C_VerifyId" Type="int" Nullable="false" />
+          <Property Name="C_DataTypeId" Type="int" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_User">
           <Key>
             <PropertyRef Name="keyid" />
@@ -123,6 +138,36 @@
           <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
           <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DATA_MANAGE.dbo.V_Role_Data_Verify_Step”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="V_Role_Data_Verify_Step">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="ParentId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ParentRole" />
+            <PropertyRef Name="TypeName" />
+            <PropertyRef Name="VerifyId" />
+            <PropertyRef Name="VerifyName" />
+            <PropertyRef Name="stepid" />
+            <PropertyRef Name="StepName" />
+            <PropertyRef Name="StepNumber" />
+            <PropertyRef Name="StepRole" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VerifyId" Type="int" Nullable="false" />
+          <Property Name="VerifyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stepid" Type="int" Nullable="false" />
+          <Property Name="StepName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepDesction" Type="nvarchar" MaxLength="500" />
+          <Property Name="StepNumber" Type="int" Nullable="false" />
+          <Property Name="StepRole" Type="int" Nullable="false" />
+          <Property Name="StepRoleName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“DATA_MANAGE.dbo.V_Role_Menu”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -175,9 +220,27 @@
           <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_RoleVerify" EntityType="Self.tbl_RoleVerify" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Role_Data_Verify_Step" EntityType="Self.V_Role_Data_Verify_Step" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Role_Data_Verify_Step].[RoleId] AS [RoleId], 
+    [V_Role_Data_Verify_Step].[ParentId] AS [ParentId], 
+    [V_Role_Data_Verify_Step].[RoleName] AS [RoleName], 
+    [V_Role_Data_Verify_Step].[ParentRole] AS [ParentRole], 
+    [V_Role_Data_Verify_Step].[TypeName] AS [TypeName], 
+    [V_Role_Data_Verify_Step].[VerifyId] AS [VerifyId], 
+    [V_Role_Data_Verify_Step].[VerifyName] AS [VerifyName], 
+    [V_Role_Data_Verify_Step].[stepid] AS [stepid], 
+    [V_Role_Data_Verify_Step].[StepName] AS [StepName], 
+    [V_Role_Data_Verify_Step].[StepDesction] AS [StepDesction], 
+    [V_Role_Data_Verify_Step].[StepNumber] AS [StepNumber], 
+    [V_Role_Data_Verify_Step].[StepRole] AS [StepRole], 
+    [V_Role_Data_Verify_Step].[StepRoleName] AS [StepRoleName]
+    FROM [dbo].[V_Role_Data_Verify_Step] AS [V_Role_Data_Verify_Step]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_Role_Menu" EntityType="Self.V_Role_Menu" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_Role_Menu].[keyid] AS [keyid], 
@@ -227,6 +290,8 @@
           <Property Name="C_RoleId" Type="Int32" Nullable="false" />
           <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="C_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_Information">
           <Key>
@@ -339,6 +404,8 @@
           <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" />
           <EntitySet Name="V_User_Role" EntityType="DATA_MANAGEModel.V_User_Role" />
           <EntitySet Name="V_Role_Menu" EntityType="DATA_MANAGEModel.V_Role_Menu" />
+          <EntitySet Name="tbl_RoleVerify" EntityType="DATA_MANAGEModel.tbl_RoleVerify" />
+          <EntitySet Name="V_Role_Data_Verify_Step" EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" />
         </EntityContainer>
         <EntityType Name="V_User_Role">
           <Key>
@@ -379,6 +446,47 @@
           <Property Name="C_CanCreated" Type="Boolean" Nullable="false" />
           <Property Name="C_CanRead" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_RoleVerify">
+          <Key>
+            <PropertyRef Name="C_RoleId" />
+            <PropertyRef Name="C_VerifyId" />
+            <PropertyRef Name="C_DataTypeId" />
+          </Key>
+          <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+          <Property Name="C_VerifyId" Type="Int32" Nullable="false" />
+          <Property Name="C_DataTypeId" Type="Int32" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="V_Role_Data_Verify_Step">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="ParentId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ParentRole" />
+            <PropertyRef Name="TypeName" />
+            <PropertyRef Name="VerifyId" />
+            <PropertyRef Name="VerifyName" />
+            <PropertyRef Name="stepid" />
+            <PropertyRef Name="StepName" />
+            <PropertyRef Name="StepRole" />
+            <PropertyRef Name="StepNumber" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VerifyId" Type="Int32" Nullable="false" />
+          <Property Name="VerifyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stepid" Type="Int32" Nullable="false" />
+          <Property Name="StepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StepRole" Type="Int32" Nullable="false" />
+          <Property Name="StepRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StepDesction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StepNumber" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,6 +507,8 @@
           <EntitySetMapping Name="tbl_FlowStep">
             <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_FlowStep">
               <MappingFragment StoreEntitySet="tbl_FlowStep">
+                <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
                 <ScalarProperty Name="keyid" ColumnName="keyid" />
                 <ScalarProperty Name="C_VerifyId" ColumnName="C_VerifyId" />
                 <ScalarProperty Name="C_Step" ColumnName="C_Step" />
@@ -539,6 +649,37 @@
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="keyid" ColumnName="keyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_RoleVerify">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_RoleVerify">
+              <MappingFragment StoreEntitySet="tbl_RoleVerify">
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_DataTypeId" ColumnName="C_DataTypeId" />
+                <ScalarProperty Name="C_VerifyId" ColumnName="C_VerifyId" />
+                <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Role_Data_Verify_Step">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.V_Role_Data_Verify_Step">
+              <MappingFragment StoreEntitySet="V_Role_Data_Verify_Step">
+                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+                <ScalarProperty Name="StepDesction" ColumnName="StepDesction" />
+                <ScalarProperty Name="StepRoleName" ColumnName="StepRoleName" />
+                <ScalarProperty Name="StepRole" ColumnName="StepRole" />
+                <ScalarProperty Name="StepName" ColumnName="StepName" />
+                <ScalarProperty Name="stepid" ColumnName="stepid" />
+                <ScalarProperty Name="VerifyName" ColumnName="VerifyName" />
+                <ScalarProperty Name="VerifyId" ColumnName="VerifyId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ParentRole" ColumnName="ParentRole" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

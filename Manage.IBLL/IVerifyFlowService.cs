@@ -9,5 +9,6 @@ namespace Manage.IBLL
 {
     public interface IVerifyFlowService : IBaseService<tbl_VerifyFlow>
     {
+        
     }
 }

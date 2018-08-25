@@ -162,10 +162,10 @@ namespace Web.Controllers
                         result.State = service.Add(menu);
                         if (result.State)
                         {
-                            result.Message = "修改成功";
+                            result.Message = "添加成功";
                         }
                         else
-                            result.Message = "修改失败";
+                            result.Message = "添加失败";
                     }
                 }
                 else

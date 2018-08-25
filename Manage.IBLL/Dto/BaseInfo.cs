@@ -13,6 +13,7 @@ namespace Manage.IBLL.Dto
             get;
             set;
         }
+
         public string Name
         {
             get;

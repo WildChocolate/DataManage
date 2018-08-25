@@ -82,6 +82,9 @@
     <Compile Include="tbl_Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_RoleVerify.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Role_Menu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -93,6 +96,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_VerifyFlow.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_Role_Data_Verify_Step.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="V_Role_Menu.cs">

@@ -20,6 +20,8 @@
     <Property Name="C_RoleId" Type="Int32" Nullable="false" />
     <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="C_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tbl_Information">
     <Key>
@@ -132,6 +134,8 @@
     <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" />
     <EntitySet Name="V_User_Role" EntityType="DATA_MANAGEModel.V_User_Role" />
     <EntitySet Name="V_Role_Menu" EntityType="DATA_MANAGEModel.V_Role_Menu" />
+    <EntitySet Name="tbl_RoleVerify" EntityType="DATA_MANAGEModel.tbl_RoleVerify" />
+    <EntitySet Name="V_Role_Data_Verify_Step" EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" />
   </EntityContainer>
   <EntityType Name="V_User_Role">
     <Key>
@@ -171,5 +175,46 @@
     <Property Name="C_CanDelted" Type="Boolean" Nullable="false" />
     <Property Name="C_CanCreated" Type="Boolean" Nullable="false" />
     <Property Name="C_CanRead" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_RoleVerify">
+    <Key>
+      <PropertyRef Name="C_RoleId" />
+      <PropertyRef Name="C_VerifyId" />
+      <PropertyRef Name="C_DataTypeId" />
+    </Key>
+    <Property Name="keyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_RoleId" Type="Int32" Nullable="false" />
+    <Property Name="C_VerifyId" Type="Int32" Nullable="false" />
+    <Property Name="C_DataTypeId" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="V_Role_Data_Verify_Step">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="ParentId" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="ParentRole" />
+      <PropertyRef Name="TypeName" />
+      <PropertyRef Name="VerifyId" />
+      <PropertyRef Name="VerifyName" />
+      <PropertyRef Name="stepid" />
+      <PropertyRef Name="StepName" />
+      <PropertyRef Name="StepRole" />
+      <PropertyRef Name="StepNumber" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VerifyId" Type="Int32" Nullable="false" />
+    <Property Name="VerifyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="stepid" Type="Int32" Nullable="false" />
+    <Property Name="StepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StepRole" Type="Int32" Nullable="false" />
+    <Property Name="StepRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StepDesction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StepNumber" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

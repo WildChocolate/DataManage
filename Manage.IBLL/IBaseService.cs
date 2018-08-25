@@ -17,6 +17,8 @@ namespace Manage.IBLL
         IEnumerable<Target> GetModelsByPage<Target>(int pageSize, int pageIndex, string sql);
 
         bool AddRange(IList<T> tList);
+        bool RemoveRange(IList<T> tList);
         int GetTableCount(string wherestring="");
+        int GetTableCount(Expression<Func<T, bool>> WhereLambda);
     }
 }

@@ -35,11 +35,13 @@ namespace Manage.DAL
             //是否升序
             if (isAsc)
             {
-                return dbContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                //return dbContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return dbContext.Set<T>().Where(WhereLambda.Compile()).AsQueryable().OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
             else
             {
-                return dbContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                //return dbContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return dbContext.Set<T>().Where(WhereLambda.Compile()).AsQueryable().OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
         public IEnumerable<Target> GetModelsByPage<Target>(int pageSize, int pageIndex, string sql)
@@ -57,6 +59,11 @@ namespace Manage.DAL
             var cnt = dbContext.Database.SqlQuery<int>(sql).SingleOrDefault();
             return cnt;
         }
+        public int GetTableCount(Expression<Func<T, bool>> wherelambda)
+        {
+            var cnt = dbContext.Set<T>().Where(wherelambda.Compile()).Count();
+            return cnt;
+        }
         /// <summary>
         ///  通过 keyid 得到特定的dto 定型
         /// </summary>
@@ -72,6 +79,11 @@ namespace Manage.DAL
         {
             dbContext.Set<T>().AddRange(tList);
         }
+        public void RemoveRange(IList<T> tList)
+        {
+            dbContext.Set<T>().RemoveRange(tList);
+        }
+
         public bool SaveChanges()
         {
             return dbContext.SaveChanges() > 0;

@@ -50,6 +50,7 @@
     <Compile Include="Condition\MenuPager.cs" />
     <Compile Include="Condition\RolePager.cs" />
     <Compile Include="Condition\UserPager.cs" />
+    <Compile Include="Condition\VerifyFlowPager.cs" />
     <Compile Include="DataGrid\BaseDataGrid.cs" />
     <Compile Include="DataGrid\MenuGrid.cs" />
     <Compile Include="DataGrid\RoleGrid.cs" />
@@ -58,7 +59,9 @@
     <Compile Include="DataGrid\th.cs" />
     <Compile Include="DataGrid\UserGrid.cs" />
     <Compile Include="DataGrid\UserRoleGrid.cs" />
+    <Compile Include="DataGrid\VerifyFlowGrid.cs" />
     <Compile Include="Json.cs" />
+    <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VerifyCode.cs" />
   </ItemGroup>

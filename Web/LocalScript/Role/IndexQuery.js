@@ -58,8 +58,9 @@ $(function () {
     $("#UpdateBtn").click(function () {
         //获得datagrid 的选中行
         var row = $('#List').datagrid('getSelected');
-        var Key = row.Key;
-        if (Key) {
+
+        if (row) {
+            var Key = row.Key;
             window.location.href = "IndexExecute?Key="+Key;
         }
         else {

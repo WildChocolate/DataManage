@@ -1003,6 +1003,9 @@
     <Content Include="LocalScript\UserRole\IndexQuery.js" />
     <Content Include="LocalScript\User\ChangePassword.js" />
     <Content Include="LocalScript\User\Manage.js" />
+    <Content Include="LocalScript\VerifyFlow\FlowStep.js" />
+    <Content Include="LocalScript\VerifyFlow\IndexExecute.js" />
+    <Content Include="LocalScript\VerifyFlow\IndexQuery.js" />
     <Content Include="LocalStyle\CSS\Login.css" />
     <Content Include="LocalStyle\CSS\MainLayout.css" />
     <Content Include="LocalStyle\Javascript\LocalScript.js" />
@@ -1090,6 +1093,9 @@
     <Content Include="Views\UserRole\IndexExecute.cshtml" />
     <Content Include="Views\RoleMenu\IndexQuery.cshtml" />
     <Content Include="Views\RoleMenu\IndexExecute.cshtml" />
+    <Content Include="Views\VerifyFlow\IndexQuery.cshtml" />
+    <Content Include="Views\VerifyFlow\IndexExecute.cshtml" />
+    <Content Include="Views\VerifyFlow\FlowStep.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1097,7 +1103,6 @@
     <Folder Include="Views\Error\" />
     <Folder Include="Views\FlowStep\" />
     <Folder Include="Views\NameValueInfo\" />
-    <Folder Include="Views\VerifyFlow\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

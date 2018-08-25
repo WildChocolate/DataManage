@@ -49,10 +49,17 @@
                             onLoadSuccess:function(){
                                 setTimeout(function(){
                                     $('#List').datagrid('fixDetailRowHeight', index);
-                                },0);
+                                }, 0);
+                                
                             }
                         });
                         $('#List').datagrid('fixDetailRowHeight', index);
+                        var ExpandRow = $("#ExpandRow").val();
+                        if (ExpandRow != '')
+                        {
+                            $("#List").datagrid("collapseRow", ExpandRow);
+                        }
+                        $("#ExpandRow").val(index);
                     }
                 }).datagrid("loadData", data);
                 //使用detailview后的datagrid 在重新绑定数据后需要重置 分页控件的一些参数，不然会自动设置paegNumber为1，无法正常使用
@@ -95,6 +102,10 @@ $(function () {
                     fitColumns: true,
                     title: "角色查询",
                     view: detailview,
+                    //默认展开第一行
+                    onLoadSuccess:function()    {
+                        $("#List").datagrid("expandRow", 0);
+                    },
                     detailFormatter: function (index, row) {
                         return '<div style="padding:2px"><table class="ddv"></table></div>';
                     },
@@ -124,6 +135,13 @@ $(function () {
                             }
                         });
                         $('#List').datagrid('fixDetailRowHeight', index);
+                        //每次只展开一行
+                        var ExpandRow = $("#ExpandRow").val();
+                        if (ExpandRow != '') {
+                            $("#List").datagrid("collapseRow", ExpandRow);
+                        }
+                        $("#ExpandRow").val(index);
+                        
                     }
                 }).datagrid("loadData", data);
             }

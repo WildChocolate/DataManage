@@ -30,6 +30,10 @@ public partial class tbl_FlowStep
 
     public Nullable<System.DateTime> C_UpdatedDate { get; set; }
 
+    public string C_Name { get; set; }
+
+    public string C_Description { get; set; }
+
 }
 
 }

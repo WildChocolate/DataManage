@@ -116,4 +116,11 @@ $(function () {
         }
     });
     $("#search").click(Search.submit);
+    $("#UpdateBtn").click(function () {
+        var row = $('#List').datagrid('getSelected');
+        if (row) {
+            var key = row.Key;
+            window.location.href = "IndexExecute?userid=" + key;
+        }
+    });
 });

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "IndexQuery";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+
+<h2>流程设置--查询</h2>
+<hr />
+<table id="List" toolbar="tb">
+    
+</table>
+<div id="tb" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a id="AddBtn" href="IndexExecute?Key=0" class="easyui-linkbutton" iconcls="icon-add" plain="true">添加</a>
+        <a id="UpdateBtn" href="###" class="easyui-linkbutton" iconcls="icon-edit" plain="true">编辑</a>
+        @*<a href="#" class="easyui-linkbutton" iconcls="icon-save" plain="true"></a>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-cut" plain="true"></a>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true"></a>*@
+    </div>
+    <div>
+        Date From: <input id="DateFrom" class="easyui-datebox" style="width:100px">
+        To: <input id="DateTo" class="easyui-datebox" style="width:100px">
+        名称:
+        <input id="Name" class="easyui-textbox" data-options="prompt:'请输入名称'" style="width:200px;">
+        <a id="search" href="###" class="easyui-linkbutton" iconcls="icon-search">Search</a>
+    </div>
+</div>
+@section script{
+<script src="~/LocalScript/VerifyFlow/IndexQuery.js"></script>
+}

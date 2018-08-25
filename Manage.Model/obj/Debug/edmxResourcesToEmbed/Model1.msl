@@ -15,6 +15,8 @@
     <EntitySetMapping Name="tbl_FlowStep">
       <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_FlowStep">
         <MappingFragment StoreEntitySet="tbl_FlowStep">
+          <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
           <ScalarProperty Name="keyid" ColumnName="keyid" />
           <ScalarProperty Name="C_VerifyId" ColumnName="C_VerifyId" />
           <ScalarProperty Name="C_Step" ColumnName="C_Step" />
@@ -155,6 +157,37 @@
           <ScalarProperty Name="MenuId" ColumnName="MenuId" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="keyid" ColumnName="keyid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_RoleVerify">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_RoleVerify">
+        <MappingFragment StoreEntitySet="tbl_RoleVerify">
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_DataTypeId" ColumnName="C_DataTypeId" />
+          <ScalarProperty Name="C_VerifyId" ColumnName="C_VerifyId" />
+          <ScalarProperty Name="C_RoleId" ColumnName="C_RoleId" />
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Role_Data_Verify_Step">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.V_Role_Data_Verify_Step">
+        <MappingFragment StoreEntitySet="V_Role_Data_Verify_Step">
+          <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+          <ScalarProperty Name="StepDesction" ColumnName="StepDesction" />
+          <ScalarProperty Name="StepRoleName" ColumnName="StepRoleName" />
+          <ScalarProperty Name="StepRole" ColumnName="StepRole" />
+          <ScalarProperty Name="StepName" ColumnName="StepName" />
+          <ScalarProperty Name="stepid" ColumnName="stepid" />
+          <ScalarProperty Name="VerifyName" ColumnName="VerifyName" />
+          <ScalarProperty Name="VerifyId" ColumnName="VerifyId" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="ParentRole" ColumnName="ParentRole" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

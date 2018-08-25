@@ -56,6 +56,10 @@ public partial class DATA_MANAGEEntities1 : DbContext
 
     public virtual DbSet<V_Role_Menu> V_Role_Menu { get; set; }
 
+    public virtual DbSet<tbl_RoleVerify> tbl_RoleVerify { get; set; }
+
+    public virtual DbSet<V_Role_Data_Verify_Step> V_Role_Data_Verify_Step { get; set; }
+
 }
 
 }

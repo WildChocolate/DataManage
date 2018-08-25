@@ -50,7 +50,7 @@ namespace Web.ControllerExt
         }
         protected bool CanDeleted
         {
-            get { return (bool)(ViewBag.CanDeleted&&false); }
+            get { return (bool)(ViewBag.CanDeleted??false); }
             private set
             {
                 ViewBag.CanDeleted = value;
@@ -58,11 +58,8 @@ namespace Web.ControllerExt
         }
         protected bool CanCreated
         {
-            get { return (bool)(ViewBag.CanCreated&&false); }
-            private set
-            {
-                ViewBag.CanCreated = value;
-            }
+            get;
+            set;
         }
         /// <summary>
         /// 一个控制器有多个菜单，要把当前菜单记录下来

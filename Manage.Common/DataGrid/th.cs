@@ -11,6 +11,6 @@ namespace Manage.Common.DataGrid
         public string field;
         public string title;
         public int width;
-        public string formatter;
+        
     }
 }

@@ -10,5 +10,6 @@ namespace Manage.DAL
 {
     public class VerifyFlowRepo:BaseRepo<tbl_VerifyFlow>,IVerifyFlowRepo
     {
+        
     }
 }

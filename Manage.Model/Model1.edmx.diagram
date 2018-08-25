@@ -17,6 +17,8 @@
         <EntityTypeShape EntityType="DATA_MANAGEModel.tbl_VerifyFlow" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DATA_MANAGEModel.V_User_Role" Width="1.5" PointX="5.375" PointY="8.75" />
         <EntityTypeShape EntityType="DATA_MANAGEModel.V_Role_Menu" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DATA_MANAGEModel.tbl_RoleVerify" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" Width="1.5" PointX="9.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

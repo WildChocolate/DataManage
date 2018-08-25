@@ -1,0 +1,57 @@
+﻿@model Manage.IBLL.Dto.VerifyFlowInfo
+@{
+    ViewBag.Title = "IndexExecute";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+
+<h2>流程设置管理</h2>
+<hr />
+@section style{
+    <style>
+        .container>div{
+            margin:auto;
+        }
+    </style>
+}
+    <div class="easyui-panel" title="流程设置" style="width:400px;">
+        <div style="padding:10px 60px 20px 60px">
+            <input type="hidden" name="Key" id="Key" value="@Model.Key" />
+            @using (Html.BeginForm("Manage", "VerifyFlow", @FormMethod.Post))
+            {
+
+                <table cellpadding="5">
+                    <tr>
+                        <td>名称:</td>
+                        <td>@Html.TextBoxFor(model => model.Name, new { @class = "easyui-textbox", data_options = "required:true" })</td>
+                    </tr>
+                    <tr>
+                        <td>描述:</td>
+                        <td>@Html.TextBoxFor(model => model.Description, new { @class = "easyui-textbox", data_options = "required:true" })</td>
+                    </tr>
+                    @if (!string.IsNullOrWhiteSpace(Model.CreatedDate))
+                    {
+                        <tr>
+                            <td>创建时间:</td>
+                            <td>@Html.TextBoxFor(model => model.CreatedDate, new { @class = "easyui-textbox", data_options = "required:true", disabled="true" })</td>
+                        </tr>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.UpdatedDate))
+                    {
+                        <tr>
+                            <td>最近修改时间:</td>
+                            <td>@Html.TextBoxFor(model => model.UpdatedDate, new { @class = "easyui-textbox", data_options = "required:true", disabled = "true" })</td>
+                        </tr>
+                    }
+
+                </table>
+
+            }
+            <div style="text-align:center;padding:5px">
+                <a id="submit" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">提交</a>
+                <a id="cancel" href="IndexQuery" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"> 取消</a>
+            </div>
+        </div>
+    </div>
+@section script{
+<script src="~/LocalScript/VerifyFlow/IndexExecute.js"></script>
+}
