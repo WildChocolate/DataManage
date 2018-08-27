@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manage.IDAL
+namespace Manage.IBLL
 {
-    public interface INameValueInfoRepo : IBaseRepo<tbl_NameValueInfo>
+    public interface INameValueDataService : IBaseService<tbl_NameValueData>
     {
-
     }
 }

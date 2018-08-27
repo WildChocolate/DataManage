@@ -42,7 +42,7 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="ConvertHelper.cs" />
     <Compile Include="RoleMenuService.cs" />
-    <Compile Include="NameValueInfoService.cs" />
+    <Compile Include="NameValueDataService.cs" />
     <Compile Include="VerifyFlowService.cs" />
     <Compile Include="UserRoleService.cs" />
     <Compile Include="RoleService.cs" />

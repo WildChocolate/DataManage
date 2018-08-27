@@ -1,0 +1,53 @@
+﻿@model Manage.IBLL.Dto.NameValueDataInfo
+@{
+    ViewBag.Title = "NameValueInfoExecute";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+
+<h2>普通资料编辑---@ViewBag.Operation</h2>
+<hr />
+<div class="container">
+
+    <form name="form" id="form1" style="min-width:450px;width:50%; margin:auto;">
+        <input type="hidden" id="Key" name="Key" value="@Model.Key" />
+        <div class="easyui-panel" title="@ViewBag.Operation" style="width:450px">
+            <div style="padding:10px 60px 20px 60px">
+
+                <table cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td>Name:</td>
+                        <td><input id="Name" class="easyui-textbox" type="text" name="name" data-options="required:true" value="@Model.Name" /></td>
+                    </tr>
+                    <tr>
+                        <td>Value:</td>
+                        <td><input id="Value" class="easyui-textbox" type="text" name="Description" data-options="multiline:true" style="height:80px" value="@Model.Value" /></td>
+                    </tr>
+                    <tr>
+                        <td>描述:</td>
+                        <td><input id="Description" class="easyui-textbox" type="text" name="Description" data-options="multiline:true" style="height:80px" value="@Model.Description" /></td>
+                    </tr>
+                    @if (Model.CreatedDate!=null)
+                    {
+                        <tr>
+                            <td>创建时间:</td>
+                            <td><input id="CreatedDate" class="easyui-textbox" type="text" name="email" readonly value="@Model.CreatedDate" /></td>
+                        </tr>
+                        <tr>
+                            <td>修改时间:</td>
+                            <td><input id="CreatedTo" class="easyui-textbox" type="text" name="email" readonly value="@Model.UpdatedDate" /></td>
+                        </tr>
+                    }
+                </table>
+
+                <div style="text-align:center;padding:5px">
+                    <a id="submit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">@ViewBag.Operation</a>
+                    <a id="cancel" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+@section script{
+<script src="~/LocalScript/User/NameValueInfoExecute.js"></script>
+}

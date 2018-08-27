@@ -42,8 +42,6 @@ function flowStepInfo() {
     this.Key = 0;
     this.Name = "";
     this.Description = "";
-    this.CreatedDate = "";
-    this.UpdatedDate = "";
     this.VerifyKey = "";
     this.RoleKey = "";
     this.Step = "";

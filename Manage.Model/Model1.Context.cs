@@ -40,8 +40,6 @@ public partial class DATA_MANAGEEntities1 : DbContext
 
     public virtual DbSet<tbl_Menu> tbl_Menu { get; set; }
 
-    public virtual DbSet<tbl_NameValueInfo> tbl_NameValueInfo { get; set; }
-
     public virtual DbSet<tbl_Role> tbl_Role { get; set; }
 
     public virtual DbSet<tbl_Role_Menu> tbl_Role_Menu { get; set; }
@@ -59,6 +57,10 @@ public partial class DATA_MANAGEEntities1 : DbContext
     public virtual DbSet<tbl_RoleVerify> tbl_RoleVerify { get; set; }
 
     public virtual DbSet<V_Role_Data_Verify_Step> V_Role_Data_Verify_Step { get; set; }
+
+    public virtual DbSet<tbl_NameValueData> tbl_NameValueData { get; set; }
+
+    public virtual DbSet<V_Verify_Step> V_Verify_Step { get; set; }
 
 }
 

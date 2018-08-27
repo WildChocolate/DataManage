@@ -16,6 +16,7 @@ namespace Manage.Common.DataGrid
             title.Add(new th { field = "Name", title = "角色名", width = 100 });
             title.Add(new th { field = "Description", title = "描述", width = 100 });
             title.Add(new th { field = "ParentName", title = "父角色", width = 100});
+            title.Add(new th { field = "RoleFlow", title = "设置流程", width = 100 });
             title.Add(new th { field = "CreatedDate", title = "创建时间", width = 125 });
             title.Add(new th { field = "UpdatedDate", title = "修改时间", width = 125 });
         }

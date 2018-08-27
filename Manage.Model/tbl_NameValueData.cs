@@ -15,22 +15,22 @@ namespace Manage.Model
 using System;
     using System.Collections.Generic;
     
-public partial class tbl_NameValueInfo
+public partial class tbl_NameValueData
 {
 
     public long keyid { get; set; }
 
-    public string Name { get; set; }
+    public string C_Name { get; set; }
 
-    public string Value { get; set; }
+    public string C_Value { get; set; }
 
-    public string Description { get; set; }
+    public string C_Description { get; set; }
 
     public int C_UserId { get; set; }
 
-    public System.DateTime CreateDate { get; set; }
+    public System.DateTime C_CreatedDate { get; set; }
 
-    public Nullable<System.DateTime> UpdateDate { get; set; }
+    public Nullable<System.DateTime> C_UpdatedDate { get; set; }
 
 }
 

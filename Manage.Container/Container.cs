@@ -40,7 +40,7 @@ namespace Manage.DALContainer
             builder.RegisterType<DataTypeRepo>().As<IDateTypeRepo>().InstancePerDependency();
             builder.RegisterType<FlowStepRepo>().As<IFlowStepRepo>().InstancePerDependency();
             builder.RegisterType<MenuRepo>().As<IMenuRepo>().InstancePerDependency();
-            builder.RegisterType<NameValueInfoRepo>().As<INameValueInfoRepo>().InstancePerDependency();
+            builder.RegisterType<NameValueDataRepo>().As<INameValueDataRepo>().InstancePerDependency();
             builder.RegisterType<RoleMenuRepo>().As<IRoleMenuRepo>().InstancePerDependency();
             builder.RegisterType<RoleRepo>().As<IRoleRepo>().InstancePerDependency();
             builder.RegisterType<UserRoleRepo>().As<IUserRoleRepo>().InstancePerDependency();

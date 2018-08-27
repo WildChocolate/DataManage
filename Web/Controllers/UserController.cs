@@ -12,6 +12,8 @@ using Web.ControllerExt;
 using System.Linq.Expressions;
 using System.Text;
 using Manage.Common.Condition;
+using Manage.Common;
+using Manage.Common.DataGrid;
 
 
 namespace Web.Controllers
@@ -23,7 +25,7 @@ namespace Web.Controllers
         /// <summary>
         /// 在User控制器中，有两个与菜单操作有送的action,如果还有对其他菜单的控制的，要在这里加入对应action名称的数组
         /// </summary>
-        string[] menusAction = new string[] { "ManageQuery", "ChangePassword", "Index" };
+        string[] menusAction = new string[] { "ManageQuery", "ChangePassword", "Index", "NameValueInfoQuery" };
         protected override string[] MenusAction
         {
             get { return menusAction; }
@@ -264,6 +266,100 @@ namespace Web.Controllers
                 return Json(new AjaxResult(){ Message=ex.Message});
             }
         }
-
+        public ActionResult NameValueInfoQuery()
+        {
+            if (!CanRead)
+                return GotoErrorPage(CannotReadText);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SearchNameValueInfo(NameValueInfoPager pager)
+        {
+            //从当前用户的资料开始筛选
+            Expression<Func<tbl_NameValueData, bool>> wherelambda = nv=> nv.C_UserId==userDto.User.keyid;
+            if (!string.IsNullOrWhiteSpace(pager.Name))
+            {
+                wherelambda.And(nv=> nv.C_Name.Contains(pager.Name));
+            }
+            if (!string.IsNullOrWhiteSpace(pager.DateFrom))
+            {
+                wherelambda.And(nv => nv.C_CreatedDate>Convert.ToDateTime( (pager.DateFrom)));
+            }
+            if (!string.IsNullOrWhiteSpace(pager.DateTo))
+            {
+                wherelambda.And(nv => nv.C_CreatedDate <Convert.ToDateTime((pager.DateTo)));
+            }
+            var service = Container.GetService<INameValueDataService>();
+            var items = service.GetModels(wherelambda).ToList();
+            var cnt = service.GetTableCount(wherelambda);
+            var grid = new NameValueDataGrid();
+            grid.rows = NameValueDataInfo.ConvertToNameValueDataInfos(items);
+            return Json(grid);
+        }
+        public ActionResult NameValueInfoExecute(int Key)
+        {
+            if (!CanRead)
+                return GotoErrorPage(CannotReadText);
+            var service = Container.GetService<INameValueDataService>();
+            var item = service.GetModels(nv => nv.keyid == Key).FirstOrDefault();
+            var info = new NameValueDataInfo { Key=0};
+            if(item!=null)
+                info = NameValueDataInfo.ConvertToNameValueDataInfo(item);
+            if (Key > 0)
+            {
+                ViewBag.Operation = "修改";
+            }
+            else
+            {
+                ViewBag.Operation = "添加";
+            }
+            return View(info);
+        }
+        [HttpPost]
+        public ActionResult NameValueInfoManage(NameValueDataInfo info)
+        {
+            tbl_NameValueData item = new tbl_NameValueData ();
+            var service = Container.GetService<INameValueDataService>();
+            var result = new AjaxResult();
+            if(info.Key>0)
+            {
+                item = service.GetModels(nv => nv.keyid == info.Key).FirstOrDefault();
+                if (item != null)
+                {
+                    item.C_Name = info.Name;
+                    item.C_Value = info.Value;
+                    item.C_Description = info.Description;
+                    item.C_UpdatedDate = DateTime.Now;
+                }
+                else
+                {
+                    result.Message = "修改失败，不存在的记录";
+                    return Json(result);
+                }
+                result.State = service.Update(item);
+                if (result.State)
+                {
+                    result.Message = "修改成功";
+                }
+                else
+                    result.Message = "修改失败";
+            }
+            else
+            {
+                item.C_UserId = userDto.User.keyid;
+                item.C_Name = info.Name;
+                item.C_Value = info.Value;
+                item.C_Description = info.Description;
+                item.C_CreatedDate = DateTime.Now;
+                result.State = service.Add(item);
+                if (result.State)
+                {
+                    result.Message = "添加成功";
+                }
+                else
+                    result.Message = "添加失败";
+            }
+            return Json(result);
+        }
     }
 }

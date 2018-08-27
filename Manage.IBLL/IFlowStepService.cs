@@ -11,6 +11,6 @@ namespace Manage.IBLL
 {
     public interface IFlowStepService : IBaseService<tbl_FlowStep>
     {
-        IQueryable<FlowStepInfo> GetVFlowStepModels(Expression<Func<V_Role_Data_Verify_Step, bool>> wherelambda); 
+        IQueryable<FlowStepInfo> GetVFlowStepModels(Expression<Func<V_Verify_Step, bool>> wherelambda); 
     }
 }

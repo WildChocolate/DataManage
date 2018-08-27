@@ -23,6 +23,13 @@ namespace Manage.IBLL.Dto
             get;
             set;
         }
+        public string RoleFlow
+        {
+            get
+            {
+                return string.Format("<a href='{0}'>设置流程</a>","RoleFlow?Key="+this.Key);
+            }
+        }
 
         public static RoleInfo ConvertToRoleInfo(RoleDto roledto)
         {

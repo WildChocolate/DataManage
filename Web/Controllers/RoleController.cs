@@ -174,5 +174,14 @@ namespace Web.Controllers
             }
             return Json(data);
         }
+        public ActionResult RoleFlow(int Key)
+        {
+            if (!CanRead)
+                return GotoErrorPage(CannotReadText);
+            var service = Container.GetService<IRoleService>();
+            ViewBag.RoleName = service.GetModels(r => r.keyid == Key).FirstOrDefault().C_Name+string.Empty;
+            
+            return View();
+        }
     }
 }

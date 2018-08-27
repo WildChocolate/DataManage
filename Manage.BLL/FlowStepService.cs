@@ -17,10 +17,10 @@ namespace Manage.BLL
             Dal = DALContainer.Container.GetRepository<IFlowStepRepo>();
         }
 
-        public IQueryable<FlowStepInfo> GetVFlowStepModels(System.Linq.Expressions.Expression<Func<V_Role_Data_Verify_Step, bool>> wherelambda)
+        public IQueryable<FlowStepInfo> GetVFlowStepModels(System.Linq.Expressions.Expression<Func<V_Verify_Step, bool>> wherelambda)
         {
             var fsdal = Dal as IFlowStepRepo;
-            return fsdal.GetVFlowStepModels(wherelambda).Select(vfs => new FlowStepInfo { Key=vfs.stepid, Name=vfs.StepName, StepRole=vfs.StepRole, VerifyKey=vfs.VerifyId, Description=vfs.StepDesction, Step=vfs.StepNumber });
+            return fsdal.GetVFlowStepModels(wherelambda).Select(vfs => new FlowStepInfo { Key=vfs.StepId, Name=vfs.StepName, StepRole=vfs.StepRole, VerifyKey=vfs.VerifyId, Description=vfs.StepDescription, Step=vfs.StepNumber });
         }
     }
 }

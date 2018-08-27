@@ -58,7 +58,7 @@
     <Compile Include="DBContextFactory.cs" />
     <Compile Include="FlowStepRepo.cs" />
     <Compile Include="MenuRepo.cs" />
-    <Compile Include="NameValueInfoRepo.cs" />
+    <Compile Include="NameValueDataRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleMenuRepo.cs" />
     <Compile Include="RoleRepo.cs" />

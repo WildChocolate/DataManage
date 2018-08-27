@@ -34,7 +34,7 @@
             datatype: "json",
             traditional: true,//这里设置为true 
             success: function (data) {
-                $.messager.alert(data.Message);
+                $.messager.alert("提示！！！",data.Message);
             },
             error: function (err) {
                 alert(err);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Manage.DAL
 {
-    public class NameValueInfoRepo:BaseRepo<tbl_NameValueInfo>,INameValueInfoRepo
+    public class NameValueDataRepo:BaseRepo<tbl_NameValueData>,INameValueDataRepo
     {
     }
 }

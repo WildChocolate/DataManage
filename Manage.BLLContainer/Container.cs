@@ -38,7 +38,7 @@ namespace Manage.BLLContainer
             builder.RegisterType<DataTypeService>().As<IBLL.IDataTypeService>().InstancePerDependency();
             builder.RegisterType<FlowStepService>().As<IBLL.IFlowStepService>().InstancePerDependency();
             builder.RegisterType<MenuService>().As<IBLL.IMenuService>().InstancePerDependency();
-            builder.RegisterType<NameValueInfoService>().As<IBLL.INameValueInfoService>().InstancePerDependency();
+            builder.RegisterType<NameValueDataService>().As<IBLL.INameValueDataService>().InstancePerDependency();
             builder.RegisterType<RoleMenuService>().As<IBLL.IRoleMenuService>().InstancePerDependency();
             builder.RegisterType<RoleService>().As<IBLL.IRoleService>().InstancePerDependency();
             builder.RegisterType<UserRoleService>().As<IBLL.IUserRoleService>().InstancePerDependency();

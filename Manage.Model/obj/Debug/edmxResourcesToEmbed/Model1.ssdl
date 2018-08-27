@@ -50,17 +50,17 @@
     <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="C_UpdatedDate" Type="datetime" />
   </EntityType>
-  <EntityType Name="tbl_NameValueInfo">
+  <EntityType Name="tbl_NameValueData">
     <Key>
       <PropertyRef Name="keyid" />
     </Key>
     <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
-    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="C_Description" Type="nvarchar" MaxLength="500" />
     <Property Name="C_UserId" Type="int" Nullable="false" />
-    <Property Name="CreateDate" Type="datetime" Nullable="false" />
-    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tbl_Role">
     <Key>
@@ -207,12 +207,31 @@
     <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="C_UpdatedDate" Type="datetime" />
   </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“DATA_MANAGE.dbo.V_Verify_Step”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="V_Verify_Step">
+    <Key>
+      <PropertyRef Name="VerifyId" />
+      <PropertyRef Name="StepId" />
+      <PropertyRef Name="VerifyName" />
+      <PropertyRef Name="StepName" />
+      <PropertyRef Name="StepNumber" />
+      <PropertyRef Name="StepRole" />
+    </Key>
+    <Property Name="VerifyId" Type="int" Nullable="false" />
+    <Property Name="StepId" Type="int" Nullable="false" />
+    <Property Name="VerifyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StepName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StepDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="StepNumber" Type="int" Nullable="false" />
+    <Property Name="StepRole" Type="int" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="DATA_MANAGEModelStoreContainer">
     <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_NameValueData" EntityType="Self.tbl_NameValueData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_RoleVerify" EntityType="Self.tbl_RoleVerify" Schema="dbo" store:Type="Tables" />
@@ -259,6 +278,17 @@
     [V_User_Role].[C_CreatedDate] AS [C_CreatedDate], 
     [V_User_Role].[C_UpdatedDate] AS [C_UpdatedDate]
     FROM [dbo].[V_User_Role] AS [V_User_Role]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_Verify_Step" EntityType="Self.V_Verify_Step" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_Verify_Step].[VerifyId] AS [VerifyId], 
+    [V_Verify_Step].[StepId] AS [StepId], 
+    [V_Verify_Step].[VerifyName] AS [VerifyName], 
+    [V_Verify_Step].[StepName] AS [StepName], 
+    [V_Verify_Step].[StepDescription] AS [StepDescription], 
+    [V_Verify_Step].[StepNumber] AS [StepNumber], 
+    [V_Verify_Step].[StepRole] AS [StepRole]
+    FROM [dbo].[V_Verify_Step] AS [V_Verify_Step]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

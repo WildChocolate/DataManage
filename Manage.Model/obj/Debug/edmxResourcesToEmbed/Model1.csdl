@@ -50,18 +50,6 @@
     <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="tbl_NameValueInfo">
-    <Key>
-      <PropertyRef Name="keyid" />
-    </Key>
-    <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="C_UserId" Type="Int32" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="tbl_Role">
     <Key>
       <PropertyRef Name="keyid" />
@@ -126,7 +114,6 @@
     <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" />
     <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" />
     <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" />
-    <EntitySet Name="tbl_NameValueInfo" EntityType="Self.tbl_NameValueInfo" />
     <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" />
     <EntitySet Name="tbl_Role_Menu" EntityType="Self.tbl_Role_Menu" />
     <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
@@ -136,6 +123,8 @@
     <EntitySet Name="V_Role_Menu" EntityType="DATA_MANAGEModel.V_Role_Menu" />
     <EntitySet Name="tbl_RoleVerify" EntityType="DATA_MANAGEModel.tbl_RoleVerify" />
     <EntitySet Name="V_Role_Data_Verify_Step" EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" />
+    <EntitySet Name="tbl_NameValueData" EntityType="DATA_MANAGEModel.tbl_NameValueData" />
+    <EntitySet Name="V_Verify_Step" EntityType="DATA_MANAGEModel.V_Verify_Step" />
   </EntityContainer>
   <EntityType Name="V_User_Role">
     <Key>
@@ -216,5 +205,34 @@
     <Property Name="StepRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StepDesction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="StepNumber" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_NameValueData">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C_Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C_UserId" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="V_Verify_Step">
+    <Key>
+      <PropertyRef Name="VerifyName" />
+      <PropertyRef Name="StepName" />
+      <PropertyRef Name="StepNumber" />
+      <PropertyRef Name="StepRole" />
+      <PropertyRef Name="VerifyId" />
+      <PropertyRef Name="StepId" />
+    </Key>
+    <Property Name="VerifyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StepDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StepNumber" Type="Int32" Nullable="false" />
+    <Property Name="StepRole" Type="Int32" Nullable="false" />
+    <Property Name="VerifyId" Type="Int32" Nullable="false" />
+    <Property Name="StepId" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

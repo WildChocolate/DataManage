@@ -45,7 +45,7 @@
     <Compile Include="IMenuRepo.cs" />
     <Compile Include="IRoleRepo.cs" />
     <Compile Include="IRoleMenuRepo.cs" />
-    <Compile Include="INameValueInfoRepo.cs" />
+    <Compile Include="INameValueDataRepo.cs" />
     <Compile Include="IVerifyFlowRepo.cs" />
     <Compile Include="IUserRoleRepo.cs" />
     <Compile Include="IUserRepo.cs" />

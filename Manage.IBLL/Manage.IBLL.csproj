@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\BaseInfo.cs" />
+    <Compile Include="Dto\DataTypeInfo.cs" />
     <Compile Include="Dto\FlowStepInfo.cs" />
     <Compile Include="Dto\MenuDto.cs" />
     <Compile Include="Dto\MenuInfo.cs" />
+    <Compile Include="Dto\NameValueDataInfo.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Dto\RoleInfo.cs" />
     <Compile Include="Dto\RoleMenuInfo.cs" />
@@ -58,7 +60,7 @@
     <Compile Include="IMenuService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="IUserRoleService.cs" />
-    <Compile Include="INameValueInfoService.cs" />
+    <Compile Include="INameValueDataService.cs" />
     <Compile Include="IVerifyFlowService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="IRoleMenuService.cs" />
