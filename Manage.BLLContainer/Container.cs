@@ -43,6 +43,9 @@ namespace Manage.BLLContainer
             builder.RegisterType<RoleService>().As<IBLL.IRoleService>().InstancePerDependency();
             builder.RegisterType<UserRoleService>().As<IBLL.IUserRoleService>().InstancePerDependency();
             builder.RegisterType<VerifyFlowService>().As<IBLL.IVerifyFlowService>().InstancePerDependency();
+            builder.RegisterType<RoleVerifyService>().As<IBLL.IRoleVerifyService>().InstancePerDependency();
+            builder.RegisterType<DataService>().As<IBLL.IDataService>().InstancePerDependency();
+            builder.RegisterType<DataVerifyStepService>().As<IBLL.IDataVerifyStepService>().InstancePerDependency();
             container = builder.Build();
         }
     }

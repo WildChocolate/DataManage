@@ -8,7 +8,7 @@ namespace Manage.IBLL.Dto
 {
     public abstract class BaseInfo
     {
-        public int Key
+        public long Key
         {
             get;
             set;

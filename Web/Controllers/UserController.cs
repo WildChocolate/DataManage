@@ -12,7 +12,6 @@ using Web.ControllerExt;
 using System.Linq.Expressions;
 using System.Text;
 using Manage.Common.Condition;
-using Manage.Common;
 using Manage.Common.DataGrid;
 
 
@@ -101,17 +100,9 @@ namespace Web.Controllers
             {
                 
                 var currentuser = Session["user"] as UserDto;
-                if (oldpassword != newpassword)
-                {
-                    if (currentuser.User.C_PassWord == oldpassword)
-                    {
-                        var userservice = Container.GetService<IUserService>();
-                        var result = userservice.ChangePassword(currentuser.User.keyid.ToString(), newpassword);
-                        x.Status = result;
-                    }
-                }
-                else
-                    x.Status = true;
+                var userservice = Container.GetService<IUserService>();
+                var result = userservice.ChangePassword(currentuser.User, oldpassword, newpassword);
+                x.Status = result;
             }
             else
             {
@@ -119,7 +110,7 @@ namespace Web.Controllers
                 x = new ChangedPasswordStatus{ Status = false, Url = "/Error/Index?Message="+x.Message };
                 //return GotoErrorPage("您没有修改的权限，请联系管员开通");
             }
-            return Content(x.ToJson());
+            return Json(x);
         }
         public ActionResult ManageQuery()
         {
@@ -170,7 +161,7 @@ namespace Web.Controllers
                 {
                     user.C_Name = userinfo.Name;
                     user.C_LoginName=userinfo.LoginName;
-                    user.C_PassWord=userinfo.PassWord;
+                    user.C_PassWord = new DES().DesEncrypt(userinfo.PassWord);
                     user.C_Sex = userinfo.Sex;
                     if (userinfo.Photo != null)
                     {
@@ -197,8 +188,9 @@ namespace Web.Controllers
             {
                 var user = new tbl_User();
                 user.C_Name = userinfo.Name;
+                user.C_Enabled = true;
                 user.C_LoginName = userinfo.LoginName;
-                user.C_PassWord = userinfo.PassWord;
+                user.C_PassWord = new DES().DesEncrypt(userinfo.PassWord);
                 user.C_CreatedDate = DateTime.Now;
                 user.C_Sex = userinfo.Sex;
                 if (userinfo.Photo != null)
@@ -293,7 +285,8 @@ namespace Web.Controllers
             var items = service.GetModels(wherelambda).ToList();
             var cnt = service.GetTableCount(wherelambda);
             var grid = new NameValueDataGrid();
-            grid.rows = NameValueDataInfo.ConvertToNameValueDataInfos(items);
+            grid.rows = NameValueDataInfo.ConvertToNameValueDataInfos(items); 
+            grid.total = cnt;
             return Json(grid);
         }
         public ActionResult NameValueInfoExecute(int Key)

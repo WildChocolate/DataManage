@@ -79,7 +79,7 @@ $(function () {
                 { field: 'Menu', title: '菜单', width: 200, align: 'center' },
                 { field: 'ParentMenu', title: ' 父菜单', width: 200, align: 'right', align: 'center' },
                 {
-                    field: 'CanReaded', title: '浏览<input id=\"readAllCheckbox\" name="readall" type=\"checkbox\"  >', width: 100,align: 'center',
+                    field: 'CanReaded', title: '浏览<input id=\"readAllCheck\" name="readall" type=\"checkbox\"  >', width: 100, align: 'center',
                     formatter: function (value, rec, rowIndex) {
                         if(value)
                             return "<input type=\"checkbox\"  name=\"read\" checked=\"" + rec.CanReaded + "\" >";
@@ -119,7 +119,7 @@ $(function () {
 
                 title: "角色菜单编辑",
                 onLoadSuccess: function () {
-                    $("#readAllCheckbox").unbind();
+                    $("#readAllCheck").unbind();
                     $("#updateAllCheckbox").unbind();
                     $("#createAllCheckbox").unbind();
                     $("#deleteAllCheckbox").unbind();
@@ -130,10 +130,10 @@ $(function () {
                         var checkrows = $("input[name='read']:checked").length;
                         //全选
                         if (checkrows == totolrows) {
-                            $("#readAllCheckbox").prop("checked", 'checked');
+                            $("#readAllCheck").prop("checked", 'checked');
                         }
                         else {
-                            $("#readAllCheckbox").removeProp("checked");
+                            $("#readAllCheck").removeProp("checked");
                         }
                     });
                     $("input[name='update']").unbind().bind("change", function () {
@@ -178,17 +178,11 @@ $(function () {
 
 
                     //全选
-                    $("#readAllCheckbox").click(function (e) {
-                        
-                        var checked = $("#readAllCheckbox").prop("checked");
+                    $("#readAllCheck").change(function (e) {
+                        var checked = $("#readAllCheck").prop("checked");
                         $("input[name='read']").prop("checked", checked);
-                        var rows = $("#List").datagrid("getRows");
-
-                        for (var row in rows) {
-                            row.CanReaded = checked;
-                        }
-                        $("#List").datagrid("loadData", { rows: rows });
                         e.stopPropagation();
+                        return false;
                     });
                     $("#updateAllCheckbox").click(function (e) {
                         var checked = $("#updateAllCheckbox").prop("checked");

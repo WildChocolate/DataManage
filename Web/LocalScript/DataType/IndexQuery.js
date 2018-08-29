@@ -39,7 +39,8 @@ $(function () {
     $("#UpdateBtn").click(function () {
         var row = $("#List").datagrid("getSelected");
         if (row) {
-            window.location.href = "IndexExecute?Key=" + row.Key;
+            alert(row.Key);
+            window.location.href = "TextExecute?Key=" + row.Key;
         }
         else
             $.messager.alert("提示！！！","请选择需要修改的行");

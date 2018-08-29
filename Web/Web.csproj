@@ -161,7 +161,9 @@
     <Compile Include="ControllerExt\BasicController.cs" />
     <Compile Include="ControllerExt\PowerController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\DataTypeController.cs" />
+    <Compile Include="Controllers\DataVerifyController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FlowStepController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -995,12 +997,16 @@
     <Content Include="LocalCSS\Role\IndexExecute.css" />
     <Content Include="LocalScript\DataType\IndexExecute.js" />
     <Content Include="LocalScript\DataType\IndexQuery.js" />
+    <Content Include="LocalScript\Data\TextExecute.js" />
+    <Content Include="LocalScript\Data\TextQuery.js" />
     <Content Include="LocalScript\Menu\IndexExecute.js" />
     <Content Include="LocalScript\Menu\IndexQuery.js" />
     <Content Include="LocalScript\RoleMenu\IndexExecute.js" />
     <Content Include="LocalScript\RoleMenu\IndexQuery.js" />
     <Content Include="LocalScript\Role\IndexExecute.js" />
     <Content Include="LocalScript\Role\IndexQuery.js" />
+    <Content Include="LocalCSS\Role\RoleVerifyFlow.css" />
+    <Content Include="LocalScript\Role\RoleVerifyFlow.js" />
     <Content Include="LocalScript\UserRole\IndexExecute.js" />
     <Content Include="LocalScript\UserRole\IndexQuery.js" />
     <Content Include="LocalScript\User\ChangePassword.js" />
@@ -1104,7 +1110,10 @@
     <Content Include="Views\User\NameValueInfoExecute.cshtml" />
     <Content Include="Views\DataType\IndexQuery.cshtml" />
     <Content Include="Views\DataType\IndexExecute.cshtml" />
-    <Content Include="Views\Role\RoleFlow.cshtml" />
+    <Content Include="Views\Role\RoleVerifyFlow.cshtml" />
+    <Content Include="Views\Data\TextQuery.cshtml" />
+    <Content Include="Views\Data\TextExecute.cshtml" />
+    <Content Include="Views\DataVerify\TxtIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

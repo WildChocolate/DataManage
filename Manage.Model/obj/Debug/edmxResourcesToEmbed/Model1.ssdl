@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DATA_MANAGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Data">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="C_Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="C_Path" Type="nvarchar" MaxLength="2048" />
+    <Property Name="C_VerifyState" Type="bit" Nullable="false" />
+    <Property Name="C_DataTypeId" Type="int" Nullable="false" />
+    <Property Name="C_UserId" Type="int" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="tbl_DataType">
     <Key>
       <PropertyRef Name="keyid" />
@@ -7,6 +21,18 @@
     <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="C_UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_DataVerifyStep">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_UserId" Type="int" Nullable="false" />
+    <Property Name="C_DataId" Type="bigint" Nullable="false" />
+    <Property Name="C_StepId" Type="int" Nullable="false" />
+    <Property Name="C_State" Type="bit" Nullable="false" />
     <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="C_UpdatedDate" Type="datetime" />
   </EntityType>
@@ -142,6 +168,7 @@
       <PropertyRef Name="ParentId" />
       <PropertyRef Name="RoleName" />
       <PropertyRef Name="ParentRole" />
+      <PropertyRef Name="DataTypeId" />
       <PropertyRef Name="TypeName" />
       <PropertyRef Name="VerifyId" />
       <PropertyRef Name="VerifyName" />
@@ -154,6 +181,7 @@
     <Property Name="ParentId" Type="int" Nullable="false" />
     <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ParentRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DataTypeId" Type="int" Nullable="false" />
     <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="VerifyId" Type="int" Nullable="false" />
     <Property Name="VerifyName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -227,7 +255,9 @@
     <Property Name="StepRole" Type="int" Nullable="false" />
   </EntityType>
   <EntityContainer Name="DATA_MANAGEModelStoreContainer">
+    <EntitySet Name="tbl_Data" EntityType="Self.tbl_Data" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_DataVerifyStep" EntityType="Self.tbl_DataVerifyStep" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" Schema="dbo" store:Type="Tables" />
@@ -244,6 +274,7 @@
     [V_Role_Data_Verify_Step].[ParentId] AS [ParentId], 
     [V_Role_Data_Verify_Step].[RoleName] AS [RoleName], 
     [V_Role_Data_Verify_Step].[ParentRole] AS [ParentRole], 
+    [V_Role_Data_Verify_Step].[DataTypeId] AS [DataTypeId], 
     [V_Role_Data_Verify_Step].[TypeName] AS [TypeName], 
     [V_Role_Data_Verify_Step].[VerifyId] AS [VerifyId], 
     [V_Role_Data_Verify_Step].[VerifyName] AS [VerifyName], 

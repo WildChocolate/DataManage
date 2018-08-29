@@ -1,0 +1,62 @@
+﻿@model IList<Manage.IBLL.Dto.RoleVerifyInfo>
+@{
+    ViewBag.Title = "RoleFlow";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+@section style{
+<link href="~/LocalCSS/Role/RoleVerifyFlow.css" rel="stylesheet" />
+}
+<h2>角色资料--流程设置</h2>
+<hr />
+<input type="hidden" id="RoleKey"  name="name" value="@ViewBag.RoleKey" />
+<div class="easyui-panel" style="padding:5px;">
+    <a href="###" id="submit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+    <a href="IndexQuery" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+</div>
+<p></p>
+
+@if (Model != null)
+{
+
+    var index = 1;
+    <div style="width:70%;margin:auto;min-width:500px;">
+        <h3>当前角色：<span style="color:red;">@ViewBag.RoleName</span></h3>
+        <table id="List">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>选择</th>
+                    <th>类型</th>
+                    <th>流程</th>
+                    <th>步骤</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@index</td>
+                    <td>
+                        <input type="checkbox" name="chk" data-id="@item.DataTypeKey" checked="@(item.VerifyKey>0)" />
+                    </td>
+                    <td>
+                        <label>@item.Name</label>
+                    </td>
+                    <td>
+                        <input id="verifyFlow@(index)"
+                               name="verifyFlow"
+                               value="@item.VerifyKey">
+                    </td>
+                    <td>
+                        <p name="Steps" style="width:200px;"></p>
+                    </td>
+                </tr>
+                index++;
+            }
+        </table>
+    </div>
+}
+@section script{
+<script src="~/LocalScript/Role/RoleVerifyFlow.js"></script>
+}
+

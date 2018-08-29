@@ -20,6 +20,8 @@
         <EntityTypeShape EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" Width="1.5" PointX="9.375" PointY="3.75" />
         <EntityTypeShape EntityType="DATA_MANAGEModel.tbl_NameValueData" Width="2.625" PointX="9.375" PointY="8.75" />
         <EntityTypeShape EntityType="DATA_MANAGEModel.V_Verify_Step" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DATA_MANAGEModel.tbl_Data" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DATA_MANAGEModel.tbl_DataVerifyStep" Width="1.5" PointX="11.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

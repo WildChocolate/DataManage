@@ -40,12 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseRepo.cs" />
+    <Compile Include="IDataRepo.cs" />
+    <Compile Include="IDataVerifyStepRpo.cs" />
     <Compile Include="IDateTypeRepo.cs" />
     <Compile Include="IFlowStepRepo.cs" />
     <Compile Include="IMenuRepo.cs" />
     <Compile Include="IRoleRepo.cs" />
     <Compile Include="IRoleMenuRepo.cs" />
     <Compile Include="INameValueDataRepo.cs" />
+    <Compile Include="IRoleVerifyRepo.cs" />
     <Compile Include="IVerifyFlowRepo.cs" />
     <Compile Include="IUserRoleRepo.cs" />
     <Compile Include="IUserRepo.cs" />

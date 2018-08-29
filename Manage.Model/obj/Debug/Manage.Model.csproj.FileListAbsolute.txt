@@ -20,3 +20,4 @@ D:\DataManage\Manage.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\DataManage\Manage.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\DataManage\Manage.Model\obj\Debug\Manage.Model.dll
 D:\DataManage\Manage.Model\obj\Debug\Manage.Model.pdb
+D:\DataManage\Manage.Model\obj\Debug\Manage.Model.csprojResolveAssemblyReference.cache

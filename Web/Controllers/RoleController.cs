@@ -174,14 +174,89 @@ namespace Web.Controllers
             }
             return Json(data);
         }
-        public ActionResult RoleFlow(int Key)
+
+        public ActionResult RoleVerifyFlow(int Key)
         {
             if (!CanRead)
+            {
                 return GotoErrorPage(CannotReadText);
+            }
             var service = Container.GetService<IRoleService>();
-            ViewBag.RoleName = service.GetModels(r => r.keyid == Key).FirstOrDefault().C_Name+string.Empty;
+            //RoleKey是通用的变量， RoleName为了显示个提示
+            ViewBag.RoleKey = Key;
+            ViewBag.RoleName = service.GetModels(r => r.keyid == Key).FirstOrDefault().C_Name + string.Empty;
+            //找出所有 datatype,然后构造相应的RoleVerifyInfo
+            var dtserveice = Container.GetService<IDataTypeService>();
+            var dtitems = dtserveice.GetModels(dt => true).ToList();
+            var infos = RoleVerifyInfo.ConvertToRoleVerifyInfos(dtitems, Key);
+            return View(infos);
+        }
+        [HttpPost]
+        public ActionResult GetVerifyFlowCombo()
+        {
+            var service = Container.GetService<IVerifyFlowService>();
+            var items = service.GetModels(vf => true).Select(vf => new { Key=vf.keyid, Name=vf.C_Name});
+            return Json(items);
+        }
+        [HttpPost]
+        public ActionResult GetAllStepJson()
+        {
+            var result = new AjaxResult();
             
-            return View();
+            try
+            {
+                var service = Container.GetService<IFlowStepService>();
+                var steps = service.GetModels(fs => true).OrderBy(fs=> fs.C_Step);
+                result.State = steps.Count() > 0;
+                
+                if(result.State)
+                {
+                    //创建一个用于流程id 和关联步骤的字典
+                    var stepdict = new Dictionary<string, string>(); 
+                    var verifyids = steps.Select(step=> step.C_VerifyId).Distinct();
+                    foreach (var verifykey in verifyids)
+                    {
+                        var stepnames = steps.Where(s => s.C_VerifyId == verifykey).Select(s=> s.C_Name);
+                        var stepstring = string.Join("=>", stepnames);
+                        stepdict.Add(verifykey.ToString(), stepstring);
+                    }
+                    result.Data = stepdict;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.State = false;
+                result.Message = ex.Message;
+            }
+            return Json(result);
+        }
+        [HttpPost]
+        public ActionResult RoleVerifyManage(int RoleKey, string RoleVerifyJson)
+        {
+            var rvlist = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RoleVerifyInfo>>(RoleVerifyJson);
+            var service = Container.GetService<IRoleVerifyService>();
+            var list = new List<tbl_RoleVerify>();
+            foreach (var rv in rvlist)
+            {
+                var item = service.GetModels(i => i.C_RoleId==rv.RoleKey&&i.C_DataTypeId==rv.DataTypeKey).FirstOrDefault();
+                if(item!=null)
+                    service.Delete(item);
+                if ((rv.RoleKey.HasValue && rv.RoleKey > 0) && (rv.VerifyKey.HasValue && rv.VerifyKey > 0)) 
+                { 
+                    list.Add(new tbl_RoleVerify() { C_RoleId=rv.RoleKey.Value, C_DataTypeId=(int )rv.DataTypeKey, C_VerifyId=(int)rv.VerifyKey, C_CreatedDate=DateTime.Now });
+                }
+            }
+            var result = new AjaxResult();
+            result.State = service.AddRange(list);
+            if (result.State)
+            {
+                result.Message = "设置成功";
+            }
+            else
+            {
+                result.Message = "设置失败";
+            }
+            return Json(result);
         }
     }
 }

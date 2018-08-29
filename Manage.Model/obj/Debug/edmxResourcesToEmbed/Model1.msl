@@ -162,6 +162,7 @@
     <EntitySetMapping Name="V_Role_Data_Verify_Step">
       <EntityTypeMapping TypeName="DATA_MANAGEModel.V_Role_Data_Verify_Step">
         <MappingFragment StoreEntitySet="V_Role_Data_Verify_Step">
+          <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
           <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
           <ScalarProperty Name="StepDesction" ColumnName="StepDesction" />
           <ScalarProperty Name="StepRoleName" ColumnName="StepRoleName" />
@@ -201,6 +202,34 @@
           <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
           <ScalarProperty Name="StepName" ColumnName="StepName" />
           <ScalarProperty Name="VerifyName" ColumnName="VerifyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Data">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Data">
+        <MappingFragment StoreEntitySet="tbl_Data">
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+          <ScalarProperty Name="C_DataTypeId" ColumnName="C_DataTypeId" />
+          <ScalarProperty Name="C_VerifyState" ColumnName="C_VerifyState" />
+          <ScalarProperty Name="C_Path" ColumnName="C_Path" />
+          <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DataVerifyStep">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_DataVerifyStep">
+        <MappingFragment StoreEntitySet="tbl_DataVerifyStep">
+          <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_State" ColumnName="C_State" />
+          <ScalarProperty Name="C_StepId" ColumnName="C_StepId" />
+          <ScalarProperty Name="C_DataId" ColumnName="C_DataId" />
+          <ScalarProperty Name="keyid" ColumnName="keyid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

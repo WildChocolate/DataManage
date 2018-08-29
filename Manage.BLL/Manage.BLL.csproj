@@ -41,8 +41,11 @@
   <ItemGroup>
     <Compile Include="BaseService.cs" />
     <Compile Include="ConvertHelper.cs" />
+    <Compile Include="DataService.cs" />
+    <Compile Include="DataVerifyStepService.cs" />
     <Compile Include="RoleMenuService.cs" />
     <Compile Include="NameValueDataService.cs" />
+    <Compile Include="RoleVerifyService.cs" />
     <Compile Include="VerifyFlowService.cs" />
     <Compile Include="UserRoleService.cs" />
     <Compile Include="RoleService.cs" />

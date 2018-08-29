@@ -45,6 +45,9 @@ namespace Manage.DALContainer
             builder.RegisterType<RoleRepo>().As<IRoleRepo>().InstancePerDependency();
             builder.RegisterType<UserRoleRepo>().As<IUserRoleRepo>().InstancePerDependency();
             builder.RegisterType<VerifyFlowRepo>().As<IVerifyFlowRepo>().InstancePerDependency();
+            builder.RegisterType<RoleVerifyRepo>().As<IRoleVerifyRepo>().InstancePerDependency();
+            builder.RegisterType<DataRepo>().As<IDataRepo>().InstancePerDependency();
+            builder.RegisterType<DataVerifyStepRepo>().As<IDataVerifyStepRepo>().InstancePerDependency();
             container = builder.Build();
         }
 

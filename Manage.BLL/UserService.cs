@@ -23,15 +23,28 @@ namespace Manage.BLL
         public UserDto CheckLogin(string username, string pwd)
         {
             var userrepo = Dal as IUserRepo;
+            var encryter = new DES();
+            pwd = encryter.DesEncrypt(pwd);
             var user = userrepo.CheckLogin(username, pwd);
+            
             return ConvertHelper.ConvertUserDto(user);
         }
 
 
-        public bool ChangePassword(string userid, string newpassword)
+        public bool ChangePassword(tbl_User user,string oldpassword, string newpassword)
         {
             var userrepo = Dal as IUserRepo;
-            return userrepo.ChangePassword(userid, newpassword);
+            var encryter = new DES();
+            oldpassword = encryter.DesEncrypt(oldpassword);
+            if (user.C_PassWord == oldpassword)
+            {
+                //新旧密码一样，不就修改数据库了
+                if (oldpassword == newpassword)
+                    return true;
+                newpassword = encryter.DesEncrypt(newpassword);
+                return userrepo.ChangePassword(user.keyid.ToString(), newpassword);
+            }
+            return false;
         }
 
 

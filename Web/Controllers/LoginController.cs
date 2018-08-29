@@ -38,6 +38,8 @@ namespace Web.Controllers
             try
             {
                 var service = Container.GetService<IUserService>();
+
+
                 var user = service.CheckLogin(username, password);
                 if (user != null) 
                 {

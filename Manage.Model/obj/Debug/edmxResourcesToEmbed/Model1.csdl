@@ -125,6 +125,8 @@
     <EntitySet Name="V_Role_Data_Verify_Step" EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" />
     <EntitySet Name="tbl_NameValueData" EntityType="DATA_MANAGEModel.tbl_NameValueData" />
     <EntitySet Name="V_Verify_Step" EntityType="DATA_MANAGEModel.V_Verify_Step" />
+    <EntitySet Name="tbl_Data" EntityType="DATA_MANAGEModel.tbl_Data" />
+    <EntitySet Name="tbl_DataVerifyStep" EntityType="DATA_MANAGEModel.tbl_DataVerifyStep" />
   </EntityContainer>
   <EntityType Name="V_User_Role">
     <Key>
@@ -191,6 +193,7 @@
       <PropertyRef Name="StepName" />
       <PropertyRef Name="StepRole" />
       <PropertyRef Name="StepNumber" />
+      <PropertyRef Name="DataTypeId" />
     </Key>
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="ParentId" Type="Int32" Nullable="false" />
@@ -205,6 +208,7 @@
     <Property Name="StepRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StepDesction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="StepNumber" Type="Int32" Nullable="false" />
+    <Property Name="DataTypeId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_NameValueData">
     <Key>
@@ -234,5 +238,31 @@
     <Property Name="StepRole" Type="Int32" Nullable="false" />
     <Property Name="VerifyId" Type="Int32" Nullable="false" />
     <Property Name="StepId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Data">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C_Path" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="C_VerifyState" Type="Boolean" Nullable="false" />
+    <Property Name="C_DataTypeId" Type="Int32" Nullable="false" />
+    <Property Name="C_UserId" Type="Int32" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_DataVerifyStep">
+    <Key>
+      <PropertyRef Name="keyid" />
+    </Key>
+    <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_DataId" Type="Int64" Nullable="false" />
+    <Property Name="C_StepId" Type="Int32" Nullable="false" />
+    <Property Name="C_State" Type="Boolean" Nullable="false" />
+    <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="C_UserId" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

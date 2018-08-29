@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DATA_MANAGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Data">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="C_Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="C_Path" Type="nvarchar" MaxLength="2048" />
+          <Property Name="C_VerifyState" Type="bit" Nullable="false" />
+          <Property Name="C_DataTypeId" Type="int" Nullable="false" />
+          <Property Name="C_UserId" Type="int" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_DataType">
           <Key>
             <PropertyRef Name="keyid" />
@@ -12,6 +26,18 @@
           <Property Name="keyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="C_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="C_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_DataVerifyStep">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_UserId" Type="int" Nullable="false" />
+          <Property Name="C_DataId" Type="bigint" Nullable="false" />
+          <Property Name="C_StepId" Type="int" Nullable="false" />
+          <Property Name="C_State" Type="bit" Nullable="false" />
           <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="C_UpdatedDate" Type="datetime" />
         </EntityType>
@@ -147,6 +173,7 @@
             <PropertyRef Name="ParentId" />
             <PropertyRef Name="RoleName" />
             <PropertyRef Name="ParentRole" />
+            <PropertyRef Name="DataTypeId" />
             <PropertyRef Name="TypeName" />
             <PropertyRef Name="VerifyId" />
             <PropertyRef Name="VerifyName" />
@@ -159,6 +186,7 @@
           <Property Name="ParentId" Type="int" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ParentRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataTypeId" Type="int" Nullable="false" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="VerifyId" Type="int" Nullable="false" />
           <Property Name="VerifyName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -232,7 +260,9 @@
           <Property Name="StepRole" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DATA_MANAGEModelStoreContainer">
+          <EntitySet Name="tbl_Data" EntityType="Self.tbl_Data" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_DataType" EntityType="Self.tbl_DataType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_DataVerifyStep" EntityType="Self.tbl_DataVerifyStep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_FlowStep" EntityType="Self.tbl_FlowStep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Information" EntityType="Self.tbl_Information" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" Schema="dbo" store:Type="Tables" />
@@ -249,6 +279,7 @@
     [V_Role_Data_Verify_Step].[ParentId] AS [ParentId], 
     [V_Role_Data_Verify_Step].[RoleName] AS [RoleName], 
     [V_Role_Data_Verify_Step].[ParentRole] AS [ParentRole], 
+    [V_Role_Data_Verify_Step].[DataTypeId] AS [DataTypeId], 
     [V_Role_Data_Verify_Step].[TypeName] AS [TypeName], 
     [V_Role_Data_Verify_Step].[VerifyId] AS [VerifyId], 
     [V_Role_Data_Verify_Step].[VerifyName] AS [VerifyName], 
@@ -425,6 +456,8 @@
           <EntitySet Name="V_Role_Data_Verify_Step" EntityType="DATA_MANAGEModel.V_Role_Data_Verify_Step" />
           <EntitySet Name="tbl_NameValueData" EntityType="DATA_MANAGEModel.tbl_NameValueData" />
           <EntitySet Name="V_Verify_Step" EntityType="DATA_MANAGEModel.V_Verify_Step" />
+          <EntitySet Name="tbl_Data" EntityType="DATA_MANAGEModel.tbl_Data" />
+          <EntitySet Name="tbl_DataVerifyStep" EntityType="DATA_MANAGEModel.tbl_DataVerifyStep" />
         </EntityContainer>
         <EntityType Name="V_User_Role">
           <Key>
@@ -491,6 +524,7 @@
             <PropertyRef Name="StepName" />
             <PropertyRef Name="StepRole" />
             <PropertyRef Name="StepNumber" />
+            <PropertyRef Name="DataTypeId" />
           </Key>
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="ParentId" Type="Int32" Nullable="false" />
@@ -505,6 +539,7 @@
           <Property Name="StepRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StepDesction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="StepNumber" Type="Int32" Nullable="false" />
+          <Property Name="DataTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_NameValueData">
           <Key>
@@ -534,6 +569,32 @@
           <Property Name="StepRole" Type="Int32" Nullable="false" />
           <Property Name="VerifyId" Type="Int32" Nullable="false" />
           <Property Name="StepId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Data">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Path" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="C_VerifyState" Type="Boolean" Nullable="false" />
+          <Property Name="C_DataTypeId" Type="Int32" Nullable="false" />
+          <Property Name="C_UserId" Type="Int32" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_DataVerifyStep">
+          <Key>
+            <PropertyRef Name="keyid" />
+          </Key>
+          <Property Name="keyid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_DataId" Type="Int64" Nullable="false" />
+          <Property Name="C_StepId" Type="Int32" Nullable="false" />
+          <Property Name="C_State" Type="Boolean" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="C_UserId" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -702,6 +763,7 @@
           <EntitySetMapping Name="V_Role_Data_Verify_Step">
             <EntityTypeMapping TypeName="DATA_MANAGEModel.V_Role_Data_Verify_Step">
               <MappingFragment StoreEntitySet="V_Role_Data_Verify_Step">
+                <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
                 <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
                 <ScalarProperty Name="StepDesction" ColumnName="StepDesction" />
                 <ScalarProperty Name="StepRoleName" ColumnName="StepRoleName" />
@@ -741,6 +803,34 @@
                 <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
                 <ScalarProperty Name="StepName" ColumnName="StepName" />
                 <ScalarProperty Name="VerifyName" ColumnName="VerifyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Data">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_Data">
+              <MappingFragment StoreEntitySet="tbl_Data">
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+                <ScalarProperty Name="C_DataTypeId" ColumnName="C_DataTypeId" />
+                <ScalarProperty Name="C_VerifyState" ColumnName="C_VerifyState" />
+                <ScalarProperty Name="C_Path" ColumnName="C_Path" />
+                <ScalarProperty Name="C_Description" ColumnName="C_Description" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_DataVerifyStep">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_DataVerifyStep">
+              <MappingFragment StoreEntitySet="tbl_DataVerifyStep">
+                <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_State" ColumnName="C_State" />
+                <ScalarProperty Name="C_StepId" ColumnName="C_StepId" />
+                <ScalarProperty Name="C_DataId" ColumnName="C_DataId" />
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

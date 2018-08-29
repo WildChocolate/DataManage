@@ -25,7 +25,7 @@
             type: "post",
             dataType: "json",
             success: function (data) {
-                if (data.status == true) {
+                if (data.Status == true) {
                     alert("修改成功");
                 }
                 else {

@@ -10,6 +10,5 @@ namespace Manage.IDAL
 {
     public interface IVerifyFlowRepo : IBaseRepo<tbl_VerifyFlow>
     {
-        
     }
 }

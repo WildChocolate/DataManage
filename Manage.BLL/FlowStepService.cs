@@ -22,5 +22,12 @@ namespace Manage.BLL
             var fsdal = Dal as IFlowStepRepo;
             return fsdal.GetVFlowStepModels(wherelambda).Select(vfs => new FlowStepInfo { Key=vfs.StepId, Name=vfs.StepName, StepRole=vfs.StepRole, VerifyKey=vfs.VerifyId, Description=vfs.StepDescription, Step=vfs.StepNumber });
         }
+
+
+        public IQueryable<V_Role_Data_Verify_Step> GetRoleVerifyStepsByRole(int RoleKey, int DataTypeKey)
+        {
+            var fsdal = Dal as IFlowStepRepo;
+            return fsdal.GetRoleVerifyStep(rvf => rvf.RoleId == RoleKey && rvf.DataTypeId == DataTypeKey);
+        }
     }
 }

@@ -1,0 +1,40 @@
+﻿@model Manage.IBLL.Dto.DataInfo
+@{
+    ViewBag.Title = "TextExecute";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+
+<h2>文本文件--@ViewBag.Operation</h2>
+<hr />
+<input type="hidden" id="Key" name="Key" value="@ViewBag.DataKey" />
+<div class="easyui-panel" title="文件@(ViewBag.Operation)" style="width:500px;">
+    <div style="padding:10px 60px 20px 60px">
+        <form id="ff" method="post">
+            <table cellpadding="5" cellspacing="5">
+                <tr>
+                    <td>Name:</td>
+                    <td><input id="Name" class="easyui-textbox" type="text" name="Name" data-options="required:true" value="@Model.Name"/></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><input id="Description" class="easyui-textbox" type="text" name="Description" value="@Model.Description"/></td>
+                </tr>
+                <tr>
+                    <td>文件:</td>
+                    <td>
+                        @*<input id="textfile" type="file" name="file" />*@
+                        <input id ="textfile" class="easyui-filebox" name="file" data-options="prompt:'Choose another file...'" style="width:100%">
+</td>
+                </tr>
+            </table>
+        </form>
+        <div style="text-align:center;padding:5px">
+            <a id="submit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">@ViewBag.Operation</a>
+            <a id="cancel" href="TextQuery" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+        </div>
+    </div>
+</div>
+
+@section script{
+<script src="~/LocalScript/Data/TextExecute.js"></script>
+}

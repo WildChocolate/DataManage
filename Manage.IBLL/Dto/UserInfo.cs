@@ -1,4 +1,5 @@
-﻿using Manage.Model;
+﻿using Manage.Common;
+using Manage.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,10 +32,11 @@ namespace Manage.IBLL.Dto
         }
         public static UserInfo ConvertUserInfo(tbl_User_NoPhoto user)
         {
+            var encryter = new DES();
             var userinfo = new UserInfo();
             userinfo.Key = user.keyid;
             userinfo.Name = user.C_Name + string.Empty;
-            userinfo.PassWord = "******";
+            userinfo.PassWord = encryter.DesDecrypt(user.C_PassWord);
             userinfo.LoginName = user.C_LoginName + string.Empty;
             userinfo.Sex = user.C_Sex;
             userinfo.CreatedDate = user.C_CreatedDate.ToString();
@@ -46,10 +48,11 @@ namespace Manage.IBLL.Dto
         }
         public static UserInfo ConvertUserInfo(tbl_User user)
         {
+            var encryter = new DES();
             var userinfo = new UserInfo();
             userinfo.Key = user.keyid;
             userinfo.Name = user.C_Name+string.Empty;
-            userinfo.PassWord = "******";
+            userinfo.PassWord = encryter.DesDecrypt(user.C_PassWord);
             userinfo.LoginName = user.C_LoginName+string.Empty;
             userinfo.Sex = user.C_Sex;
             userinfo.CreatedDate = user.C_CreatedDate+string.Empty;

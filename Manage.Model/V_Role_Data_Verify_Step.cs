@@ -44,6 +44,8 @@ public partial class V_Role_Data_Verify_Step
 
     public int StepNumber { get; set; }
 
+    public int DataTypeId { get; set; }
+
 }
 
 }

@@ -70,7 +70,6 @@ namespace Web.ControllerExt
             get { return Session["action"] + string.Empty; }
             set { Session["action"] = value; }
         }
-        
         protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
