@@ -1,0 +1,95 @@
+﻿@model Manage.IBLL.Dto.DataVerifyDetailInfo
+@{
+    ViewBag.Title = "DataVerify";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+@section style{
+<link href="~/LocalCSS/DataVerify/DataVerify.css" rel="stylesheet" />
+}
+<h2>资料审核</h2>
+<hr />
+<input type="hidden"  id="Key" name="Key" value="@Model.Data.Key" />
+<div class="contentDetail">
+    <table class="tblVerifyDetail" cellpadding="5px" cellspacing="5px;" width="80%" >
+        <tr>
+            <td>资料名称:</td>
+            <td>@Model.Data.Name</td>
+            <td>备注:</td>
+            <td>@Model.Data.Description</td>
+        </tr>
+        <tr>
+            <td>创建时间:</td>
+            <td>@Model.Data.CreatedDate</td>
+            <td>修改时间:</td>
+            <td>@Model.Data.UpdatedDate</td>
+        </tr>
+        <tr>
+            <td>流程:</td>
+            <td colspan="3">
+                <table width="75%">
+                    <tr>
+                        <td>步骤名称</td>
+                        <td>审核人</td>
+                        <td>意见</td>
+                        <td>审核状态</td>
+                        <td>时间</td>
+                    </tr>
+                    @if (Model.Steps != null && Model.Steps.Count > 0)
+                    {
+                        foreach (var step in Model.Steps)
+                        {
+                            <tr>
+                                <td>@step.Name</td>
+                                <td>@step.UserName</td>
+                                <td>@step.Advice</td>
+                                <td>@step.StateText</td>
+                                <td>@step.UpdatedDate</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                    }
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                操作:
+            </td>
+            <td colspan="3">
+                <input id="pass" type="radio" class="radio" name="state" checked />通过
+                <input id="notpoass" type="radio" class="radio" name="state" />不通过
+            </td>
+        </tr>
+        <tr>
+            <td>
+                意见:
+            </td>
+
+            <td colspan="3">
+                <input id="Advice" class="easyui-textbox" name="Advice" data-options="multiline:true" style="width:100%;height:80px" />
+            </td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <div style="text-align:center;padding:5px">
+                        <a id="submit" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+                        <a id="cancel" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+@section script{
+<script src="~/LocalScript/DataVerify/DataVerify.js"></script>
+}

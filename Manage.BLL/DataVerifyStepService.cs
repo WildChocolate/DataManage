@@ -15,5 +15,11 @@ namespace Manage.BLL
         {
             Dal = DALContainer.Container.GetRepository<IDataVerifyStepRepo>();
         }
+
+        public IQueryable<V_DataVerifyStep> GetVModels(long Datakey)
+        {
+            var vsrepo = Dal as IDataVerifyStepRepo;
+            return vsrepo.GetVModels(vf => vf.DataKey == Datakey);
+        }
     }
 }

@@ -157,7 +157,7 @@ namespace Web.Controllers
                 if (result.State)
                 {
                     result.Message = "添加成功";
-                    //添加成功后要添加流程步骤的审核
+                    //添加成功后要添加流程步骤的审核,这是个简化处理，本来一个人有多个角色，但这里取第一个，来确定需要走的流程
                     var mainRole = userDto.Roles.FirstOrDefault().keyid;
                     var flowStepService = Container.GetService<IFlowStepService>();
                     //这里只需要取到第一个步骤
@@ -177,5 +177,6 @@ namespace Web.Controllers
 
             return Json(result);
         }
+        
     }
 }

@@ -127,6 +127,7 @@
     <EntitySet Name="V_Verify_Step" EntityType="DATA_MANAGEModel.V_Verify_Step" />
     <EntitySet Name="tbl_Data" EntityType="DATA_MANAGEModel.tbl_Data" />
     <EntitySet Name="tbl_DataVerifyStep" EntityType="DATA_MANAGEModel.tbl_DataVerifyStep" />
+    <EntitySet Name="V_DataVerifyStep" EntityType="DATA_MANAGEModel.V_DataVerifyStep" />
   </EntityContainer>
   <EntityType Name="V_User_Role">
     <Key>
@@ -264,5 +265,22 @@
     <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="C_UserId" Type="Int32" Nullable="false" />
+    <Property Name="C_Advice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="V_DataVerifyStep">
+    <Key>
+      <PropertyRef Name="StepName" />
+      <PropertyRef Name="StepUser" />
+      <PropertyRef Name="StepState" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="DataKey" />
+    </Key>
+    <Property Name="StepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StepUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StepAdvice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StepState" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="DataKey" Type="Int64" Nullable="false" />
   </EntityType>
 </Schema>

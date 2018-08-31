@@ -51,7 +51,7 @@ $(function () {
                     toolbar: "#tb",
                     minHeight: 300,
                     fitColumns: true,
-                    title: "流程查询"
+                    title: "资料审核"
                 }).datagrid("loadData", data);
             }
             var pager = $("#List").datagrid("getPager");

@@ -43,6 +43,9 @@
     <Compile Include="Dto\BaseInfo.cs" />
     <Compile Include="Dto\DataInfo.cs" />
     <Compile Include="Dto\DataTypeInfo.cs" />
+    <Compile Include="Dto\DataVerifyDetailInfo.cs" />
+    <Compile Include="Dto\DataVerifyInfo.cs" />
+    <Compile Include="Dto\DataVerifyStepInfo.cs" />
     <Compile Include="Dto\FlowStepInfo.cs" />
     <Compile Include="Dto\MenuDto.cs" />
     <Compile Include="Dto\MenuInfo.cs" />

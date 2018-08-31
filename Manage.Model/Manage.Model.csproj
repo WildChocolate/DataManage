@@ -104,6 +104,9 @@
     <Compile Include="tbl_VerifyFlow.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_DataVerifyStep.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="V_Role_Data_Verify_Step.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

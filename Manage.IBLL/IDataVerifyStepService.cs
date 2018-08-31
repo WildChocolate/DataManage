@@ -9,5 +9,6 @@ namespace Manage.IBLL
 {
     public interface IDataVerifyStepService:IBaseService<tbl_DataVerifyStep>
     {
+        IQueryable<V_DataVerifyStep> GetVModels(long Datakey); 
     }
 }

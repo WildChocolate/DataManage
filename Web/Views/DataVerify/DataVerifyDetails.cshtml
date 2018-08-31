@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Manage.IBLL.Dto.DataVerifyStepInfo>
+@{
+    ViewBag.Title = "DataVerifyDetails";
+    Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
+}
+@section style{
+<link href="~/LocalCSS/Data/DataVerifyDetails.css" rel="stylesheet" />
+}
+<h2>资料审核步骤</h2>
+<hr />
+<div class="details">
+    @if (Model != null)
+    {
+        var index=1;
+        foreach (var item in Model)
+        {
+            <h3>第@(index)步</h3>
+            <p>@item.Name</p>
+            <p>审核人：@item.UserName</p>
+            <p>意见：@item.Advice</p>
+            <p>状态：@item.StateText</p>
+            <p>创建时间：@item.CreatedDate</p>
+            <p>操作时间：@item.UpdatedDate</p>
+            <hr />
+            index++;
+        }
+    }
+</div>

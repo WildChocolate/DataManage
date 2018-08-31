@@ -1,0 +1,27 @@
+﻿
+.contentDetail{
+    margin:auto;
+}
+table{
+    border:1px solid lightgray;
+    background:lightgray;
+    
+}
+.details{
+    width:33%;
+    margin:auto;
+    background:lightskyblue;
+    padding:10px;
+
+}
+h3{
+    padding:5px;
+    background:lightgray;
+}
+.tblVerifyDetail{
+    background-color:white;
+    margin:auto;
+}
+.tblVerifyDetail tr>td{
+   
+}

@@ -14,9 +14,10 @@
         $.ajax({
             url: "SearchDataType",
             type: "post",
-            data: {},
+            data: {Name:this.Name, DateFrom:this.DateFrom, DateTo:this.DateTo, PageSize:this.PageSize,PageIndex:this.PageIndex},
             datatype: "json",
-            success:function(data){
+            success: function (data) {
+                console.log(data);
                 $("#List").datagrid({
                     columns: [data.title],
                     singleSelect: true,
@@ -35,7 +36,7 @@ $(function () {
     });
     search.submit();
 
-    $("#submit").click(search.submit);
+    $("#search").click(search.submit);
     $("#UpdateBtn").click(function () {
         var row = $("#List").datagrid("getSelected");
         if (row) {

@@ -271,18 +271,18 @@ namespace Web.Controllers
             Expression<Func<tbl_NameValueData, bool>> wherelambda = nv=> nv.C_UserId==userDto.User.keyid;
             if (!string.IsNullOrWhiteSpace(pager.Name))
             {
-                wherelambda.And(nv=> nv.C_Name.Contains(pager.Name));
+                wherelambda=wherelambda.And(nv => nv.C_Name.Contains(pager.Name));
             }
             if (!string.IsNullOrWhiteSpace(pager.DateFrom))
             {
-                wherelambda.And(nv => nv.C_CreatedDate>Convert.ToDateTime( (pager.DateFrom)));
+                wherelambda=wherelambda.And(nv => nv.C_CreatedDate > Convert.ToDateTime((pager.DateFrom)));
             }
             if (!string.IsNullOrWhiteSpace(pager.DateTo))
             {
-                wherelambda.And(nv => nv.C_CreatedDate <Convert.ToDateTime((pager.DateTo)));
+                wherelambda=wherelambda.And(nv => nv.C_CreatedDate < Convert.ToDateTime((pager.DateTo)));
             }
             var service = Container.GetService<INameValueDataService>();
-            var items = service.GetModels(wherelambda).ToList();
+            var items = service.GetModelsByPage(pager.pageSize,pager.pageIndex, true, nv=> nv.keyid, wherelambda).ToList();
             var cnt = service.GetTableCount(wherelambda);
             var grid = new NameValueDataGrid();
             grid.rows = NameValueDataInfo.ConvertToNameValueDataInfos(items); 

@@ -223,6 +223,7 @@
     <EntitySetMapping Name="tbl_DataVerifyStep">
       <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_DataVerifyStep">
         <MappingFragment StoreEntitySet="tbl_DataVerifyStep">
+          <ScalarProperty Name="C_Advice" ColumnName="C_Advice" />
           <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
           <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
           <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
@@ -230,6 +231,19 @@
           <ScalarProperty Name="C_StepId" ColumnName="C_StepId" />
           <ScalarProperty Name="C_DataId" ColumnName="C_DataId" />
           <ScalarProperty Name="keyid" ColumnName="keyid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_DataVerifyStep">
+      <EntityTypeMapping TypeName="DATA_MANAGEModel.V_DataVerifyStep">
+        <MappingFragment StoreEntitySet="V_DataVerifyStep">
+          <ScalarProperty Name="DataKey" ColumnName="DataKey" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="StepState" ColumnName="StepState" />
+          <ScalarProperty Name="StepAdvice" ColumnName="StepAdvice" />
+          <ScalarProperty Name="StepUser" ColumnName="StepUser" />
+          <ScalarProperty Name="StepName" ColumnName="StepName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

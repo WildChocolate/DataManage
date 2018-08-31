@@ -1,19 +1,25 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Tenor+Sans);
 html {
-  background-color: #5D92BA;
+  width:100%;
+  height:100%;
   font-family: "Tenor Sans", sans-serif;
+  background:url('../../Images/onepiece.jpg') no-repeat ;
+  background-size:100% 100%;
 }
 
 .container {
-  width: 500px;
-  height: 400px;
-  margin: 0 auto;
+
+    width: 500px;
+    height: 600px;
+    margin: 0 auto;
 }
 
 .login {
   /*margin-top: 50px;*/
   margin-top:30%;
   width: 450px;
+  background:gray;
+  opacity:.95;
 }
 
 .login-heading {

@@ -49,6 +49,7 @@
     <Compile Include="Condition\BasePager.cs" />
     <Compile Include="Condition\DataInfoPager.cs" />
     <Compile Include="Condition\DataTypePager.cs" />
+    <Compile Include="Condition\DataVerifyStepPager.cs" />
     <Compile Include="Condition\MenuPager.cs" />
     <Compile Include="Condition\NameValueInfoPager.cs" />
     <Compile Include="Condition\RolePager.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="DataGrid\BaseDataGrid.cs" />
     <Compile Include="DataGrid\DataInfoGrid.cs" />
     <Compile Include="DataGrid\DataTypeGrid.cs" />
+    <Compile Include="DataGrid\DataVerifyGrid.cs" />
     <Compile Include="DataGrid\MenuGrid.cs" />
     <Compile Include="DataGrid\NameValueDataGrid.cs" />
     <Compile Include="DataGrid\RoleGrid.cs" />

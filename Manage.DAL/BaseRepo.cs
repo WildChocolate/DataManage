@@ -36,12 +36,12 @@ namespace Manage.DAL
             if (isAsc)
             {
                 //return dbContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-                return dbContext.Set<T>().Where(WhereLambda.Compile()).AsQueryable().OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return dbContext.Set<T>().Where(WhereLambda).AsQueryable().OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
             else
             {
                 //return dbContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-                return dbContext.Set<T>().Where(WhereLambda.Compile()).AsQueryable().OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return dbContext.Set<T>().Where(WhereLambda).AsQueryable().OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
         public IEnumerable<Target> GetModelsByPage<Target>(int pageSize, int pageIndex, string sql)
@@ -61,7 +61,7 @@ namespace Manage.DAL
         }
         public int GetTableCount(Expression<Func<T, bool>> wherelambda)
         {
-            var cnt = dbContext.Set<T>().Where(wherelambda.Compile()).Count();
+            var cnt = dbContext.Set<T>().Where(wherelambda).Count();
             return cnt;
         }
         /// <summary>

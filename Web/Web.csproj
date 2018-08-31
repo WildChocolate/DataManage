@@ -188,9 +188,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="EasyUI1.4.5\datagrid-detailview.js" />
     <Content Include="Images\dream.png" />
+    <Content Include="Images\onepiece.jpg" />
     <Content Include="Images\onepieceLogo.png" />
     <Content Include="Images\head_girl.png" />
     <Content Include="Images\head_boy.png" />
+    <Content Include="LocalCSS\DataVerify\DataVerify.css" />
     <Content Include="LocalCSS\Menu\IndexExecute.css" />
     <Content Include="LocalCSS\Role\IndexQuery.css" />
     <Content Include="LocalCSS\UserRole\IndexExecute.css" />
@@ -997,6 +999,8 @@
     <Content Include="LocalCSS\Role\IndexExecute.css" />
     <Content Include="LocalScript\DataType\IndexExecute.js" />
     <Content Include="LocalScript\DataType\IndexQuery.js" />
+    <Content Include="LocalScript\DataVerify\DataVerify.js" />
+    <Content Include="LocalScript\DataVerify\TxtQuery.js" />
     <Content Include="LocalScript\Data\TextExecute.js" />
     <Content Include="LocalScript\Data\TextQuery.js" />
     <Content Include="LocalScript\Menu\IndexExecute.js" />
@@ -1113,10 +1117,13 @@
     <Content Include="Views\Role\RoleVerifyFlow.cshtml" />
     <Content Include="Views\Data\TextQuery.cshtml" />
     <Content Include="Views\Data\TextExecute.cshtml" />
-    <Content Include="Views\DataVerify\TxtIndex.cshtml" />
+    <Content Include="Views\DataVerify\TxtQuery.cshtml" />
+    <Content Include="Views\DataVerify\DataVerifyDetails.cshtml" />
+    <Content Include="Views\DataVerify\DataVerify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="LocalCSS\Data\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\FlowStep\" />
     <Folder Include="Views\NameValueInfo\" />

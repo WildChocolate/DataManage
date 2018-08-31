@@ -1,0 +1,295 @@
+CargoWise 供应商操作界面账户
+http://cohtrn.webtracker.wisegrid.net/Bookings/EditBooking.aspx
+
+Company Code: COHAIRHKG
+User Name:   jeff_ye@cohesionfreight.com.cn
+Password:   9MHB3o
+---------------------------
+Company Code: COHAIRHKG
+User Name:   pricing@cohesionfreight.com.hk
+Password:   6do1Gv 
+
+192.168.0.2  Cohesion_szx
+192.168.0.241 .\Administrator COHSZX
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+VPN:
+vpn:VPNSZX_LAN
+pwd:VPNSZX_LAN
+121.15.208.168
+121.15.208.217
+
+公司网关：192.168.0.3  192.168.0.5  192.168.0.9  192.168.0.11
+///////////////////////////////////////////////
+学习登陆
+https://myaccount.cargowise.com/zh-cn/Home/CargoWiseOneWiseLearning.aspx
+Code: COHAIRHKG
+User Name: alva_wong@cohesionfreight.com.hk
+Password: 3Y2qAK
+
+User Name:COH.PRD.Alan.Ruan@wg.cargowise.com
+Password:LmCFbzu61
+
+
+软件的登陆
+user name: COH.PRD.Alan.Lan@wg.cargowise.com	
+password:  UeX2aKv6
+user name2:Alan.Lan	
+password2: changeme
+
+///////////////////////////////////////
+
+
+香港服务器账号
+coh-hk\JameLi COHESION2015#
+//////////////////////////////////////////
+云平台：
+Login: CohesionFreightAdmin
+Password: 1DcuF50FkpB4
+//////////////////////////////////////////////
+云eBooking服务器：
+administrator/COHESION2013#
+//////////////////////////////////////////////////////////
+FOR OEC
+
+http://test.oecgroup.ca
+	 Account 	Username	Password
+Test POM:22847		COHSHA		test2514
+Test POM:22847		COHSZX		test2514
+
+http://po.oecgroup.ca
+         Account 	Username	Password
+oec POM：22847(23064)  	cohhkg   	cohhkg02
+oec POM：22847(23046)  	cohsha   	cohsha03
+oec POM：22847(23062)  	cohszx   	cohszx04
+oec POM：22847		COHNBO  	COHNBO99!
+
+////////////////////////////////////////////////////
+FOR descartes登陆
+Test URL:	https://globalcompliancetest.descartes.com/login
+Login ID: kgavin   	Pwd: Testing1*
+
+FTP:MOHAWK 6X3lHLZc 可以试试
+
+Emanifest test
+Web: https://globalcompliancetest.descartes.com/login
+FTP: ftptest.myvan.descartes.com
+ftp://ftptest.myvan.descartes.com/
+Login ID:  kgavin
+     Pwd:  Testing1*
+//////////////////////////////////////////////////
+For CSL
+https://ipims.ilogisys.com/Vanning/VanningList
+CSXG001    cplszx@cplchina.com.cn      密码  cplszx
+Ftp: ftp//edi.ssikor.co.kr:21, name: CSLE002583,pwd:CSLE002583
+
+//////////////////////////////////////////////////////
+FOR MOH 登陆
+link  = https://agents.mohawkglobal.com/Authentication/Login 	
+login = COHSZX 	
+pwd   = NhVX>6Dj9(RD",T 	
+//////////////////////////////////////////////////
+财务服务器
+192.168.0.203
+//////////////////////////////////////////
+192.168.21.15
+用户名：administrator  密码：C0hshaTT  数据库地址：192.168.21.15 UID=tnt;PWD=tracktrace
+
+edi更新方面的  更新SeaOp
+192.168.21.15   at SHA
+http://tt.cohesionfreight.com.cn:88/login.aspx 
+admin        admin   /hishis
+admin        admin   pwd= hishis
+/////////////////////////////////////////////////
+服务器：
+香港	192.168.1.77	ALANLAN COHESION2017#			数据库地址：192.168.1.84\logistics sa/空 系统：admin/himhim
+香港	192.168.1.82 	COH-HK\ALANLAN COHESION2017#		数据库地址：192.168.1.84\logistics sa/空 系统：admin/himhim
+香港	192.168.1.83 	COH-HK\ALANLAN COHESION2017#
+香港    192.168.2.90    login name:administrator pws:BILLGATES	数据库地址：192.168.2.90 sa/空 		 系统：admin/himhim
+香港	192.168.1.89  	loginname:coh-cargowise\alan.lan pws:COHESION2017#   共享地址：\\192.168.1.89\inBound 
+
+
+深圳	192.168.0.130 	administrator/windows 			数据库地址：192.168.0.130  sa/空	 系统：admin/hishis
+成都	192.168.7.99  	administrator wd:Cohesionctu85592728	数据库地址：192.168.0.130  sa/空	 系统：admin/hishis
+福州 	192.168.6.199  	COHESION   				数据库地址：192.168.0.130  sa/空	 系统：admin/hishis
+COHXMN	192.168.10.179  Bysin88
+
+上海	192.168.21.18 	administrator/cohshaNeo230  		数据库地址：192.168.21.25 sa/空  	 系统：admin/himhim
+宁波	192.168.22.225 	administrator/szhl87325353		数据库地址：192.168.22.26 sa/空		 系统：admin/hishis
+天津 	192.168.23.21  	Administrator/CohTsn@##1270		数据库地址：一样
+大连   	192.168.24.50  	administrator/CohDlc!@#230  		数据库地址：一样			 系统：admin/elaine
+青岛   	192.168.25.22  	administrator/CohTao$%^7108		数据库地址：一样		 	 系统：admin/elaine					
+南京   	192.168.21.23  	administrator/CohNkg@160512		数据库地址：192.168.21.23 		administrator Coh@by8G
+
+
+///////////////////////////////
+SZX 深圳/XMN厦门/FOC福州/WUH武汉/CTU成都 都是使用 130 ，230，其中 130 主要是给 操作使用，230主要是 财务使用。
+
+SHA	上海 	192.168.21.18		数据库 21.25,     CPLCKG 	重庆 	21.18 		共用 SHA的服务器。
+GZU	广州	192.168.0.190	 	administrator/Cohesion_gzu	数据库 192.168.18.191
+NBO	宁波	192.168.22.225						数据库 22.26
+TAO	青岛 	192.168.25.22
+TSN 	天津 	192.168.23.21
+DLC 	大连  	192.168.24.50
+NKG	南京 	192.168.21.23
+///////////////////////////////////////////////
+
+深圳老系统 192.168.0.4
+广州老系统 192.168.3.99
+厦门老系统 192.168.10.100     bysin
+福州老系统 192.168.6.199
+上海系统   192.168.21.18 cohshaNeo230
+广州服务器（192.168.18.19*） 
+192.168.3.95 windows Cohesion_gzu
+///////////////////////////////////////////////////////////
+
+--查询是否有死锁的SQL:
+exec ATP_ACC_TEMP.DBO.P_LOCKINFO 0,1
+--运行之后，查询结果里面如果有'牺牲品' ，'死锁' 之类的关键字，则表示有死锁存在，
+--需要立马运行下面的语句清理死锁：
+exec ATP_ACC_TEMP.DBO.P_LOCKINFO 1,1
+
+///////////////////////////////////////////////////////
+vpn
+账号：VPNSZX_JAMES 密码：COHESION_VPN 地址：121.15.208.217
+
+///////////////////////////////////////////////
+
+入职文件：
+共享地址  administrator/windows
+\\prn-srv\共享汇力电子文档\入职文件\BASIC KNOWLEDGE
+
+////////////////////////////////////////////////////////////
+
+公司WIFI密码：
+804B:CPLSZX804B
+804A:COHESIONSZX804A
+
+//////////////////////////////////////////////////////
+
+域windows账户：Alan.Lan    pws.zxc1122
+OPS系统账户：服务器：192.168.0.133  administrator windows
+Email:同上  pws改成123456
+alan_lan@cohesionfreight.com.cn
+
+以下是QQ服务邮箱：foxmail配制
+Alan_lan@cohesionfreight.com.cn     	yO5trluS	
+itsupport_doc@cohesionfreight.com.cn	Ki4kiedi	
+itsupport_szx@cohesionfreight.com.cn	bleyiUx6
+
+常用邮件地址:
+Dragos.Oprea@oecgroup.ca
+alva_wong@cohesionfreight.com.hk,Florian.Marinoiu@oecgroup.ca,rafic.mehanna@oecgroup.ca
+/////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+/***************以下是待整理数据*****************/
+汇力新系统各分站安装参数
+宁波3G
+服务器IP：
+192.168.22.225
+administrator
+szhl87325353
+CohNbo&^%5511
+
+天津
+服务器IP：
+192.168.23.21
+Administrator
+Szhl15822141
+CohTsn@##1270
+计算机名：gh-b0e6f7b780c0.
+
+大连
+OLD-服务器IP：
+192.168.24.15
+administrator
+cohdlc
+CohDlc*&^0915
+
+	打印服务器192.168.24.98 提单
+	打印服务器192.168.24.99 财务
+
+大连新服务器
+NEW-服务器IP：
+192.168.24.50
+administrator
+CohDlc!@#230
+
+
+青岛新服务器
+服务器IP：
+192.168.25.22
+administrator
+CohTao$%^7108
+
+上海：
+服务器IP：
+192.168.21.18
+administrator
+cohshaNeo230
+
+192.168.21.23
+administrator
+CohNkg@160512 
+
+
+192.168.21.25
+Administrator
+CoHesql230
+
+
+192.168.22.26
+administrator
+szhl87325353@
+
+--------------------
+
+gica
+http://bk.cohesionfreight.com.hk/coh_booking.aspx
+
+cohszx / cohszx001
+cohhkg / cohhkg01
+
+---------------------------------
+
+培训资料：
+http://myaccount.cargowise.com/zh-cn/Home/CargoWiseOneWiseLearningChina.aspx#item=5416D4CD-1F64-4594-92C7-4280E84B39B8
+Company Code: COHAIRHKG
+User Name: alva_wong@cohesionfreight.com.hk
+Password: 3Y2qAK
+
+wisecloud系统登陆：
+Feng Zheng：
+COH.PRD.Feng.Zheng@wg.cargowise.com	
+QbhrU3X7	
+Feng.Zheng	fqcc555fqcc555
+--------------
+
+CPL域名
+服务商(www.net.cn 
+
+万网) cplchina.com.cn 
+
+用户名:30912012  hi30912012@aliyun.com
+密码：OEC981102    Cohszx804A
+
+ 
+----------
+
+Alisped域名 alisped.com.cn 
+
+服务商(www.net.cn 
+
+万网)
+用户名：30817631 
+密码：v4x9h7e3
+阿里云账号：hi30817631@aliyun.com
+阿里云密码：cohshaNeo230
+
+
+

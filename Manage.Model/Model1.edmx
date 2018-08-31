@@ -34,6 +34,7 @@
             <PropertyRef Name="keyid" />
           </Key>
           <Property Name="keyid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Advice" Type="nvarchar" MaxLength="500" />
           <Property Name="C_UserId" Type="int" Nullable="false" />
           <Property Name="C_DataId" Type="bigint" Nullable="false" />
           <Property Name="C_StepId" Type="int" Nullable="false" />
@@ -166,6 +167,24 @@
           <Property Name="C_UpdatedDate" Type="datetime" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“DATA_MANAGE.dbo.V_DataVerifyStep”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="V_DataVerifyStep">
+          <Key>
+            <PropertyRef Name="StepState" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="StepName" />
+            <PropertyRef Name="StepUser" />
+            <PropertyRef Name="DataKey" />
+          </Key>
+          <Property Name="DataKey" Type="bigint" Nullable="false" />
+          <Property Name="StepName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StepAdvice" Type="nvarchar" MaxLength="500" />
+          <Property Name="StepState" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“DATA_MANAGE.dbo.V_Role_Data_Verify_Step”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="V_Role_Data_Verify_Step">
           <Key>
@@ -273,6 +292,17 @@
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User_Role" EntityType="Self.tbl_User_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_VerifyFlow" EntityType="Self.tbl_VerifyFlow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_DataVerifyStep" EntityType="Self.V_DataVerifyStep" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_DataVerifyStep].[DataKey] AS [DataKey], 
+    [V_DataVerifyStep].[StepName] AS [StepName], 
+    [V_DataVerifyStep].[StepUser] AS [StepUser], 
+    [V_DataVerifyStep].[StepAdvice] AS [StepAdvice], 
+    [V_DataVerifyStep].[StepState] AS [StepState], 
+    [V_DataVerifyStep].[CreatedDate] AS [CreatedDate], 
+    [V_DataVerifyStep].[UpdatedDate] AS [UpdatedDate]
+    FROM [dbo].[V_DataVerifyStep] AS [V_DataVerifyStep]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_Role_Data_Verify_Step" EntityType="Self.V_Role_Data_Verify_Step" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_Role_Data_Verify_Step].[RoleId] AS [RoleId], 
@@ -458,6 +488,7 @@
           <EntitySet Name="V_Verify_Step" EntityType="DATA_MANAGEModel.V_Verify_Step" />
           <EntitySet Name="tbl_Data" EntityType="DATA_MANAGEModel.tbl_Data" />
           <EntitySet Name="tbl_DataVerifyStep" EntityType="DATA_MANAGEModel.tbl_DataVerifyStep" />
+          <EntitySet Name="V_DataVerifyStep" EntityType="DATA_MANAGEModel.V_DataVerifyStep" />
         </EntityContainer>
         <EntityType Name="V_User_Role">
           <Key>
@@ -595,6 +626,23 @@
           <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="C_UserId" Type="Int32" Nullable="false" />
+          <Property Name="C_Advice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_DataVerifyStep">
+          <Key>
+            <PropertyRef Name="StepName" />
+            <PropertyRef Name="StepUser" />
+            <PropertyRef Name="StepState" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="DataKey" />
+          </Key>
+          <Property Name="StepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StepUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StepAdvice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StepState" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DataKey" Type="Int64" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -824,6 +872,7 @@
           <EntitySetMapping Name="tbl_DataVerifyStep">
             <EntityTypeMapping TypeName="DATA_MANAGEModel.tbl_DataVerifyStep">
               <MappingFragment StoreEntitySet="tbl_DataVerifyStep">
+                <ScalarProperty Name="C_Advice" ColumnName="C_Advice" />
                 <ScalarProperty Name="C_UserId" ColumnName="C_UserId" />
                 <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
                 <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
@@ -831,6 +880,19 @@
                 <ScalarProperty Name="C_StepId" ColumnName="C_StepId" />
                 <ScalarProperty Name="C_DataId" ColumnName="C_DataId" />
                 <ScalarProperty Name="keyid" ColumnName="keyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_DataVerifyStep">
+            <EntityTypeMapping TypeName="DATA_MANAGEModel.V_DataVerifyStep">
+              <MappingFragment StoreEntitySet="V_DataVerifyStep">
+                <ScalarProperty Name="DataKey" ColumnName="DataKey" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="StepState" ColumnName="StepState" />
+                <ScalarProperty Name="StepAdvice" ColumnName="StepAdvice" />
+                <ScalarProperty Name="StepUser" ColumnName="StepUser" />
+                <ScalarProperty Name="StepName" ColumnName="StepName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -32,6 +32,8 @@ public partial class tbl_DataVerifyStep
 
     public int C_UserId { get; set; }
 
+    public string C_Advice { get; set; }
+
 }
 
 }

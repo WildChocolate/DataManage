@@ -37,18 +37,18 @@ namespace Web.Controllers
             Expression<Func<tbl_DataType, bool>> wherelambda = dt => true;
             if (!string.IsNullOrWhiteSpace(pager.Name))
             {
-                wherelambda.And(dt => dt.C_Name.Contains(pager.Name));
+                wherelambda=wherelambda.And(dt => dt.C_Name.Contains(pager.Name));
             }
             if (!string.IsNullOrWhiteSpace(pager.DateFrom))
             {
-                wherelambda.And(dt => dt.C_CreatedDate > Convert.ToDateTime(pager.DateFrom));
+                wherelambda=wherelambda.And(dt => dt.C_CreatedDate > Convert.ToDateTime(pager.DateFrom));
             }
             if (!string.IsNullOrWhiteSpace(pager.DateTo))
             {
-                wherelambda.And(dt => dt.C_CreatedDate < Convert.ToDateTime(pager.DateFrom));
+                wherelambda=wherelambda.And(dt => dt.C_CreatedDate < Convert.ToDateTime(pager.DateFrom));
             }
             var service = Container.GetService<IDataTypeService>();
-            var items = service.GetModels(wherelambda).ToList();
+            var items = service.GetModelsByPage(pager.pageSize, pager.pageIndex, true, d=> d.keyid, wherelambda).ToList();
             var cnt = service.GetTableCount(wherelambda);
             var grid = new DataTypeGrid();
             grid.rows = DataTypeInfo.ConvertoToDataTypeInfos(items);

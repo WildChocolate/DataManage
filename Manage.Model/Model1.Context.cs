@@ -66,6 +66,8 @@ public partial class DATA_MANAGEEntities1 : DbContext
 
     public virtual DbSet<tbl_DataVerifyStep> tbl_DataVerifyStep { get; set; }
 
+    public virtual DbSet<V_DataVerifyStep> V_DataVerifyStep { get; set; }
+
 }
 
 }

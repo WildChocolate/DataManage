@@ -16,16 +16,25 @@ namespace Manage.Common.Condition
             pageSize = 10;
             pageIndex = 1;
         }
-
+        
         public int pageSize
         {
             get;
             set;
         }
+        int pageindex = 1;
         public int pageIndex
         {
-            get;
-            set;
+            get
+            {
+                if (pageindex < 1)
+                    pageindex = 1;
+                return pageindex;
+            }
+            set
+            {
+                pageindex = value;
+            }
         }
         public string DateFrom
         {
