@@ -9,6 +9,8 @@ table{
 }
 .details{
     width:33%;
+    height:100%;
+    overflow-y:scroll;
     margin:auto;
     background:lightskyblue;
     padding:10px;

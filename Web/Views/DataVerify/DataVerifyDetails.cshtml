@@ -4,14 +4,14 @@
     Layout = "~/Views/Shared/_LayoutBasicChild.cshtml";
 }
 @section style{
-<link href="~/LocalCSS/Data/DataVerifyDetails.css" rel="stylesheet" />
+<link href="~/LocalCSS/DataVerify/DataVerify.css" rel="stylesheet" />
 }
 <h2>资料审核步骤</h2>
 <hr />
 <div class="details">
     @if (Model != null)
     {
-        var index=1;
+        var index = 1;
         foreach (var item in Model)
         {
             <h3>第@(index)步</h3>
