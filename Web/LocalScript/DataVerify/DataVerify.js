@@ -15,7 +15,10 @@
                 return true;
             }
         });
+
         if (send) {
+            var location = "";
+
             $.ajax({
                 url: "",
                 type: "post",
@@ -27,7 +30,7 @@
                     //如果成功，2秒后跳转到查询页
                     if (data.State) {
                         setTimeout(function () {
-                            window.location.href = "TxtQuery";
+                            window.location.href = document.referrer;
                         }, 2000);
                     }
                 }
@@ -35,7 +38,7 @@
         }
     },
     Cancel: function () {
-        window.location.href = "TxtQuery";
+        window.location.href = document.referrer;
     }
 };
 

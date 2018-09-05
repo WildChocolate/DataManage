@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,6 +21,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -184,9 +186,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-table.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="EasyUI1.4.5\datagrid-detailview.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\dream.png" />
     <Content Include="Images\onepiece.jpg" />
     <Content Include="Images\onepieceLogo.png" />
@@ -990,7 +1000,6 @@
     <Content Include="EasyUI1.4.5\themes\metro\window.css" />
     <Content Include="EasyUI1.4.5\themes\mobile.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="LocalCSS\User\Index.css" />
@@ -1000,9 +1009,11 @@
     <Content Include="LocalScript\DataType\IndexExecute.js" />
     <Content Include="LocalScript\DataType\IndexQuery.js" />
     <Content Include="LocalScript\DataVerify\DataVerify.js" />
-    <Content Include="LocalScript\DataVerify\TxtQuery.js" />
-    <Content Include="LocalScript\Data\TextExecute.js" />
-    <Content Include="LocalScript\Data\TextQuery.js" />
+    <Content Include="LocalScript\DataVerify\DataQuery.js" />
+    <Content Include="LocalScript\Data\DataExecute.js" />
+    <Content Include="LocalScript\Data\DataQuery.js" />
+    <Content Include="LocalScript\Data\PDFExecute.js" />
+    <Content Include="LocalScript\Data\PDFQuery.js" />
     <Content Include="LocalScript\Menu\IndexExecute.js" />
     <Content Include="LocalScript\Menu\IndexQuery.js" />
     <Content Include="LocalScript\RoleMenu\IndexExecute.js" />
@@ -1023,8 +1034,6 @@
     <Content Include="LocalStyle\CSS\Login.css" />
     <Content Include="LocalStyle\CSS\MainLayout.css" />
     <Content Include="LocalStyle\Javascript\LocalScript.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="EasyUI1.4.5\demo\accordion\datagrid_data1.json" />
     <Content Include="EasyUI1.4.5\demo\combobox\combobox_data1.json" />
     <Content Include="EasyUI1.4.5\demo\combobox\combobox_data2.json" />
@@ -1048,9 +1057,30 @@
     <Content Include="EasyUI1.4.5\demo\tree\tree_data1.json" />
     <Content Include="EasyUI1.4.5\demo\tree\tree_data2.json" />
     <Content Include="EasyUI1.4.5\themes\material\images\Thumbs.db" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\locale\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\locale\bootstrap-table-zh-CN.min.js" />
+    <Content Include="Scripts\bootstrap-table.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -1059,6 +1089,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1074,7 +1106,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
@@ -1115,11 +1146,13 @@
     <Content Include="Views\DataType\IndexQuery.cshtml" />
     <Content Include="Views\DataType\IndexExecute.cshtml" />
     <Content Include="Views\Role\RoleVerifyFlow.cshtml" />
-    <Content Include="Views\Data\TextQuery.cshtml" />
-    <Content Include="Views\Data\TextExecute.cshtml" />
-    <Content Include="Views\DataVerify\TxtQuery.cshtml" />
+    <Content Include="Views\Data\DataQuery.cshtml" />
+    <Content Include="Views\Data\DataExecute.cshtml" />
+    <Content Include="Views\DataVerify\DataVerifyQuery.cshtml" />
     <Content Include="Views\DataVerify\DataVerifyDetails.cshtml" />
     <Content Include="Views\DataVerify\DataVerify.cshtml" />
+    <Content Include="Views\Data\PDFQuery.cshtml" />
+    <Content Include="Views\Data\PDFExecute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1129,9 +1162,6 @@
     <Folder Include="Views\NameValueInfo\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
@@ -1161,6 +1191,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

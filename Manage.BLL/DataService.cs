@@ -47,7 +47,7 @@ namespace Manage.BLL
             //1  首先，找出所有审核中的文件记录，默认是只有前一步审核通过才会进入下一步，所以选择同个一个dataid的最后一条记录
             var dataVerifyRepo = Container.GetRepository<IDataVerifyStepRepo>();
             //这个是数据与步骤表的简化版本，只选择两列,这里C_UserId代表
-            var dataSteps = dataVerifyRepo.GetModels(df => df.C_State == pager.State).Select(df => new {Key= df.C_DataId, Step=df.C_StepId }).Distinct();
+            var dataSteps = dataVerifyRepo.GetModels(df => df.C_State == pager.State).Select(df => new {Key= df.C_DataId, Step=df.C_StepId }).Distinct().ToList();
             //这里把所有的待审核dataid取出
 
             var verifyDataKeys = dataSteps.Select(ds => ds.Key ).Distinct().ToList();
@@ -84,33 +84,36 @@ namespace Manage.BLL
                 var info = infos[idx];
                 //找到当前的最新的步骤 id，info.Key就是相应的data 的keyid
                 var currentStep = dataSteps.Where(ds => ds.Key == info.Key).Max(ds => ds.Step);
-                var currentStepRole = flowStepRepo.GetModels(fs=> fs.keyid==currentStep).FirstOrDefault().C_RoleId;
-                //再通过 步骤id 找到相应的流程
-                var allSteps = flowStepRepo.GetRoleVerifyStep(vs =>  vs.stepid == currentStep);
-                var allStepRoles = allSteps.Select(s=> s.StepRole).ToList();//这里找出这个流程的所有角色
-                
-                var userRoleKeys = userDto.Roles.Select(r=> r.keyid).ToList();
-                //在查询状态为通过的单的时候,直接设置为无法审核
-                if (pager.State)
+                if (currentStep > 0)
                 {
-                    info.Verify = "<a>无法操作</a>";
-                }
-                else 
-                {
-                    //如果这个用户的角色列表包含当前的 步骤角色，那么这个用户对这个data 拥有审核权限
-                    if (userRoleKeys.Contains(currentStepRole))
-                    {
-                        info.Verify = string.Format("<a href='{0}'>审核</a>", "DataVerify?Key=" + info.Key);
-                    }
-                    else if (userRoleKeys.Intersect(allStepRoles) != null)//如果当前用户的所有角色中与此流程对应的角色有交集,则此记录对他可见，但不能审核
+                    var currentStepRole = flowStepRepo.GetModels(fs => fs.keyid == currentStep).FirstOrDefault().C_RoleId;
+                    //再通过 步骤id 找到相应的流程
+                    var allSteps = flowStepRepo.GetRoleVerifyStep(vs => vs.stepid == currentStep);
+                    var allStepRoles = allSteps.Select(s => s.StepRole).ToList();//这里找出这个流程的所有角色
+
+                    var userRoleKeys = userDto.Roles.Select(r => r.keyid).ToList();
+                    //在查询状态为通过的单的时候,直接设置为无法审核
+                    if (pager.State)
                     {
                         info.Verify = "<a>无法操作</a>";
-                    
                     }
-                    else//如果当前用户的所有角色中与此流程对应的角色没有交集，他对这个数据没有审核权限，连给看都不行
+                    else
                     {
-                        infos.Remove(info);
-                        wherelambda.And(d => d.keyid != info.Key);
+                        //如果这个用户的角色列表包含当前的 步骤角色，那么这个用户对这个data 拥有审核权限
+                        if (userRoleKeys.Contains(currentStepRole))
+                        {
+                            info.Verify = string.Format("<a href='{0}'>审核</a>", "DataVerify?Key=" + info.Key);
+                        }
+                        else if (userRoleKeys.Intersect(allStepRoles) != null)//如果当前用户的所有角色中与此流程对应的角色有交集,则此记录对他可见，但不能审核
+                        {
+                            info.Verify = "<a>无法操作</a>";
+
+                        }
+                        else//如果当前用户的所有角色中与此流程对应的角色没有交集，他对这个数据没有审核权限，连给看都不行
+                        {
+                            infos.Remove(info);
+                            wherelambda.And(d => d.keyid != info.Key);
+                        }
                     }
                 }
             }

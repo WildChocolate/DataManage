@@ -81,7 +81,7 @@
 $(function () {
     console.log(document.getElementById("Photo"));
     $("#Photo").on("change", function () {
-        alert("图片改变");
+        //alert("图片改变");
         var file = this.files[0];
         if (this.files && file) {
             var reader = new FileReader();

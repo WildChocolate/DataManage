@@ -2,7 +2,7 @@
     oldpassword: "",
     newpassword: "",
     confirmpassword:"",
-    Submit :function(){
+    Submit: function () {
         if (this.oldpassword == "") {
             alert("请输入密码");
             return false;
@@ -19,6 +19,7 @@
             alert("新旧密码不能一样！");
             return false;
         }
+        
         $.ajax({
             url: "/User/ChangePassword",
             data: { oldpassword: this.oldpassword, newpassword: this.newpassword },
@@ -51,7 +52,9 @@
         }
     }
 };
+
 $(function () {
+
     (function () {
         $("#btn_ok").click(function () {
             

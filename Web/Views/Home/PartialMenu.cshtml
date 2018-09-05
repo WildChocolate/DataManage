@@ -13,7 +13,7 @@
             @*<a title="@item.C_Description" href="@Url.Action(@item.C_Action, @item.C_Controller)"><p>@item.C_Name</p></a>*@
 
             @*在js里将 data-href的值 取出，放入iframe 的src 属性，自动加载*@
-            <a title="@item.C_Description" href="###" data-href="@Url.Action(@item.C_Action, @item.C_Controller)"><p>@item.C_Name</p></a>
+            <a title="@item.C_Description" href="@Url.Action(@item.C_Action, @item.C_Controller)" target="ifrm" data-href="@Url.Action(@item.C_Action, @item.C_Controller)"><p>@item.C_Name</p></a>
             @*<p>@Html.ActionLink(item.C_Name, item.C_Action + string.Empty, item.C_Controller + string.Empty, new { @class = "easyui-linkbutton", plain = "true",display="block"})</p>*@
         </div> 
     <hr />

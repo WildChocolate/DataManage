@@ -14,7 +14,7 @@ namespace Web.Controllers
 {
     public class DataVerifyController : PowerController
     {
-        string[] menusAction = { "TxtQuery" };
+        string[] menusAction = { "TxtQuery", "WordQuery","ExcelQuery" };
         protected override string[] MenusAction
         {
             get { return menusAction; }
@@ -25,7 +25,21 @@ namespace Web.Controllers
             if (!CanRead)
                 return GotoErrorPage(CannotReadText);
             ViewBag.DataTypeKey=(int)DataTypeEnum.Text;
-            return View();
+            return View("DataVerifyQuery");
+        }
+        public ActionResult WordQuery()
+        {
+            if (!CanRead)
+                return GotoErrorPage(CannotReadText);
+            ViewBag.DataTypeKey = (int)DataTypeEnum.Word;
+            return View("DataVerifyQuery");
+        }
+        public ActionResult ExcelQuery()
+        {
+            if (!CanRead)
+                return GotoErrorPage(CannotReadText);
+            ViewBag.DataTypeKey = (int)DataTypeEnum.Excel;
+            return View("DataVerifyQuery");
         }
         public ActionResult SearchDataVerify(DataVerifyStepPager pager)
         {

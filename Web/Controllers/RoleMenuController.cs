@@ -112,6 +112,7 @@ namespace Web.Controllers
                 rolemenuList.Add(new_rm);
             }
             var rolemenugrid = new RoleMenuGrid();
+
             rolemenugrid.total = rolemenuList.Count;
             rolemenugrid.rows = rolemenuList;
             return Json(rolemenugrid);

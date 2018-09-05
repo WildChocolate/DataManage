@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
+
     <link href="~/LocalCSS/User/Index.css" rel="stylesheet" />
 </head>
 <body>
@@ -17,7 +18,7 @@
     <h2>个人信息详情</h2>
     <hr />
     <form id="form1" class="profile">
-        <div class="header">
+        <div class="header" contenteditable="true">
             <img id="Photo" name="Photo" class="img-circle" src="@Url.Action("GetUserHeadImage", new { key=@Model.Key})" alt="头像" />
         </div>
         <div class="body">
@@ -45,5 +46,22 @@
         </div>
     </form>
 }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            $("#Photo").on({
+                drop: function (e) {  //拖后放
+                    e.preventDefault();
+                    //jquery的file要去e.originalEvent里面拿
+                    var file = e.originalEvent.dataTransfer.files[0];
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function (e) {
+                        $("#Photo").attr("src", e.target.result);
+                    }
+                }
+            })
+        });
+    </script>
 </body>
 </html>

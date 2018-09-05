@@ -8,5 +8,10 @@ namespace Manage.Common.Condition
 {
     public class DataInfoPager:BasePager
     {
+        public int DataTypeKey
+        {
+            get;
+            set;
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace Manage.IBLL.Dto
         {
             get
             {
-                return string.Format("<a href='{0}'>设置流程</a>", "RoleVerifyFlow?Key=" + this.Key);
+                return string.Format("<a href='{0}'>设置流程</a>", "/Role/RoleVerifyFlow?Key=" + this.Key);
             }
         }
 

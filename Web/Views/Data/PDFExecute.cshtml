@@ -1,0 +1,149 @@
+﻿@model Manage.IBLL.Dto.DataInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PDFExecute</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: transparent;
+        }
+
+        .container {
+            background: white;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container" id="app">
+        <input type="hidden" id="Key" v-model="Key" name="Key"  />
+        <input type="hidden" id="DataTypeKey" v-model="DataTypeKey" name="DataTypeKey"/>
+        <h2>文档@(ViewBag.Operation)</h2>
+        <hr />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="Name" class="col-sm-2 control-label">名称</label>
+                <div class="col-sm-10">
+                    <input id="Name" name="Name" type="text" class="form-control" placeholder="名称" v-model="Name" required / >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-2 control-label">描述</label>
+                <div class="col-sm-10">
+                    <textarea id="Description" name="Description" class="form-control" v-model="Description" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-2 control-label">审核通过</label>
+                <div class="col-sm-10">
+                    <label class="control-label">
+                        @Model.StateText
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="file" id="Path" name="Path" value="" />
+                </div>
+            </div>
+            @if (Model.CreatedDate!=null) 
+            { 
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">创建时间</label>
+                    <div class="col-sm-10">
+                        <label class="control-label">
+                            @Model.CreatedDate
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">修改时间</label>
+                    <div class="col-sm-10">
+                        <label class="control-label">
+                            @Model.UpdatedDate
+                        </label>
+                    </div>
+                </div>
+            }
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <p>
+                        <button id="submit" type="button" class="btn btn-info">
+                            <span class="glyphicon glyphicon-ok"></span>确定
+                        </button>
+                        <button id="cancel" type="button" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-remove"></span>取消
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </form>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            提示
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        名称不能空
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                            关闭
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            提示
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <label></label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                            关闭
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/LocalScript/Data/PDFExecute.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                Key: @Model.Key,
+                DataTypeKey: @Model.DataTypeKey,
+                Name: "@Model.Name",
+                Description: "@Model.Description"
+            }
+        });
+    </script>
+</body>
+</html>

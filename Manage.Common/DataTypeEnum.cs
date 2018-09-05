@@ -10,6 +10,7 @@ namespace Manage.Common
     {
         Text=1,
         Word=2,
-        Excel=3
+        Excel=3,
+        PDF=4,
     }
 }

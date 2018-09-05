@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>vue</id>
+    <version>2.5.16</version>
+    <title>Vue</title>
+    <authors>Evan You</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>vue.js</description>
+    <iconUrl>https://vuejs.org/images/logo.png</iconUrl>
+    <projectUrl>https://vuejs.org/</projectUrl>
+    <summary>The Progressive JavaScript Framework</summary>
+    <tags>Vue.js vue vuejs</tags>
+  </metadata>
+</package>
