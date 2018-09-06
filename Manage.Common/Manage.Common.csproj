@@ -55,6 +55,7 @@
     <Compile Include="Condition\RolePager.cs" />
     <Compile Include="Condition\UserPager.cs" />
     <Compile Include="Condition\VerifyFlowPager.cs" />
+    <Compile Include="ContentTypeMap.cs" />
     <Compile Include="DataGrid\BaseDataGrid.cs" />
     <Compile Include="DataGrid\DataInfoGrid.cs" />
     <Compile Include="DataGrid\DataTypeGrid.cs" />

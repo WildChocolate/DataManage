@@ -19,6 +19,7 @@
             success: function (data) {
                 console.log(data);
                 $("#List").datagrid("loadData", data);
+                
             },
             error: function (err) {
                 $.messager.alert(err.Message);
@@ -44,17 +45,18 @@ $(function () {
                     fitColumns: true,
                     title:"角色查询"
                 }).datagrid("loadData", data);
+                var pager = $("#List").datagrid("getPager");
+                pager.pagination({
+                    onSelectPage: function () {
+                        $(this).pagination('loading');
+                        Search.Submit();
+                        $(this).pagination('loaded');
+                    }
+                });
             }
-            var pager = $("#List").datagrid("getPager");
-            pager.pagination({
-                onSelectPage: function () {
-                    $(this).pagination('loading');
-                    Search.Submit();
-                    $(this).pagination('loaded');
-                }
-            });
         }
     });
+
     $("#UpdateBtn").click(function () {
         //获得datagrid 的选中行
         var row = $('#List').datagrid('getSelected');

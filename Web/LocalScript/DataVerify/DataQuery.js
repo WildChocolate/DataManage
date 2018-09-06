@@ -24,7 +24,6 @@ var search = {
             data: { DateFrom: this.DateFrom, DateTo: this.DateTo, Name: this.Name, PageSize: this.PageSize, PageIndex: this.PageIndex, DataTypeKey: this.DataTypeKey, State: this.State },
             datatype: "json",
             success: function (data) {
-                console.log(data);
                 $("#List").datagrid({
                     columns: [data.title],
                     singleSelect: true,
@@ -76,7 +75,6 @@ $(function () {
     $("#UpdateBtn").click(function () {
         var row = $("#List").datagrid("getSelected");
         if (row) {
-            alert(row.Key);
             window.location.href = "TextExecute?Key=" + row.Key;
         }
         else

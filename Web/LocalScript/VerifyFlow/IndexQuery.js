@@ -19,14 +19,7 @@ var search = {
             data: {DateFrom:this.DateFrom, DateTo:this.DateTo, Name:this.Name, PageSize:this.PageSize, PageIndex:this.PageIndex},
             datatype: "json",
             success: function (data) {
-                $("#List").datagrid({
-                    fitColumns: true,
-                    pagination: true,
-                    toolbar: "#tb",
-                    singleSelect: true,
-                    colums: [data.title]
-
-                }).datagrid("loadData",data);
+                $("#List").datagrid("loadData",data);
             }
         });
     },

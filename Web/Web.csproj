@@ -1010,6 +1010,7 @@
     <Content Include="LocalScript\DataType\IndexQuery.js" />
     <Content Include="LocalScript\DataVerify\DataVerify.js" />
     <Content Include="LocalScript\DataVerify\DataQuery.js" />
+    <Content Include="LocalScript\DataVerify\PDFVerifyQuery.js" />
     <Content Include="LocalScript\Data\DataExecute.js" />
     <Content Include="LocalScript\Data\DataQuery.js" />
     <Content Include="LocalScript\Data\PDFExecute.js" />
@@ -1153,6 +1154,8 @@
     <Content Include="Views\DataVerify\DataVerify.cshtml" />
     <Content Include="Views\Data\PDFQuery.cshtml" />
     <Content Include="Views\Data\PDFExecute.cshtml" />
+    <Content Include="Views\DataVerify\PDFVerifyQuery.cshtml" />
+    <Content Include="Views\DataVerify\PDFVerify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

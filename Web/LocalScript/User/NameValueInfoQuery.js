@@ -18,11 +18,7 @@
             datatype: "json",
             success: function (data) {
                 console.log(data);
-                $("#List").datagrid({
-                    columns: [data.title],
-                    fitColumns: true,
-                    singleSelect: true,
-                }).datagrid("loadData", data);
+                $("#List").datagrid("loadData", data);
                 
             }
         });
@@ -33,7 +29,24 @@
 };
 
 $(function () {
-    $("#List").datagrid();
+    $.ajax({
+        url: "SearchNameValueInfo",
+        type: "Post",
+        data: { Name: this.Name, DateFrom: this.DateFrom, DateTo: this.DateTo, PageSize: this.PageSize, PageIndex: this.PageIndex },
+        datatype: "json",
+        success: function (data) {
+            console.log(data);
+            $("#List").datagrid({
+                columns: [data.title],
+                fitColumns: true,
+                singleSelect: true,
+            }).datagrid("loadData", data);
+            var pager = $("#List").datagrid("getPager");
+            pager.pagination({
+                onSelectPage: search.submit
+            });
+        }
+    });
     $("#Search").click(search.submit);
     $("#UpdateBtn").click(function () {
         var row = $("#List").datagrid("getSelected");

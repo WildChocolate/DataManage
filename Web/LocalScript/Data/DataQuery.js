@@ -5,7 +5,7 @@
     DataTypeKey:0,
     PageSize: 10,
     PageIndex: 1,
-    Search: function () {
+    Submit: function () {
         this.Name = $.trim($("#Name").val());
         this.DateFrom = $("#DateFrom").val();
         this.DateTo = $("#DateTo").val();
@@ -19,24 +19,33 @@
             data: { DateFrom: this.DateFrom, DateTo: this.DateTo, Name: this.Name, PageSize: this.PageSize, PageIndex: this.PageIndex, DataTypeKey: this.DataTypeKey },
             datatype: "json",
             success: function (data) {
-                console.log(data);
-                $("#List").datagrid({
-                    columns: [data.title],
-                    singleSelect: true,
-                    fitColumns: true
-                }).datagrid("loadData", data);
+                $("#List").datagrid("loadData", data);
             }
         });
     }
 };
 $(function () {
-    $("#List").datagrid();
-    var pager = $("#List").datagrid("getPager");
-    pager.pagination({
-        onSelectPage: search.submit
+    //开局先加载一次数据，并设置分页事件
+    $.ajax({
+        url: "SearchData",
+        type: "post",
+        data: { PageSize: 10, PageIndex: 1, DataTypeKey: $("#DataTypeKey").val() },
+        datatype: "json",
+        success: function (data) {
+            $("#List").datagrid({
+                columns: [data.title],
+                singleSelect: true,
+                fitColumns: true
+            }).datagrid("loadData", data);
+            var pager = $("#List").datagrid("getPager");
+            pager.pagination({
+                onSelectPage: search.Submit
+            });
+        }
     });
-    $("#search").click(search.Search);
-    search.Search();
+    
+    $("#search").click(search.Submit);
+    
     $("#UpdateBtn").click(function () {
         var row = $("#List").datagrid("getSelected");
         if (row) {

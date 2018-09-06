@@ -14,7 +14,7 @@ namespace Web.Controllers
 {
     public class DataVerifyController : PowerController
     {
-        string[] menusAction = { "TxtQuery", "WordQuery","ExcelQuery" };
+        string[] menusAction = { "TxtQuery", "WordQuery", "ExcelQuery", "PDFVerifyQuery" };
         protected override string[] MenusAction
         {
             get { return menusAction; }
@@ -41,6 +41,15 @@ namespace Web.Controllers
             ViewBag.DataTypeKey = (int)DataTypeEnum.Excel;
             return View("DataVerifyQuery");
         }
+        public ActionResult PDFVerifyQuery()
+        {
+            if (!CanRead)
+                return GotoErrorPage(CannotReadText);
+            ViewBag.DataTypeKey = (int)DataTypeEnum.PDF;
+            return View();
+        }
+
+        ///查找需要审核的列表
         public ActionResult SearchDataVerify(DataVerifyStepPager pager)
         {
             var service = Container.GetService<IDataService>();
@@ -48,6 +57,12 @@ namespace Web.Controllers
             var grid = service.GetDataVerifyGrid(pager,userDto);
             return Json(grid, JsonRequestBehavior.AllowGet);
         }
+
+        /// <summary>
+        /// 审核步骤详情
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public ActionResult DataVerifyDetails(long Key)
         {
             if (!CanRead)
@@ -59,6 +74,12 @@ namespace Web.Controllers
             var infos = DataVerifyStepInfo.ConvertToDataVerifyStepInfos(items);
             return View(infos);
         }
+
+        /// <summary>
+        /// 找出需要审核的单
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult DataVerify(long Key)
         {
@@ -76,8 +97,22 @@ namespace Web.Controllers
                 var steps = stepservice.GetVModels(Key).ToList();
                 detailInfo.Steps = DataVerifyStepInfo.ConvertToDataVerifyStepInfos(steps);
             }
-            return View(detailInfo);
+            //PDF的页面也其他三个不同，所以另外返回
+            if (detailInfo.Data.DataTypeKey == (int)DataTypeEnum.PDF)
+            {
+                return View("PDFVerify", detailInfo);
+            }
+            else
+            {
+                return View(detailInfo);
+            }
         }
+        
+        /// <summary>
+        /// 审核操作
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult DataVerify(DataVerifyStepInfo info)
         {

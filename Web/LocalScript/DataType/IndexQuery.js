@@ -17,24 +17,33 @@
             data: {Name:this.Name, DateFrom:this.DateFrom, DateTo:this.DateTo, PageSize:this.PageSize,PageIndex:this.PageIndex},
             datatype: "json",
             success: function (data) {
-                console.log(data);
-                $("#List").datagrid({
-                    columns: [data.title],
-                    singleSelect: true,
-                    fitColumns: true
-                }).datagrid("loadData", data);
+                $("#List").datagrid("loadData", data);
             }
         });
     }
 };
 
 $(function () {
-    $("#List").datagrid();
-    var pager = $("#List").datagrid("getPager");
-    pager.pagination({
-        onSelectPage: search.submit
+    $.ajax({
+        url: "SearchDataType",
+        type: "post",
+        data: { PageSize: 10, PageIndex: 1 },
+        datatype: "json",
+        success: function (data) {
+            $("#List").datagrid({
+                columns: [data.title],
+                singleSelect: true,
+                fitColumns: true
+            }).datagrid("loadData", data);
+            var pager = $("#List").datagrid("getPager");
+            pager.pagination({
+                onSelectPage: search.submit
+            });
+        }
     });
-    search.submit();
+
+    
+
 
     $("#search").click(search.submit);
     $("#UpdateBtn").click(function () {

@@ -36,6 +36,11 @@ namespace Manage.IBLL.Dto
                 return this.State ? "是" : "否";
             }
         }
+        public string Download
+        {
+            get;
+            set;
+        }
         public static DataInfo ConvertToDataInfo(tbl_Data item)
         {
             var info = new DataInfo();
@@ -44,6 +49,11 @@ namespace Manage.IBLL.Dto
             info.Description = item.C_Description;
             info.UserKey = item.C_UserId;
             info.DataTypeKey = item.C_DataTypeId;
+            info.Download = string.Format("<a href='Download?Key={0}&DataType={1}'>下载</a>", item.keyid, item.C_DataTypeId);
+            if (!string.IsNullOrEmpty(item.C_Path) && item.C_Path.Length > 50)
+            {
+                item.C_Path = item.C_Path.Substring(0, 50)+"...";
+            }
             info.Path = item.C_Path;
             info.State = item.C_VerifyState;
             info.CreatedDate = item.C_CreatedDate.ToString();

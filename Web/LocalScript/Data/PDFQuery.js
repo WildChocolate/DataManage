@@ -121,6 +121,12 @@ $(function () {
                 align: 'center',
                 valign: 'middle',
                 width: 160, // 定义列的宽度，单位为像素px
+            },{
+                field: "Download",
+                title: "操作",
+                align: 'center',
+                valign: 'middle',
+                width: 50, // 定义列的宽度，单位为像素px
             }
         ],
         onLoadSuccess: function (data) {  //加载成功时执行

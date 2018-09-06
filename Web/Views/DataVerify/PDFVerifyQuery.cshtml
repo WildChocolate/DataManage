@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Manage.IBLL.Dto.DataInfo>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>PDFQuery</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: transparent;
+        }
+
+        .container {
+            background: white;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div style="padding:10px;"></div>
+    <div class="container" id="app">
+        <input type="hidden" id="DataTypeKey" name="DataTypeKey" value="@ViewBag.DataTypeKey" />
+        <h2>PDF审核列表</h2>
+        <hr />
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button">DateFrom:</button>
+                    </span>
+                    <input name="DataFrom" id="DateFrom" type="text" class="input-sm form-control" readonly />
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button">DateTo:</button>
+                    </span>
+                    <input name="DateTo" id="DateTo" type="text" class="input-sm form-control" readonly />
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="input-group checkbox">
+                        <label for="State">
+                            <input name="State" id="State" type="checkbox" class="checkbox" />已审核
+                        </label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="input-group">
+                    <input id="Name" name="Name" type="text" class="input-sm form-control" placeholder="请输入名称" />
+                    <span class="input-group-btn">
+                        <button id="search" class="btn btn-sm btn-default" type="button">
+                            搜索<span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div style="padding:10px;"></div>
+        <div class="btn-group" role="group" aria-label="...">
+            <button id="update" type="button" class="btn btn-link">
+                <span class="glyphicon glyphicon-pencil"></span>审核
+            </button>
+        </div>
+        <table id="List" class="table table-striped"></table>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-table.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="~/Scripts/locale/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="~/LocalScript/DataVerify/PDFVerifyQuery.js"></script>
+</body>
+</html>

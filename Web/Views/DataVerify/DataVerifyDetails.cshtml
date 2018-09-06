@@ -5,24 +5,34 @@
 }
 @section style{
 <link href="~/LocalCSS/DataVerify/DataVerify.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 <h2>资料审核步骤</h2>
 <hr />
+
 <div class="details">
-    @if (Model != null)
-    {
-        var index = 1;
-        foreach (var item in Model)
+    <ul class="list-group">
+        @if (Model != null)
         {
-            <h3>第@(index)步</h3>
-            <p>@item.Name</p>
-            <p>审核人：@item.UserName</p>
-            <p>意见：@item.Advice</p>
-            <p>状态：@item.StateText</p>
-            <p>创建时间：@item.CreatedDate</p>
-            <p>操作时间：@item.UpdatedDate</p>
-            <hr />
-            index++;
+            var index = 1;
+            foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    <h3 class="bg-info">第@(index)步</h3>
+                    <p>@item.Name</p>
+                    <p>审核人：@item.UserName</p>
+                    <p>意见：@item.Advice</p>
+                    <p>状态：@item.StateText</p>
+                    <p>创建时间：@item.CreatedDate</p>
+                    <p>操作时间：@item.UpdatedDate</p>
+                </li>
+                index++;
+            }
         }
-    }
+    </ul>
+    
 </div>
+@section script{
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+}

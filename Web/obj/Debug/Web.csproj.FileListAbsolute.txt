@@ -182,3 +182,5 @@ D:\DataManage\Web\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources
 D:\DataManage\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\DataManage\Web\obj\Debug\Web.dll
 D:\DataManage\Web\obj\Debug\Web.pdb
+D:\DataManage\Web\bin\Util.dll
+D:\DataManage\Web\bin\Util.pdb

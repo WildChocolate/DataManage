@@ -19,6 +19,7 @@ namespace Manage.Common.DataGrid
             title.Add(new th { field = "StateText", title = "已审核", width = 50 });
             title.Add(new th { field = "CreatedDate", title = "创建时间", width = 100 });
             title.Add(new th { field = "UpdatedDate", title = "修改时间", width = 100 });
+            title.Add(new th { field = "Download", title = "操作", width = 100 });
         }
     }
 }

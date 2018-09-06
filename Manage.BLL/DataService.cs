@@ -112,7 +112,7 @@ namespace Manage.BLL
                         else//如果当前用户的所有角色中与此流程对应的角色没有交集，他对这个数据没有审核权限，连给看都不行
                         {
                             infos.Remove(info);
-                            wherelambda.And(d => d.keyid != info.Key);
+                            wherelambda=wherelambda.And(d => d.keyid != info.Key);
                         }
                     }
                 }
@@ -120,7 +120,7 @@ namespace Manage.BLL
             var grid = new DataVerifyGrid();
             grid.rows = infos;
             //total 并不完全正确，有可能与实际的不符
-            grid.total = dataSteps.Where(ds => verifyDataKeys.Contains(ds.Key)).GroupBy(ds=> ds.Key).Count();
+            grid.total = dataRepo.GetTableCount(wherelambda);
             return grid;
         }
 

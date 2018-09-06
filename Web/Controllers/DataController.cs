@@ -21,12 +21,26 @@ namespace Web.Controllers
     /// </summary>
     public class DataController : PowerController
     {
+        public DataController() 
+        {
+            map = new ContentTypeMap();
+            map[DataTypeEnum.Text] = "text/plain";
+            map[DataTypeEnum.Word] = "application/msword";
+            map[DataTypeEnum.Excel] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            map[DataTypeEnum.PDF] = "application/pdf";
+            suffixs = new ContentTypeMap();
+            suffixs[DataTypeEnum.Text] = ".txt";
+            suffixs[DataTypeEnum.Word] = ".docx";
+            suffixs[DataTypeEnum.Excel] = ".xlsx";
+            suffixs[DataTypeEnum.PDF] = ".pdf";
+        }
         string[] menusAction = { "TextQuery", "DocxQuery", "ExcelQuery", "PDFQuery" };
         protected override string[] MenusAction
         {
             get { return menusAction; }
         }
-
+        ContentTypeMap map = null;
+        ContentTypeMap suffixs = null;
         // GET: Data
         public ActionResult TextQuery()
         {
@@ -251,9 +265,10 @@ namespace Web.Controllers
             }
             var path = Server.MapPath("~/file/text");//文件路径
             var suffix = "";//文件后缀
-            if ((DataTypeEnum)info.DataTypeKey == DataTypeEnum.Text)
+            var dataType = (DataTypeEnum)info.DataTypeKey;
+            if (dataType == DataTypeEnum.Text)
             {
-                if (file.ContentType != "text/plain")
+                if (file.ContentType != map[dataType])
                 {
                     result.State = false;
                     result.Message = "文件类型错误，应该为文本文件";
@@ -261,9 +276,9 @@ namespace Web.Controllers
                 suffix = ".txt";
                 path = Server.MapPath("~/file/text");
             }
-            else if ((DataTypeEnum)info.DataTypeKey == DataTypeEnum.Word)
+            else if (dataType == DataTypeEnum.Word)
             {
-                if (file.ContentType != "application/msword")
+                if (file.ContentType != map[dataType])
                 {
                     result.State = false;
                     result.Message = "文件类型错误，应该为word文档";
@@ -271,9 +286,9 @@ namespace Web.Controllers
                 suffix = ".doc";
                 path = Server.MapPath("~/file/word");
             }
-            else if ((DataTypeEnum)info.DataTypeKey == DataTypeEnum.Excel)
+            else if (dataType == DataTypeEnum.Excel)
             {
-                if (file.ContentType != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                if (file.ContentType != map[dataType])
                 {
                     result.State = false;
                     result.Message = "文件类型错误，应该为excel文件";
@@ -281,9 +296,9 @@ namespace Web.Controllers
                 suffix = ".xlsx";
                 path = Server.MapPath("~/file/excel");
             }
-            else if ((DataTypeEnum)info.DataTypeKey == DataTypeEnum.PDF)
+            else if (dataType == DataTypeEnum.PDF)
             {
-                if (file.ContentType != "application/pdf")
+                if (file.ContentType != map[dataType])
                 {
                     result.State = false;
                     result.Message = "文件类型错误，应该为excel文件";
@@ -297,6 +312,23 @@ namespace Web.Controllers
                 result.Message = "不合法的文件类型";
             }
             return  new Tuple<string, string>(suffix, path);
+        }
+        public ActionResult Download(long Key, DataTypeEnum DataType)
+        {
+            var path = "";
+            if (Key > 0)
+            {
+                var service = Container.GetService<IDataService>();
+                var item = service.GetModels(d => d.keyid == Key).FirstOrDefault();
+                if (item != null)
+                {
+                    //如果存在文件，则返回文件
+                    path = item.C_Path + string.Empty;
+                    if(System.IO.File.Exists(path))
+                        return File(path, map[DataType], DateTime.Now.Ticks.ToString() + suffixs[DataType]);
+                }
+            }
+            return new EmptyResult();
         }
     }
 }

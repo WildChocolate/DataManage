@@ -9,17 +9,14 @@ table{
 }
 .details{
     width:33%;
-    height:100%;
-    overflow-y:scroll;
+    min-height:100px;
+    overflow-y:auto;
     margin:auto;
-    background:lightskyblue;
+
     padding:10px;
 
 }
-h3{
-    padding:5px;
-    background:lightgray;
-}
+
 .tblVerifyDetail{
     background-color:white;
     margin:auto;
